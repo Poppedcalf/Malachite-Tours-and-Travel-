@@ -1,0 +1,45 @@
+---
+out: journal/REPLACE-WITH-ARTICLE-SLUG.html
+depth: 1
+nav: journal
+title: [Article title] | Travel Journal | Malachite Travel &amp; Tours
+description: [One or two sentences, up to about 155 characters, summarising the article for search results.]
+---
+<!-- HOW TO USE THIS TEMPLATE (see docs/JOURNAL-GUIDE.md)
+     1. Copy this file into _src/pages/ and rename it, for example journal-lake-kariba-guide.html
+     2. Change "out:" above to journal/<your-slug>.html (letters, numbers and hyphens only)
+     3. Replace every [bracketed] item with REAL, checked content written by or approved by Malachite.
+        Delete any block you do not need. Do not publish facts, prices or claims that have not been confirmed.
+     4. Add the article to journal/index.json so it appears on the Travel Journal page
+     5. Run:  python3 _tools/build.py     then upload the new files -->
+<section class="phero">
+  {{photo sunset-open-water|[Describe the photo in one sentence]|100vw||eager}}
+  <div class="wrap">
+    <p class="crumb"><a href="journal.html">Travel Journal</a> / [Category]</p>
+    <h1>[Article title]</h1>
+    <p>[One-sentence summary]</p>
+  </div>
+</section>
+
+<section class="sec"><div class="wrap">
+  <article class="art">
+    <p class="meta">[Category] | By [Author name] | [Date published] | [Reading time] min read</p>
+    <p class="lead">[Opening paragraph: what this article covers and who it helps.]</p>
+
+    <h2>[Section heading]</h2>
+    <p>[Paragraph. Keep to confirmed facts and first-hand experience.]</p>
+    <ul><li>[Point]</li><li>[Point]</li></ul>
+
+    <figure>{{photo sunset-open-water|[Describe the photo]|(min-width:900px) 760px, 100vw}}<figcaption>[Caption. State the place only if confirmed.]</figcaption></figure>
+
+    <h2>[Section heading]</h2>
+    <p>[Paragraph]</p>
+    <blockquote>[Optional pull quote or guest comment, word for word, with permission.]</blockquote>
+
+    <h3>[Sub-heading]</h3>
+    <p>[Paragraph]</p>
+
+    <div class="artcta"><b style="font:600 1.6rem var(--serif);color:var(--mal)">Planning a trip like this?</b><p style="margin-top:8px">[One sentence inviting the reader to ask the team.]</p><div class="acts" style="margin-top:18px"><a class="btn dark" href="plan.html">Plan Your Journey</a><a class="btn wa" data-wa="general" target="_blank" rel="noopener"><svg class="ic"><use href="#i-wa"/></svg>Ask on WhatsApp</a></div></div>
+  </article>
+</div></section>
+{{>closing}}
