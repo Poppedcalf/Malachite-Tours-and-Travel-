@@ -15,8 +15,8 @@
 const CONFIG={
   whatsapp:'263775515400',
   // EMAIL: malachitetours@gmail.com appears in the company's own email signature, so it is the primary recipient.
-  // admin@malachite-tours.com is copied; its delivery has not been verified. Confirm with Malachite, then edit this list.
-  emails:['malachitetours@gmail.com','admin@malachite-tours.com'],
+  // A secondary admin address is intentionally not copied until Malachite confirms it is monitored.
+  emails:['malachitetours@gmail.com'],
   showPrices:false,
   refPrefix:'LE-MK-',
   limits:{adults:[1,30],children:[0,20],nights:[1,7]},
@@ -57,37 +57,37 @@ const FAQ=[
 const GAL={
  home:[
   ['kariba-dam-mist','Mist rising from the Kariba Dam spillway','Kariba Dam wall'],
-  ['lions-game-drive','Lions resting in the shade beside a safari vehicle','Lions and a safari vehicle'],
-  ['great-zimbabwe-ruins','Dry-stone walls and a tall conical tower among trees','Dry-stone walls and conical tower'],
-  ['falls-main-curtain','A wide curtain of waterfall plunging over a rock wall','A waterfall in full flow'],
+  ['lions-game-drive','Lions resting beside a safari vehicle','Lions and a safari vehicle'],
+  ['great-zimbabwe-tower','The conical tower and stone walls at Great Zimbabwe','Great Zimbabwe tower'],
+  ['hero-victoria-falls','Victoria Falls viewed from above','Victoria Falls'],
   ['balancing-rocks','Granite boulders balanced on one another','Balancing rocks'],
-  ['elephants-waterhole-pair','Two elephants coated in mud drinking at a waterhole','Elephants at a waterhole'],
+  ['buffalo-waterhole','A herd of buffalo gathered at a waterhole','Buffalo at a waterhole'],
   ['houseboat-night','A houseboat lit up on the lake at dusk','A houseboat at dusk'],
   ['quad-biking','Two quad bikes on a hilltop','Quad biking'],
-  ['buffalo-waterhole','A herd of buffalo gathered at a waterhole','Buffalo at a waterhole'],
-  ['sunset-open-water','Sun setting behind hills over open water','Sunset over open water'],
+  ['rhinos','White rhinos resting in the shade','Rhinos in the shade'],
+  ['kariba-houseboats','Houseboats moored beneath wooded hills on Lake Kariba','Houseboats on Lake Kariba'],
   ['kariba-dam-spillway','Water pouring through the Kariba Dam spillway','Kariba Dam spillway'],
-  ['lodge-deck-dusk','A lodge deck at dusk with a fire pit and a dining table laid beside a waterhole','A lodge deck at dusk']
+  ['lodge-suite','Lodge accommodation','Lodge accommodation']
  ],
  kariba:[
   ['kariba-dam-mist','Mist rising from the Kariba Dam spillway','Kariba Dam wall'],
   ['kariba-dam-spillway','Water pouring through the Kariba Dam spillway','Kariba Dam spillway'],
-  ['kariba-houseboats','Houseboats moored beneath wooded hills on Lake Kariba','Houseboats on Lake Kariba']
+  ['kariba-houseboats','Houseboats moored beneath wooded hills on Lake Kariba','Houseboats on Lake Kariba'],
+  ['houseboat-night','A houseboat lit up on the lake at dusk','A houseboat at dusk']
  ],
  wildlife:[
   ['buffalo-waterhole','A herd of buffalo gathered at a waterhole','Buffalo at a waterhole'],
-  ['lions-game-drive','Lions resting in the shade beside a safari vehicle','Lions and a safari vehicle'],
-  ['rhinos','White rhinos resting in the shade','Rhinos in the shade']
+  ['lions-game-drive','Lions resting beside a safari vehicle','Lions and a safari vehicle'],
+  ['rhinos','White rhinos resting in the shade','Rhinos in the shade'],
+  ['safari-track','A safari track through the bush','Safari track']
  ],
-
  heritage:[
-  ['great-zimbabwe-tower','Conical tower and stone walls at Great Zimbabwe','Great Zimbabwe tower'],
-  ['balancing-rocks-wide','Large granite boulders balanced on top of one another','Balanced granite boulders'],
-  ['food-display-wide','A table of traditional grains, seeds and nuts in clay bowls with hand-written labels','Traditional grains and seeds'],
-  ['food-basket-grains','A woven basket holding gourds, millet heads and a clay pot','Woven basket, gourds and millet'],
+  ['great-zimbabwe-tower','The conical tower and stone walls at Great Zimbabwe','Great Zimbabwe tower'],
+  ['great-zimbabwe-sunset','Great Zimbabwe walls and tower at sunset','Great Zimbabwe at sunset'],
+  ['balancing-rocks','Granite boulders balanced on one another','Balancing rocks'],
   ['sandstone-pillar','Sandstone pillars rising above open plains','Sandstone pillars'],
-  ['chilojo-cliffs','Red sandstone cliffs rising above a river','Sandstone cliffs above a river']
+  ['chilojo-cliffs','Red sandstone cliffs rising above a river','Sandstone cliffs']
  ]
 };
 /* photo registry: w = widths available as images/<name>-<w>.jpg; legacy = single file images/<name>.jpg; r = original size */
-const PH={"balancing-rocks-wide":{"w":[640,1200,1920],"r":[1920,1280]},"balancing-rocks":{"legacy":1,"r":[715,402]},"buffalo-waterhole":{"legacy":1,"r":[715,477]},"chilojo-cliffs":{"legacy":1,"r":[680,510]},"elephants-waterhole-pair":{"w":[640,1200,1920],"r":[1920,1258]},"elephants-woodland-herd":{"w":[640,1200,1920],"r":[1920,1280]},"falls-aerial-gorge":{"w":[640,1200],"r":[1200,675]},"falls-main-curtain":{"w":[640,1200,1920],"r":[1920,1275]},"food-basket-grains":{"w":[640,1200,1920],"r":[1920,864]},"food-display-wide":{"w":[640,1200,1920],"r":[1920,864]},"gorilla-forest":{"w":[640,1200,1920],"r":[1920,1280]},"great-zimbabwe-ruins":{"w":[640,1200,1920],"r":[1920,1280]},"great-zimbabwe-sunset":{"legacy":1,"r":[715,476]},"great-zimbabwe-tower":{"legacy":1,"r":[640,427]},"hero-victoria-falls":{"legacy":1,"r":[1280,1620]},"houseboat-night":{"legacy":1,"r":[715,334]},"kariba-dam-mist":{"legacy":1,"r":[715,447]},"kariba-dam-spillway":{"legacy":1,"r":[715,402]},"kariba-houseboats":{"legacy":1,"r":[715,322]},"lions-game-drive":{"legacy":1,"r":[715,511]},"lodge-deck-dusk":{"w":[640,1200],"r":[1200,801]},"lodge-suite":{"legacy":1,"r":[715,470]},"quad-biking":{"legacy":1,"r":[715,404]},"rhinos":{"legacy":1,"r":[1280,712]},"safari-track":{"legacy":1,"r":[1280,1707]},"sandstone-pillar":{"legacy":1,"r":[680,510]},"social-about":{"legacy":1,"r":[1200,630]},"social-credentials":{"legacy":1,"r":[1200,630]},"social-destinations":{"legacy":1,"r":[1200,630]},"social-heritage":{"legacy":1,"r":[1200,630]},"social-home":{"legacy":1,"r":[1200,630]},"social-journal":{"legacy":1,"r":[1200,630]},"social-lake-kariba":{"legacy":1,"r":[1200,630]},"social-mana-pools":{"legacy":1,"r":[1200,630]},"social-matusadona":{"legacy":1,"r":[1200,630]},"social-plan":{"legacy":1,"r":[1200,630]},"social-trips":{"legacy":1,"r":[1200,630]},"social-victoria-falls":{"legacy":1,"r":[1200,630]},"speedboat":{"legacy":1,"r":[715,704]},"sunset-open-water":{"w":[640,1200,1920],"r":[1920,1280]}};
+const PH={"balancing-rocks":{"legacy":1,"r":[715,402]},"buffalo-waterhole":{"legacy":1,"r":[715,477]},"chilojo-cliffs":{"legacy":1,"r":[680,510]},"great-zimbabwe-sunset":{"legacy":1,"r":[715,476]},"great-zimbabwe-tower":{"legacy":1,"r":[640,427]},"hero-victoria-falls":{"legacy":1,"r":[1280,1620]},"houseboat-night":{"legacy":1,"r":[715,334]},"kariba-dam-mist":{"legacy":1,"r":[715,447]},"kariba-dam-spillway":{"legacy":1,"r":[715,402]},"kariba-houseboats":{"legacy":1,"r":[715,322]},"lions-game-drive":{"legacy":1,"r":[715,511]},"lodge-suite":{"legacy":1,"r":[715,470]},"quad-biking":{"legacy":1,"r":[715,404]},"rhinos":{"legacy":1,"r":[1280,712]},"safari-track":{"legacy":1,"r":[1280,1707]},"sandstone-pillar":{"legacy":1,"r":[680,510]},"social-about":{"legacy":1,"r":[1200,630]},"social-credentials":{"legacy":1,"r":[1200,630]},"social-destinations":{"legacy":1,"r":[1200,630]},"social-heritage":{"legacy":1,"r":[1200,630]},"social-home":{"legacy":1,"r":[1200,630]},"social-journal":{"legacy":1,"r":[1200,630]},"social-lake-kariba":{"legacy":1,"r":[1200,630]},"social-mana-pools":{"legacy":1,"r":[1200,630]},"social-matusadona":{"legacy":1,"r":[1200,630]},"social-plan":{"legacy":1,"r":[1200,630]},"social-trips":{"legacy":1,"r":[1200,630]},"social-victoria-falls":{"legacy":1,"r":[1200,630]},"speedboat":{"legacy":1,"r":[715,704]}};

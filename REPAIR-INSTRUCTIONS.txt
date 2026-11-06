@@ -1,0 +1,34 @@
+MALACHITE REPOSITORY REPAIR PACK
+
+This is an OVERLAY patch for the latest repository ZIP supplied in this conversation.
+
+HOW TO APPLY
+1. Download and extract this ZIP.
+2. Upload/merge its contents into the ROOT of the existing GitHub repository.
+3. Allow file replacement when prompted. Do not delete files that are not included.
+4. Keep folder names and paths exactly as supplied.
+
+WHAT IT FIXES
+- Restores js/app.js and js/boot.js referenced by every generated page.
+- Restores shared source partials needed by _tools/build.py.
+- Replaces references to photo files that are not present with relevant local photos that are present; captions/alt text are updated to avoid claiming an unverified location or subject.
+- Refreshes the photo registry and gallery data from available local files.
+- Removes the unverified secondary email from enquiry CC until Malachite confirms it is monitored.
+- Removes the non-existent mobile hero video source; the page falls back to the existing hero video where video playback is permitted.
+- Adds an empty journal article index and content/asset review notes.
+
+REBUILD
+From the repository root, run: python3 _tools/build.py
+The generated root HTML is already included, so rebuilding is optional unless you edit the source pages.
+
+AFTER UPLOAD, TEST
+- Mobile menu open/close
+- Hero video and still fallback
+- Destination and main navigation links
+- Gallery and lightbox
+- Trip filters and itinerary dialogs
+- Plan form and WhatsApp/email enquiry links
+- Journal empty state
+- Desktop and mobile layouts
+
+This package was checked for missing local references, JavaScript syntax and successful static-page generation. A full live-browser interaction test was not available. Confirm all company claims, contact details, pricing and media rights with Malachite before public launch.
