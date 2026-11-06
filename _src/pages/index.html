@@ -1,0 +1,100 @@
+---
+out: index.html
+nav: home
+title: Malachite Travel &amp; Tours | Safari, Lake Kariba &amp; Zambezi Journeys
+description: Kariba-based travel partner for tailored safari, houseboat, cultural and corporate journeys across Zimbabwe and Southern Africa. Plan your trip and send an inquiry in minutes.
+ogimage: images/social-home.jpg
+preload: images/sunset-open-water-1200.jpg
+jsonld: agency
+---
+<section class="hero" id="top" aria-labelledby="h1">
+  <!-- HERO MEDIA (easy to replace, see docs/ASSETS.md):
+       still image  -> images/sunset-open-water-1200.jpg  (shown first, and if video is off or blocked)
+       video        -> data-src below (videos/hero.mp4, silent loop, ideally 10-15 s)
+       phone video  -> data-src-mobile below (videos/hero-mobile.mp4, a lighter file for phones) -->
+  <div class="hmedia">
+    <img src="images/sunset-open-water-1200.jpg" alt="Sunset over open water" width="1200" height="800" fetchpriority="high" onerror="imgFail(this)">
+    <video class="hv" id="hv" muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1" data-src="videos/hero.mp4" data-src-mobile="videos/hero-mobile.mp4"></video>
+  </div>
+  <button class="hvt" id="hvt" type="button" aria-label="Pause background video" hidden><svg class="ic"><use href="#i-pause"/></svg></button>
+  <div class="wrap"><div class="hcopy">
+    <span class="lwm" style="color:#fff"><b>Malachite</b><small>Travel &amp; Tours</small></span>
+    <h1 id="h1">Into the wild, from the shores of Lake Kariba.</h1>
+    <p class="sub">Malachite is a Kariba-based travel partner. We shape safari, lake and cultural journeys across Zimbabwe and Southern Africa around the way you want to travel.</p>
+    <div class="hcta"><a href="plan.html" class="btn gold">Plan Your Journey</a><a href="destinations.html" class="btn line">Explore Our Destinations</a></div>
+  </div></div>
+  <div class="cred"><ul aria-label="Recognition and affiliations"><li><b>Award recognition</b>African Top 100 Tour Operators</li><li><b>Affiliation</b>Zimbabwe Tourism Authority (ZTA)</li><li><b>Supports</b>Tashinga Initiative and Zambezi Elephant Fund</li></ul></div>
+</section>
+
+<section class="sec welcome" id="welcome"><div class="wrap intro">
+  <div class="rv">
+    <blockquote>We live on the lake, so we plan from the water's edge.</blockquote>
+    <p class="lead muted">From our base in Kariba we look after individual travellers, families and large corporate groups, whether the journey is a canoe along the Zambezi, a houseboat on the lake or a week among Zimbabwe's ancient stone cities.</p>
+    <div class="pillars"><div><b>Local knowledge</b>Kariba, Mana Pools, Matusadona and the wider Zambezi region.</div><div><b>Individuals and groups</b>Private trips, family reunions, conferences and executive retreats.</div><div><b>Easy to start</b>Choose a journey, add your plans and send an inquiry. We reply with a proposal.</div><div><b>Travel with purpose</b>Community and conservation support is part of how we work.</div></div>
+    <p class="more"><a class="lnk" href="about.html">About Malachite</a></p>
+  </div>
+  <div class="collage rv" style="--d:.15s">
+    <img class="c1" src="images/kariba-dam-mist.jpg" alt="Mist rising from the Kariba Dam spillway" width="715" height="447" loading="lazy" decoding="async" onerror="imgFail(this)">
+    <img class="c2" src="images/kariba-houseboats.jpg" alt="Houseboats moored beneath wooded hills on Lake Kariba" width="715" height="322" loading="lazy" decoding="async" onerror="imgFail(this)">
+  </div>
+</div></section>
+
+<section class="sec" id="destinations" style="padding-top:0"><div class="wrap">
+  <div class="rv shead"><h2>Six ways into the Zambezi and beyond</h2><div class="rule"></div><p class="lead muted">Each route is a starting point. Activities and stays are tailored to the journey you choose and confirmed by our team.</p></div>
+  <div class="mos">
+    <article class="dc s7 rv"><img src="images/kariba-houseboats.jpg" alt="Houseboats moored beneath wooded hills on Lake Kariba" loading="lazy" decoding="async" onerror="imgFail(this)"><div class="dcb"><h3>Lake Kariba and houseboats</h3><p>Private charters, tender-boat wildlife viewing and tiger fishing on the lake.</p><small>Charters can run from one to seven nights</small><a class="lnk" href="destinations/lake-kariba.html">Explore Lake Kariba</a></div></article>
+    <article class="dc s5 rv" style="--d:.12s"><img src="images/lions-game-drive.jpg" alt="Lions resting in the shade beside a safari vehicle" loading="lazy" decoding="async" onerror="imgFail(this)"><div class="dcb"><h3>Mana Pools and the Lower Zambezi</h3><p>Canoeing and walking safaris along the river, with photographic safaris on request.</p><small>Part of the Lower Zambezi Expedition</small><a class="lnk" href="destinations/mana-pools.html">Explore the wild</a></div></article>
+    <article class="dc s5 rv"><img src="images/buffalo-waterhole.jpg" alt="A herd of buffalo drinking at a waterhole" loading="lazy" decoding="async" onerror="imgFail(this)"><div class="dcb"><h3>Matusadona</h3><p>Wilderness game drives and close wildlife observation on the lake's southern shore.</p><small>Included in the Lower Zambezi Expedition</small><a class="lnk" href="destinations/matusadona.html">Explore Matusadona</a></div></article>
+    <article class="dc s7 rv" style="--d:.12s">{{photo great-zimbabwe-ruins|Dry-stone walls and a tall conical tower among trees|(min-width:900px) 58vw, 100vw}}<div class="dcb"><h3>Heritage of Zimbabwe</h3><p>Bulawayo's museum, Khami Ruins, San rock art in the Matobo Hills and Great Zimbabwe.</p><small>7 nights / 8 days</small><a class="lnk" href="destinations/heritage.html">Explore the heritage</a></div></article>
+    <article class="dc s6 rv">{{photo falls-main-curtain|A wide curtain of waterfall plunging over a rock wall|(min-width:900px) 50vw, 100vw}}<div class="dcb"><h3>Victoria Falls and beyond</h3><p>Guided visits to the Falls with day excursions into Chobe, Botswana, and Livingstone, Zambia.</p><small>Trans-Trio Borders</small><a class="lnk" href="destinations/victoria-falls.html">Explore Victoria Falls</a></div></article>
+    <article class="dc s6 rv" style="--d:.12s"><img src="images/safari-track.jpg" alt="A bush track seen from a safari vehicle" loading="lazy" decoding="async" onerror="imgFail(this)"><div class="dcb"><h3>Southern and East Africa</h3><p>Kruger and the Blyde River Canyon, with Uganda and Zanzibar journeys on request.</p><small>Arranged by Malachite, details confirmed on inquiry</small><a class="lnk" href="destinations.html#beyond">Explore further afield</a></div></article>
+  </div>
+  <p class="more rv"><a class="lnk" href="destinations.html">All destinations</a></p>
+</div></section>
+
+<section class="sec xps" id="experiences"><div class="wrap">
+  <div class="rv shead"><h2>What you can do</h2><div class="rule"></div><p class="lead">From a night on the water to a morning among ancient stone walls. These are the experiences our journeys are built around, from standard circuits to tailor-made requests.</p></div>
+  <div class="xpg rv" style="--d:.1s">
+    <article class="xp"><img src="images/houseboat-night.jpg" alt="A houseboat lit up on the lake at dusk" loading="lazy" decoding="async" onerror="imgFail(this)"><div class="xpb"><h3>On the water</h3><ul><li>Houseboat charters, from one to seven nights</li><li>Tender-boat wildlife viewing</li><li>Tiger fishing</li><li>Canoeing along the Zambezi</li></ul><button class="lnk" data-filter="Kariba Houseboats">See houseboat journeys</button></div></article>
+    <article class="xp"><img src="images/buffalo-waterhole.jpg" alt="A herd of buffalo gathered at a waterhole" loading="lazy" decoding="async" onerror="imgFail(this)"><div class="xpb"><h3>In the wild</h3><ul><li>Wilderness game drives</li><li>Walking safaris</li><li>Close wildlife observation</li><li>Photographic safaris on request</li></ul><button class="lnk" data-filter="Lower Zambezi">See the Lower Zambezi journey</button></div></article>
+    <article class="xp"><img src="images/great-zimbabwe-sunset.jpg" alt="Great Zimbabwe walls and tower at sunset" loading="lazy" decoding="async" onerror="imgFail(this)"><div class="xpb"><h3>Heritage and culture</h3><ul><li>Bulawayo's museum</li><li>Khami Ruins</li><li>San rock art in the Matobo Hills</li><li>Great Zimbabwe</li></ul><button class="lnk" data-filter="Ancient Voices History">See the heritage journey</button></div></article>
+    <article class="xp"><img src="images/hero-victoria-falls.jpg" alt="Victoria Falls and the Zambezi gorge from the air" loading="lazy" decoding="async" style="object-position:50% 78%" onerror="imgFail(this)"><div class="xpb"><h3>Landmarks and day trips</h3><ul><li>Victoria Falls</li><li>Chobe day excursion into Botswana</li><li>Livingstone day trip into Zambia</li><li>Blyde River Canyon viewpoints in South Africa</li></ul><button class="lnk" data-filter="Cross-Border">See cross-border journeys</button></div></article>
+    <article class="xp"><img src="images/safari-track.jpg" alt="View along a bush track from a safari vehicle" loading="lazy" decoding="async" onerror="imgFail(this)"><div class="xpb"><h3>Further afield</h3><ul><li>Kruger National Park game drives</li><li>Gorilla and chimpanzee tracking in Uganda, on request</li><li>Zanzibar's spice coast, on request</li></ul><a class="lnk" href="trips.html#tailor">See tailor-made journeys</a></div></article>
+    <article class="xp"><img src="images/speedboat.jpg" alt="Speedboat crossing open water" loading="lazy" decoding="async" onerror="imgFail(this)"><div class="xpb"><h3>Groups and events</h3><ul><li>Conferences and meetings</li><li>Executive retreats</li><li>Team building</li><li>Ground, air and water transfers</li></ul><a class="lnk" href="trips.html#corporate">See corporate travel</a></div></article>
+  </div>
+  <p class="more rv"><a class="lnk" href="trips.html">All trips and experiences</a></p>
+</div></section>
+
+<section class="sec hb" id="houseboats"><div class="wrap hbg">
+  <div class="hbi rv"><img class="hbm" src="images/houseboat-night.jpg" alt="A houseboat lit up on the lake at dusk" loading="lazy" decoding="async" onerror="imgFail(this)"><img class="sm2" src="images/kariba-houseboats.jpg" alt="Houseboats moored beneath wooded hills on Lake Kariba" loading="lazy" decoding="async" onerror="imgFail(this)"></div>
+  <div class="rv" style="--d:.1s"><h2>Sleep on<br>Lake Kariba</h2><div class="rule"></div>
+    <p class="lead" style="color:rgba(255,255,255,.9)">Kariba is home, and the lake is the best way to see it. Spend a night or a week on the water with the shoreline's wildlife drifting past.</p>
+    <ul class="hbl"><li><b>Flexible overnight charters</b><span>From one to seven nights, planned around your group.</span></li><li><b>Tender-boat wildlife viewing</b><span>Explore the shoreline closer than the houseboat can go.</span></li><li><b>Tiger fishing</b><span>Fishing experiences with a guide, where you choose to add them.</span></li><li><b>Leisure, family and corporate</b><span>Private trips, family reunions and executive retreats.</span></li></ul>
+    <div class="acts"><button class="btn gold" data-plan="hb">Plan a Houseboat Stay</button><a class="btn line" href="destinations/lake-kariba.html">Explore Lake Kariba</a></div></div>
+</div></section>
+
+<section class="sec band2" id="corporate"><div class="wrap ed wide">
+  <div class="rv"><h2>Corporate and group travel</h2><div class="rule"></div>
+    <p class="lead muted">Professional arrangements for business trips, conferences and executive retreats, from Kariba to the wider region.</p>
+    <ul class="tags"><li>Conferences and meetings</li><li>Executive retreats</li><li>Team building</li><li>Group travel</li><li>Transfer coordination</li></ul>
+    <div class="acts" style="margin-top:28px"><a class="btn dark" data-wa="group" target="_blank" rel="noopener"><svg class="ic"><use href="#i-wa"/></svg>Request a Group Proposal</a><a class="btn ghost" href="trips.html#corporate">Corporate services</a></div>
+    <p class="note">A request opens WhatsApp or your email app with a prepared message. Scope and pricing are confirmed by Malachite.</p></div>
+  <figure class="rv" style="--d:.12s"><img src="images/speedboat.jpg" alt="Speedboat crossing open water" loading="lazy" decoding="async" onerror="imgFail(this)"><figcaption>Water transfers are one of the ways we move groups.</figcaption></figure>
+</div></section>
+
+<section class="sec trust" id="trust"><div class="wrap">
+  <div class="rv shead"><h2>Why travellers plan with Malachite</h2><div class="rule"></div><p class="lead muted">A few plain facts about who we are and how we work.</p></div>
+  <div class="tr4">
+    <div class="rv"><b>Based on the lake</b><p>Our team is based in Kariba, at Stand 643, ZV Mall, and looks after individual travellers, families and corporate groups from there.</p></div>
+    <div class="rv" style="--d:.08s"><b>Recognition and affiliation</b><p>Award recognition: African Top 100 Tour Operators. Affiliation: Zimbabwe Tourism Authority (ZTA).</p><a class="lnk" href="credentials.html" style="margin-top:10px">Credentials and partners</a></div>
+    <div class="rv" style="--d:.16s"><b>Giving back</b><p>We support the children and wildlife of the Kariba district, including the Tashinga Initiative and the Zambezi Elephant Fund.</p><a class="lnk" href="about.html#purpose" style="margin-top:10px">Travel with purpose</a></div>
+    <div class="rv" style="--d:.24s"><b>A clear process</b><p>An inquiry is not a reservation. Arrangements and final pricing are confirmed directly with Malachite, not on this website.</p><a class="lnk" href="plan.html" style="margin-top:10px">How planning works</a></div>
+  </div>
+</div></section>
+
+<section class="sec galsec" id="gallery"><div class="wrap">
+  <div class="rv shead"><h2>Along the way</h2><div class="rule"></div><p class="lead muted">Landscapes and moments from Zimbabwe and the Zambezi region. Tap a photo to enlarge it.</p></div>
+  <div class="gal bento rv" data-gallery="home" style="--d:.1s"></div>
+</div></section>
+
+{{>closing}}
