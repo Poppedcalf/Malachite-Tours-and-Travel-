@@ -52,7 +52,16 @@
        phone video  -> data-src-mobile below (videos/hero-mobile.mp4, a lighter file for phones) -->
   <div class="hmedia">
     <img src="images/kariba-houseboats.jpg" alt="Houseboats moored on Lake Kariba" width="715" height="322" fetchpriority="high" onerror="imgFail(this)">
-    <video class="hv" id="hv" muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1" data-src="videos/hero.mp4"></video>
+    <video class="hv" id="hv" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-src="videos/hero.mp4"></video>
+    <script>/* hero video: image first; fetch video only after page load; fade in once playback truly starts */
+(function(){var v=document.getElementById("hv"),c=navigator.connection||{};
+if(!v||(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches)||c.saveData)return;
+function go(){v.addEventListener("playing",function(){v.classList.add("on")},{once:true});
+v.addEventListener("error",function(){v.removeAttribute("src");v.load()},{once:true});
+v.muted=true;v.preload="auto";v.src=v.getAttribute("data-src");
+var p=v.play();if(p&&p.catch)p.catch(function(){})}
+function later(){(window.requestIdleCallback||function(f){setTimeout(f,300)})(go)}
+if(document.readyState==="complete")later();else addEventListener("load",later,{once:true})})();</script>
   </div>
   <button class="hvt" id="hvt" type="button" aria-label="Pause background video" hidden><svg class="ic"><use href="#i-pause"/></svg></button>
   <div class="wrap"><div class="hcopy">

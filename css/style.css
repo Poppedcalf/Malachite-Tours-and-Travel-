@@ -93,7 +93,6 @@ header.top:has(#menu.open) #menuBtn{color:var(--mal);border-color:rgba(0,75,73,.
 .hmedia img{animation:settle 18s ease-out both}
 .hv{opacity:0;transition:opacity 1.6s ease}
 .hv.on{opacity:1}
-html:not(.js) .hv{opacity:1}
 .hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:
   linear-gradient(180deg,rgba(0,32,31,.6) 0,rgba(0,32,31,0) 26%),
   linear-gradient(0deg,rgba(0,32,31,.92) 0,rgba(0,32,31,.55) 30%,rgba(0,32,31,0) 64%),
