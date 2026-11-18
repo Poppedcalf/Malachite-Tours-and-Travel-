@@ -1,0 +1,93 @@
+---
+out: plan.html
+nav: plan
+title: Plan Your Journey | Contact Malachite Travel &amp; Tours, Kariba
+description: Plan your journey with Malachite Travel &amp; Tours. Choose a trip, share your plans and send an inquiry by WhatsApp or email. Based in Kariba, Zimbabwe.
+preload: images/falls-aerial-gorge-1200.jpg
+jsonld: agency
+---
+<section class="phero short">
+  {{photo falls-aerial-gorge|Aerial view of a waterfall dropping into a gorge|100vw||eager}}
+  <div class="wrap">
+    <p class="crumb"><a href="index.html">Home</a> / Plan Your Journey</p>
+    <h1>Plan Your Journey</h1>
+    <p>Tell us what you have in mind. We will reply with a proposal.</p>
+  </div>
+</section>
+
+<section class="sec how" id="how"><div class="wrap">
+  <div class="rv"><h2>How planning works</h2><div class="rule"></div></div>
+  <ol class="hs rv">
+    <li><b>Choose a destination or experience</b><span>Browse the journeys, or tell us what you have in mind.</span></li>
+    <li><b>Share your plans</b><span>Dates, group size and preferences, in the planner or on WhatsApp.</span></li>
+    <li><b>Discuss the details</b><span>Routing, accommodation and final pricing, with Malachite.</span></li>
+    <li><b>Confirm directly</b><span>Arrangements are confirmed with the company, not on this website.</span></li>
+  </ol>
+  <p class="callout rv"><b>An inquiry is not a reservation.</b> This website does not confirm accommodation, availability, payment or bookings. It helps you send a clear request to the Malachite team.</p>
+</div></section>
+
+<section class="sec plan" id="planner" data-nobar><div class="wrap">
+  <div class="rv shead"><h2>Plan your trip</h2><div class="rule"></div><p class="lead muted">A few short steps. You will see a summary of your trip, then choose to send it to our team on WhatsApp or by email. No prices are shown online: we reply with a proposal.</p></div>
+  <div class="pg">
+    <form class="form" id="q" novalidate onsubmit="return false">
+      <fieldset><legend><i>1</i>Choose a journey</legend>
+        <label for="jr" style="position:absolute;left:-999px">Journey</label>
+        <select id="jr"></select>
+        <div class="nl" id="nightsBox" hidden style="margin-top:14px"><label for="nights">Nights on the water (1 to 7)</label><div class="stp"><button type="button" data-st="nights" data-d="-1" aria-label="Fewer nights">&minus;</button><input id="nights" type="number" inputmode="numeric" min="1" max="7" value="2"><button type="button" data-st="nights" data-d="1" aria-label="More nights">+</button></div></div>
+      </fieldset>
+      <fieldset><legend><i>2</i>Accommodation preference</legend><div class="opts" id="stays"><p class="hint">Choose a journey to see the options that suit it.</p></div></fieldset>
+      <fieldset><legend><i>3</i>Who is travelling</legend>
+        <div class="two">
+          <label for="ad">Adults<div class="stp"><button type="button" data-st="ad" data-d="-1" aria-label="Fewer adults">&minus;</button><input id="ad" type="number" inputmode="numeric" min="1" max="30" value="2"><button type="button" data-st="ad" data-d="1" aria-label="More adults">+</button></div></label>
+          <label for="ch">Children under 12<div class="stp"><button type="button" data-st="ch" data-d="-1" aria-label="Fewer children">&minus;</button><input id="ch" type="number" inputmode="numeric" min="0" max="20" value="0"><button type="button" data-st="ch" data-d="1" aria-label="More children">+</button></div></label>
+        </div>
+        <p class="err" id="err" role="alert"></p>
+      </fieldset>
+      <fieldset><legend><i>4</i>Customise your trip</legend>
+        <div class="opts" id="extras"><p class="hint">Optional extras appear once you choose a journey.</p></div>
+        <p class="hint" style="margin:20px 0 10px"><b>Voluntary contributions (optional)</b><br>Never required. They are added to your inquiry for the team to discuss with you. Nothing is collected on this website.</p>
+        <div class="opts" id="dons"></div>
+      </fieldset>
+      <fieldset><legend><i>5</i>Your plans (optional)</legend>
+        <p class="hint" style="margin-bottom:14px">The more you share, the better the proposal. Everything here is included in your inquiry message.</p>
+        <div class="two"><label for="dt">Travel dates or month<input id="dt" type="text" placeholder="For example, July 2027" maxlength="80"></label>
+          <label for="bg">Approximate budget<select id="bg"></select></label></div>
+        <label class="opt" style="margin-top:14px"><input type="checkbox" id="fx"><span><b>My dates are flexible</b></span></label>
+        <div class="two" style="margin-top:14px"><label for="nm">Your name<input id="nm" type="text" autocomplete="name" maxlength="80"></label>
+          <label for="ct">Phone or email<input id="ct" type="text" autocomplete="off" maxlength="80"></label></div>
+        <label for="nt" class="nl" style="margin-top:14px">Special requests or notes<textarea id="nt" rows="3" maxlength="500"></textarea></label>
+      </fieldset>
+      <button type="button" class="btn dark mob" data-go="est">See my summary</button>
+    </form>
+    <aside class="sum" id="est" aria-label="Your trip summary">
+      <h3>Your trip summary</h3>
+      <div id="sumEmpty"><p id="emptyMsg" style="margin-top:12px"></p><a class="btn wa" data-wa="general" target="_blank" rel="noopener" style="margin-top:20px"><svg class="ic"><use href="#i-wa"/></svg>Prefer to chat first? WhatsApp us</a></div>
+      <div id="sumFull" hidden>
+        <dl id="sumDl"></dl>
+        <p class="nopr">No price is shown online. Send this summary and the team will reply with a proposal.</p>
+        <div class="bk" id="bk" aria-label="Estimate breakdown"></div>
+        <div class="tot"><div><span>Indicative per adult</span><p class="big" id="pp"></p></div><div><span>Indicative group total</span><p class="big" id="tot"></p></div></div>
+        <p class="disc" id="disc"></p>
+        <p class="ref">Quote reference <b id="refTxt"></b></p>
+        <a class="btn wa" id="wa" target="_blank" rel="noopener"><svg class="ic"><use href="#i-wa"/></svg>Send inquiry on WhatsApp</a>
+        <a class="btn line" id="em"><svg class="ic"><use href="#i-mail"/></svg>Email proposal request</a>
+        <p class="fine">These buttons open WhatsApp or your email app with a prepared message. You review and send it yourself. This is an inquiry, not a reservation, and nothing is booked or paid here.</p>
+      </div>
+    </aside>
+  </div>
+</div></section>
+
+<section class="sec stage" id="contact" data-nobar><div class="wrap">
+  <div class="rv shead"><h2>Contact us directly</h2><div class="rule"></div><p class="lead muted">Prefer to talk? The Malachite team is based in Kariba.</p></div>
+  <div class="cc3">
+    <div class="cc rv"><b>Visit</b><p>Stand 643, ZV Mall, Kariba, Zimbabwe<br>112 Powerline Road, Kariba</p></div>
+    <div class="cc rv" style="--d:.08s"><b>Call or WhatsApp</b><p><a href="tel:+263775515400">+263 775 515 400</a> (mobile and WhatsApp)<br><a href="tel:+263612145623">+263 61 214 5623</a> (landline)</p><p style="margin-top:12px"><a class="btn wa" data-wa="general" target="_blank" rel="noopener"><svg class="ic"><use href="#i-wa"/></svg>WhatsApp us</a></p></div>
+    <div class="cc rv" style="--d:.16s"><b>Write</b><p><a href="mailto:malachitetours@gmail.com">malachitetours@gmail.com</a><br><a href="mailto:admin@malachite-tours.com">admin@malachite-tours.com</a></p><div class="soc"><a href="https://www.facebook.com/malachitetours/" target="_blank" rel="noopener">Facebook</a></div></div>
+  </div>
+  <div class="acts rv" style="margin-top:34px"><a data-wa="group" class="btn dark" target="_blank" rel="noopener"><svg class="ic"><use href="#i-wa"/></svg>Request a Group Proposal</a><a data-em="group" class="btn ghost"><svg class="ic"><use href="#i-mail"/></svg>Email the team about a group or corporate trip</a></div>
+</div></section>
+
+<section class="sec faq" id="faq"><div class="wrap fq">
+  <div class="rv"><h2>Questions</h2><div class="rule"></div><p class="muted">Short answers about planning with Malachite.</p></div>
+  <div class="rv" id="faqList" style="--d:.1s"></div>
+</div></section>
