@@ -519,3 +519,124 @@ figcaption{font-size:.84rem;color:rgba(26,26,26,.68);padding-top:10px}
 body.noprice .tot,body.noprice .bk,body.noprice #disc{display:none}
 .phero.short{min-height:44svh}
 body:not(.noprice) .nopr{display:none}
+
+/* ==========================================================================
+   Phase 3 additions: floating WhatsApp, packages, destinations, social, team, quick enquiry
+   ========================================================================== */
+
+/* ---------- floating WhatsApp button (replaces the old mobile action bar) ---------- */
+.wafab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:55;display:inline-flex;align-items:center;gap:.55rem;min-height:56px;min-width:56px;padding:0 20px;justify-content:center;background:#25D366;color:#111;border-radius:40px;font:500 .98rem var(--sans);letter-spacing:.01em;text-decoration:none;box-shadow:0 8px 28px rgba(0,0,0,.28),0 0 0 1px rgba(0,0,0,.06);transition:transform .3s var(--ease),opacity .3s,background .2s}
+.wafab:hover{background:#3be07a}
+.wafab .ic{width:1.5em;height:1.5em}
+.wafab.off{transform:translateY(24px) scale(.9);opacity:0;pointer-events:none}
+@media(max-width:699px){
+  .wafab{padding:0;width:56px;height:56px;right:14px}
+  .wafab span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}   /* icon only on phones, label stays for screen readers */
+  footer{padding-bottom:84px}
+}
+@media(min-width:700px){footer{padding-bottom:0}}
+
+/* ---------- homepage: featured package cards + extras ---------- */
+.xpbadge{position:absolute;z-index:2;left:0;top:22px;background:var(--gold);color:var(--ink);font-weight:500;font-size:.86rem;padding:7px 14px;letter-spacing:.02em}
+.mos.rowless .dc{min-height:340px}
+
+/* ---------- team ---------- */
+.team{background:var(--sand)}
+.tm3{display:grid;gap:34px;margin-top:52px}
+.tm3>div{padding-top:20px;border-top:2px solid var(--gold)}
+.tm3 b{display:block;font:600 1.65rem/1.15 var(--serif);color:var(--mal);margin-bottom:8px}
+.tm3 p{font-size:.98rem;color:rgba(26,26,26,.82)}
+@media(min-width:800px){.tm3{grid-template-columns:repeat(3,1fr);gap:40px}}
+.tm{list-style:none;margin:52px 0 0;padding:0;display:grid;gap:30px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.tm li img{width:100%;aspect-ratio:4/5;object-fit:cover;background:var(--for)}
+.tm li b{display:block;font:600 1.5rem var(--serif);color:var(--mal);margin-top:12px}
+.tm li small{display:block;font-size:.9rem;font-weight:500;color:var(--gold2)}
+.tm li p{font-size:.95rem;margin-top:6px}
+
+/* ---------- homepage quick enquiry ---------- */
+.quick{background:var(--sand)}
+.qg{display:grid;gap:44px;align-items:start}
+.qf{background:#fff;padding:clamp(22px,4vw,40px);border:1px solid rgba(0,75,73,.12);box-shadow:0 18px 50px rgba(0,48,47,.06);display:grid;gap:16px}
+.qf label{display:grid;gap:6px;font-size:.92rem;font-weight:500}
+.qf .acts{margin-top:4px}
+.qf .btn{flex:1 1 200px}
+@media(min-width:900px){.qg{grid-template-columns:5fr 6fr;gap:84px}}
+.lnk.dk{color:var(--mal)}
+
+/* ---------- packages page ---------- */
+.pkintro{padding-bottom:clamp(36px,5vw,56px)}
+.pkn{display:grid;gap:26px}
+.pkn>div{padding-top:16px;border-top:2px solid var(--gold)}
+.pkn b{display:block;font:600 1.45rem/1.2 var(--serif);color:var(--mal);margin-bottom:4px}
+.pkn p{font-size:.97rem;color:rgba(26,26,26,.8)}
+@media(min-width:800px){.pkn{grid-template-columns:repeat(3,1fr);gap:40px}}
+.pkgrid .tabs{margin-top:0}
+.pkcount{margin-top:18px;font-size:.92rem;color:rgba(26,26,26,.7);min-height:1.4em}
+.pcg{display:grid;gap:22px;margin-top:20px}
+@media(min-width:700px){.pcg{grid-template-columns:repeat(2,1fr);gap:26px}}
+@media(min-width:1040px){.pcg{grid-template-columns:repeat(3,1fr)}}
+.pc{display:flex;flex-direction:column;background:#fff;border:1px solid rgba(0,75,73,.14);animation:up .6s var(--ease) both;scroll-margin-top:calc(var(--hdr) + 20px)}
+.pc:target,.pc.hl{box-shadow:0 0 0 3px var(--gold)}
+.pc-img{position:relative;aspect-ratio:4/3;overflow:hidden;background:linear-gradient(135deg,var(--mal),var(--for))}
+.pc-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.pc:hover .pc-img img{transform:scale(1.04)}
+.pc-img.nophoto{display:grid;place-items:center;color:rgba(255,255,255,.9);text-align:center;padding:20px}
+.pc-img.nophoto>span:not(.badge){font:500 2.1rem/1.1 var(--serif)}
+.pc-img .badge{bottom:auto;top:16px}
+.pc-b{display:flex;flex-direction:column;flex:1;padding:22px 22px 24px}
+.pc-b .cat{margin:0}
+.pc-b h3{font-size:1.75rem;color:var(--mal);margin-top:4px}
+.pc-b .route{margin:12px 0 10px;font-size:.88rem}
+.pc-b .route li+li::before{width:12px;margin:0 8px}
+.pc-b .pc-d{font-size:.97rem;color:rgba(26,26,26,.85)}
+.pc-b .chips{margin:14px 0 18px}
+.pc-price{margin-top:auto;padding:12px 0;border-top:1px solid rgba(197,155,39,.55);font-size:.9rem;color:rgba(26,26,26,.78)}
+.pc-price b{font:600 1.75rem/1 var(--serif);color:var(--mal);margin-right:4px}
+.pc-price small{display:block;font-size:.8rem;margin-top:3px;color:rgba(26,26,26,.64)}
+.pc-b .acts{margin-top:8px}
+.pc-b .acts .btn{flex:1 1 140px;min-height:46px;padding:.55rem 1rem}
+
+/* ---------- destinations: extra chapter pieces ---------- */
+.eb{font-size:.88rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#F3DA85;margin-bottom:8px}
+.chap .band.plain{min-height:44svh;background:linear-gradient(135deg,var(--deep),var(--mal) 70%,var(--for))}
+.chap .band.plain::before{background:radial-gradient(ellipse at 85% 15%,rgba(212,175,55,.18),transparent 55%)}
+.pkp{background:var(--mal);color:#fff;padding:clamp(26px,4vw,40px);border-top:4px solid var(--gold)}
+.pkp-k{font-size:.82rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.pkp h3{color:#fff;font-size:2.3rem;margin-top:6px}
+.pkp-d{margin-top:6px;font-weight:500;color:#F3DA85}
+.pkp .route{color:rgba(255,255,255,.92)}
+.pkp .route li+li::before{background:var(--gold)}
+.pkp-i{font-size:.98rem;color:rgba(255,255,255,.88)}
+.pkp .cta{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px}
+.sa4{list-style:none;margin:28px 0 0;padding:0}
+.sa4 li{display:grid;gap:14px;padding:18px 0;border-top:1px solid rgba(197,155,39,.55)}
+.sa4 li:last-child{border-bottom:1px solid rgba(197,155,39,.55)}
+.sa4 b{display:inline;font:600 1.45rem var(--serif);color:var(--mal)}
+.sa4 small{margin-left:10px;font-size:.84rem;font-weight:500;color:var(--gold2)}
+.sa4 span{display:block;font-size:.96rem;margin-top:3px}
+.sa-a{display:flex;flex-wrap:wrap;gap:8px}
+.sa-a .btn{min-height:44px;padding:.45rem 1.1rem;font-size:.92rem}
+@media(min-width:1100px){.sa4 li{grid-template-columns:1fr auto;align-items:center;gap:24px}}
+
+/* ---------- social responsibility ---------- */
+.sr2{display:grid;gap:18px}
+.srt{display:block;padding:clamp(26px,4vw,44px);background:#fff;border:1px solid rgba(0,75,73,.14);border-top:4px solid var(--gold);text-decoration:none;transition:box-shadow .3s,transform .3s}
+.srt:hover{box-shadow:0 18px 44px rgba(0,48,47,.1);transform:translateY(-3px)}
+.srt small{font-size:.86rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gold2)}
+.srt b{display:block;font:600 clamp(1.9rem,3.4vw,2.6rem)/1.08 var(--serif);color:var(--mal);margin:6px 0 10px}
+.srt span{display:block;font-size:1rem;color:rgba(26,26,26,.82);max-width:46ch}
+.srt i{display:inline-block;margin-top:18px;font-style:normal;font-weight:500;font-size:.95rem;color:var(--mal);border-bottom:2px solid var(--gold)}
+@media(min-width:800px){.sr2{grid-template-columns:1fr 1fr;gap:24px}}
+.gt3{display:grid;gap:22px;margin-top:48px}
+.gt{padding:26px 26px 28px;background:#fff;border:1px solid rgba(0,75,73,.14);display:flex;flex-direction:column;gap:12px}
+.gt .gn{font:500 3rem/1 var(--serif);color:var(--for)}
+.gt h3{font-size:1.9rem;color:var(--mal)}
+.gt p{font-size:.98rem;color:rgba(26,26,26,.84)}
+.gt img{width:100%;aspect-ratio:16/9;object-fit:cover;margin-top:auto;background:var(--for)}
+.gt .gcap{font-size:.82rem;color:rgba(26,26,26,.66)}
+@media(min-width:900px){.gt3{grid-template-columns:repeat(3,1fr);gap:26px}}
+.sr3>div{max-width:760px}
+
+/* ---------- 404 ---------- */
+.nf404 .crumb{letter-spacing:.12em;text-transform:uppercase}
+@media(min-width:700px){.svc8 li:last-child:nth-child(odd){grid-column:1 / -1}}
