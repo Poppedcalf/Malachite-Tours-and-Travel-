@@ -1,5 +1,69 @@
 # Information needed from Malachite
 
+## A. Phase 3 (November 2026): please confirm before launch
+
+Nothing was invented for this upgrade. Where the brochure, the official website (www.malachitetours.com) and earlier materials disagreed, the site shows less rather than guessing.
+
+### A1. Prices and packages
+| Item | What was found | What the site does | What to confirm |
+|---|---|---|---|
+| Mala Trans Borders Pack | Official site: "From $2,480 / Adult"; name and duration match the brochure | Shows "From $2,480 per adult" | Currency (assumed US dollars, no code is printed), that it is still current, what it includes |
+| Mala Lower Zambezi Expedition Pack | Official site: "From $3,650 / Adult"; name and duration match | Shows "From $3,650 per adult" | Same as above |
+| Mala Marvel: Zimbabwe's Culture Pack | Two conflicting listings: $3,600 per adult, and "$700 (was $800) per adult, $450 per child" under an "8 Days" title. The brochure says 9 nights / 10 days. | No price; "Request a Quote" | The correct price and duration |
+| Mala Zimbabwe Full Circle | $6,200 per adult is attached on the official site to a page whose itinerary is the 10-day culture route, not the brochure's 18-day loop | No price; "Request a Quote" | The correct price |
+| The other 11 packages | No published price found | "Request a Quote" | Prices, if you want them shown |
+| Inclusions and exclusions | The official site shows leftover text from an unrelated trekking template | Not used anywhere | What is really included and excluded, per package |
+| Full Circle route | The brochure heading lists Mutare, the day-by-day text does not describe it | Site follows the eight described stages | Whether Mutare is part of the route |
+| Spellings | The brochure has "Matusadonha", "Manapools", "NYAMINYANI", "Apack" | Standard spellings used (Matusadona, Mana Pools, Nyaminyami) | Preferred spellings |
+| Brochure claims left out | A visitor figure for Hwange and a statement about a people's physical traits | Omitted on purpose | Whether you want them back, and a source |
+| Day-by-day detail | The brochure gives stages, not days, for the South Africa, Botswana, Tanzania, Kenya and Uganda packages | Pop-ups show stage-by-stage outlines | Full itineraries if you want them |
+
+### A2. Contact details
+| Item | Status |
+|---|---|
+| Brochure details used everywhere | Stand 643, ZV Mall, Kariba; landline +263 61 214 5623; mobile and WhatsApp +263 775 515 400; malachitetours@gmail.com; www.malachitetours.com |
+| Removed | "112 Powerline Road" (not in the brochure) and admin@malachite-tours.com. That address has a different domain from your official site and was never verified, so it no longer receives copies of visitor inquiries. To add an inbox back, put it in `CONFIG.emails` in `js/data.js`. |
+| WhatsApp | Confirm +263 775 515 400 is a WhatsApp number that someone watches. |
+| Facebook handle @malachitetours | Carried over from earlier material. Confirm the link. |
+
+### A3. Photographs
+| Photo | Used for | Confirm |
+|---|---|---|
+| cultural-village | Gauteng package and the South Africa chapter | Where it was taken. It stands in for the Lesedi Cultural Village visit, so replace it if it is not Lesedi. |
+| rhino-flamingos | Kenya | Where it was taken (it looks like a Kenyan lake but nothing says so). |
+| kenya-beach-resort | Kenya chapter | Whether this is the Diani or Mombasa coast. |
+| elephants-woodland-herd, buffalo-waterhole | Botswana chapter and package | Where they were taken. They are captioned neutrally. |
+| craft-market, harare-night | Culture pack, Harare | Locations |
+| community-football, community-cleanup | Social Responsibility, About, Home | Where and when taken, whether they relate to the Smiling Children programme or the clean-ups, and that everyone shown (including children) agreed to publication. The captions are neutral. |
+| All new photographs | Whole site | That Malachite owns or may use them |
+| Held back | A white houseboat on a river and a man holding a tiger fish (supplied as a PNG) | Not used. I could not confirm they are genuine, rights-cleared photographs of Malachite's own operation. If they are, send a line saying so and they can be added. |
+| Missing | Tanzania, Durban, vulture feeding, tree planting, team portraits | Tanzania and Durban are text-led and vulture and tree-planting have no picture rather than borrowing an unrelated one. |
+
+### A4. People and company story
+- **Team**: no names, roles or portraits were supplied. The site shows three role descriptions (planners, guides, transfers). Add real profiles in `TEAM` in `js/data.js`.
+- **Company story**: founding year, founders, mission and values were not supplied, so About Us does not state them.
+
+### A5. Social responsibility
+- No statistics, beneficiary numbers, funding totals or partner organisations are published, because none were supplied.
+- Confirm how supporters should give (money, materials, a bank or payment route). For now the page offers "Ask about supporting the children" by WhatsApp or email.
+- The planner still offers two optional "voluntary contribution" tick-boxes. Nothing is collected online. Confirm you want them kept.
+
+### A6. Existing content that is not in the brochure (carried over, unverified)
+- The hero strip (inside the protected hero, not touched): "African Top 100 Tour Operators", ZTA affiliation, and "Supports the Tashinga Initiative and Zambezi Elephant Fund".
+- The Credentials page (awards, ZTA, eight partners, organisations supported). It is still published and linked from About Us and the footer. See section 1 below.
+- Footer credit "Engineered by Local Edge".
+
+### A7. Web address
+Canonical, social-share and sitemap addresses now use https://malachite-travel-and-tours.pages.dev/. If you later attach www.malachitetours.com to this Cloudflare project, change `BASE` in `_tools/build.py` and rebuild.
+
+### A8. Small leftovers
+- The hero button still says "Plan Your Journey" while the menu says "Plan Your Trip". The hero is protected, so this was left.
+- The Travel Journal page still exists but is not in the menu until there are articles.
+
+---
+
+## Earlier items (Phase 2)
+
 Nothing below has been invented. Items in section 1 are published in this build because they appear in the materials you supplied, but they must be checked before launch.
 
 ## 1. Confirm before launch (already on the site)

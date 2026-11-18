@@ -61,3 +61,29 @@ These were already in the project. Most are 640 to 715 px wide: sharp at half wi
 | safari-track.jpg | 1280x1707 | 320 KB | Good for full width |
 | sandstone-pillar.jpg | 680x510 | 244 KB | Good for half-width or smaller |
 | speedboat.jpg | 715x704 | 110 KB | Good for half-width or smaller |
+
+## Supplied in Phase 3 (November 2026)
+
+Eighteen photographs were supplied. Fourteen are new on the site, two duplicate pictures already in the project, and two were held back.
+
+| Slug (in `images/`) | What it shows | Source size | Status | Used on |
+|---|---|---|---|---|
+| cape-town-aerial | Aerial view of Cape Town, Table Mountain, stadium and harbour | 1440x900 | Used (location visible in the picture) | Home tile, South Africa, Cape Town package |
+| great-zimbabwe-aerial | Aerial view of curved stone walls among trees | 1600x900 | Used; corrected a rotated EXIF orientation | History package, Heritage gallery |
+| falls-helicopter | Helicopter in front of a waterfall | 1080x1080 | Used; CONFIRM location | Trans Borders package |
+| zambezi-canoe | Man in a blue canoe watching two elephants | 1094x821 | Used; CONFIRM location | Lower Zambezi package, Mana Pools band |
+| craft-market | Table of carved bowls and beaded necklaces | 2576x1932 | Used; CONFIRM location | Culture pack, gallery |
+| harare-night | City lights above a garden at night | 1280x853 | Used; CONFIRM location | Gallery |
+| cultural-village | Performers in traditional dress by a thorn fence | 2576x1932 | Used; CONFIRM location (stands in for Lesedi) | Gauteng package, South Africa chapter |
+| rhino-flamingos | White rhino beside a lake with flamingos | 2576x1724 | Used; CONFIRM location | Kenya |
+| kenya-beach-resort | Thatched umbrellas and palms beside the sea | 2576x1203 | Used; CONFIRM location | Kenya chapter |
+| leopard-resting, leopard-night | A leopard in grass; a leopard on a tree at night | 2576x1203; 1280x857 | Used | Gallery |
+| safari-tents | Tents lit at dusk | 1600x941 | Used | Gallery |
+| community-football, community-cleanup | Man with a green football among villagers; men beside rubbish bags | 2576x1159; 2576x1203 | Used with neutral captions; CONFIRM context and consent | Social Responsibility, Home, About |
+| (597739af-image.jpg) | Line of elephants | 2000x1333 | Duplicate of `elephants-woodland-herd`, already in use | |
+| (6d5ef21c-image.jpg) | Gorilla in leaves | 2576x1717 | Duplicate of `gorilla-forest`, already in use | |
+| (686045c1-image.jpg) | White houseboat on a river | 1920x896 | NOT used: authenticity and rights unconfirmed | |
+| (ccc66d3c-image.png) | Man holding a tiger fish | 1448x1086 | NOT used: authenticity and rights unconfirmed | |
+
+Every new photograph was auto-rotated, resized to 640, 1200 and 1920 px widths where the source allowed (narrower sources keep a single file), and compressed. Originals were not modified.
+
