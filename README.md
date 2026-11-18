@@ -1,20 +1,26 @@
 # Malachite Travel & Tours website
 
-Static website for GitHub Pages: https://poppedcalf.github.io/Malachite-Tours-and-Travel-/
+Static multi-page website. Live (Cloudflare Pages): https://malachite-travel-and-tours.pages.dev/
+Original GitHub Pages copy: https://poppedcalf.github.io/Malachite-Tours-and-Travel-/ (also hosts the desktop hero video).
 
 ## Pages
-`index.html` (Home), `about.html`, `destinations.html`, `trips.html` (Trips & Experiences), `journal.html` (Travel Journal), `credentials.html` (Credentials & Partnerships), `plan.html` (Plan Your Journey / Contact).
+`index.html` (Home), `destinations.html`, `packages.html`, `social-responsibility.html`, `about.html`, `plan.html` (Plan Your Trip and contact), `credentials.html`, `journal.html`, `404.html`. `trips.html` redirects to `packages.html`.
 
 ## Folders
 - `css/style.css`: all styling (brand colours and fonts are variables at the top)
-- `js/data.js`: contact settings, journeys, FAQ, galleries (edit here)
+- `js/data.js`: contact settings, packages, prices, team, FAQ, galleries (edit here)
 - `js/app.js`: behaviour shared by every page
-- `images/`, `videos/`: media (see `docs/ASSETS.md`)
-- `journal/index.json`: list of journal articles (empty until articles are added)
+- `images/`, `videos/`: media (see `docs/ASSETS.md` and `docs/ASSET-INVENTORY.md`)
 - `docs/`: guides, asset inventory and the list of information still needed
-- `_src/`, `_tools/`, `_templates/`, `_backup/`: source pages, the build script, the article template and backups. Folders starting with an underscore are not published by GitHub Pages.
+- `_src/`, `_tools/`, `_templates/`, `_backup/`: source pages, the build script, the article template and backups of earlier versions
 
 ## Editing pages
-Page content lives in `_src/pages/`; the shared header, footer and dialogs live in `_src/partials/`. After editing, run `python3 _tools/build.py` to regenerate the pages in the project root, then upload the changed files. Small text edits can also be made directly in the finished `.html` files.
+Page content lives in `_src/pages/`; the shared header, footer and dialogs live in `_src/partials/`. After editing, run `python3 _tools/build.py` to regenerate the pages in the project root. Open the site locally with `python3 -m http.server 8000`.
 
-Read `docs/PHASE2-SUMMARY.md` first.
+## Deploying to Cloudflare Pages
+Build command: `rm -rf dist && mkdir dist && tar --exclude=./dist --exclude=./.git --exclude=./videos/hero.mp4 -cf - . | tar -xf - -C dist`
+Output directory: `dist`. The 31 MB `videos/hero.mp4` stays in the repository (the desktop hero loads it from the GitHub Pages address) but must stay out of the Cloudflare output, which has a 25 MiB per-file limit.
+
+**Do not edit the hero video block** in `_src/pages/index.html` or the hero section of `js/app.js` without a separate task.
+
+Read `docs/PHASE3-SUMMARY.md` first, then `docs/MISSING-INFO.md`.

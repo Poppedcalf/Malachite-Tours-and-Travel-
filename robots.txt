@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://malachite-travel-and-tours.pages.dev/sitemap.xml
