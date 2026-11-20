@@ -21,6 +21,6 @@ Page content lives in `_src/pages/`; the shared header, footer and dialogs live 
 Build command: `rm -rf dist && mkdir dist && tar --exclude=./dist --exclude=./.git --exclude=./videos/hero.mp4 -cf - . | tar -xf - -C dist`
 Output directory: `dist`. The 31 MB `videos/hero.mp4` stays in the repository (the desktop hero loads it from the GitHub Pages address) but must stay out of the Cloudflare output, which has a 25 MiB per-file limit.
 
-**Do not edit the hero video block** in `_src/pages/index.html` or the hero section of `js/app.js` without a separate task.
+**Do not edit the hero video block** (the `<video>` element and its script) in `_src/pages/index.html` or `js/app.js` without a separate task. Only the hero's three text strings were re-worded in the refinement round.
 
-Read `docs/PHASE3-SUMMARY.md` first, then `docs/MISSING-INFO.md`.
+Read `docs/REFINEMENT-SUMMARY.md` first (the latest round of changes and what to upload), then `docs/PHASE3-SUMMARY.md` and `docs/MISSING-INFO.md`.

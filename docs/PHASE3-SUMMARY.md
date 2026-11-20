@@ -1,3 +1,5 @@
+> Update, November 2026: the homepage order, the floating WhatsApp button and much of the wording were revised afterwards. See `REFINEMENT-SUMMARY.md` for the current state.
+
 # Phase 3: website upgrade (November 2026)
 
 Read this first. It explains what changed, where to edit things, how to run and deploy the site, and what was and was not tested.

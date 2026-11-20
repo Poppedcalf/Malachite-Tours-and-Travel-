@@ -524,17 +524,29 @@ body:not(.noprice) .nopr{display:none}
    Phase 3 additions: floating WhatsApp, packages, destinations, social, team, quick enquiry
    ========================================================================== */
 
-/* ---------- floating WhatsApp button (replaces the old mobile action bar) ---------- */
-.wafab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:55;display:inline-flex;align-items:center;gap:.55rem;min-height:56px;min-width:56px;padding:0 20px;justify-content:center;background:#25D366;color:#111;border-radius:40px;font:500 .98rem var(--sans);letter-spacing:.01em;text-decoration:none;box-shadow:0 8px 28px rgba(0,0,0,.28),0 0 0 1px rgba(0,0,0,.06);transition:transform .3s var(--ease),opacity .3s,background .2s}
-.wafab:hover{background:#3be07a}
-.wafab .ic{width:1.5em;height:1.5em}
-.wafab.off{transform:translateY(24px) scale(.9);opacity:0;pointer-events:none}
+/* ---------- floating WhatsApp button ----------
+   Desktop and tablet: a cream pill with a green WhatsApp badge and the label "Chat on WhatsApp".
+   Phones (under 700px): the badge alone, 56px, so it stays small and unobtrusive.
+   It hides itself (see app.js) while it would sit on top of the hero strip, the contact sections, the planner or the footer. */
+.wafab{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:max(18px,calc(env(safe-area-inset-bottom,0px) + 12px));z-index:55;display:inline-flex;align-items:center;height:56px;padding:5px 22px 5px 5px;background:var(--warm);color:var(--deep);border:1px solid rgba(0,75,73,.2);border-radius:999px;font:500 .98rem/1 var(--sans);letter-spacing:.01em;text-decoration:none;box-shadow:0 12px 32px rgba(0,32,31,.24),0 2px 6px rgba(0,32,31,.14);transition:transform .35s var(--ease),opacity .35s var(--ease),visibility 0s linear 0s,box-shadow .25s,background-color .25s,color .25s,border-color .25s}
+.wafab .wf-i{position:relative;flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#25D366;color:#fff}
+.wafab .wf-i .ic{width:26px;height:26px}
+.wafab .wf-i::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25D366;opacity:0;pointer-events:none;animation:wfp 2.6s ease-out 1.4s 3}
+.wafab .wf-t{margin-left:12px;white-space:nowrap}
+.js .wafab{animation:wfin .6s var(--ease) .5s backwards}
+.wafab:active{transform:scale(.97)}
+.wafab:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+@media(hover:hover){.wafab:hover{background:var(--mal);border-color:var(--mal);color:#fff;transform:translateY(-2px);box-shadow:0 16px 38px rgba(0,32,31,.32),0 2px 6px rgba(0,32,31,.16)}.wafab:hover:active{transform:scale(.97)}}
+.wafab.off{opacity:0;transform:translateY(16px) scale(.92);visibility:hidden;pointer-events:none;transition:transform .35s var(--ease),opacity .35s var(--ease),visibility 0s linear .35s}
+@keyframes wfin{from{opacity:0;transform:translateY(14px)}}
+@keyframes wfp{0%{transform:scale(1);opacity:.55}100%{transform:scale(1.6);opacity:0}}
+@media(prefers-reduced-motion:reduce){.js .wafab{animation:none}.wafab .wf-i::after{animation:none}.wafab,.wafab.off{transition:opacity .2s,visibility 0s}}
 @media(max-width:699px){
-  .wafab{padding:0;width:56px;height:56px;right:14px}
-  .wafab span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}   /* icon only on phones, label stays for screen readers */
-  footer{padding-bottom:84px}
+  .wafab{right:max(14px,env(safe-area-inset-right,0px));bottom:max(14px,calc(env(safe-area-inset-bottom,0px) + 10px));width:56px;padding:0;justify-content:center;background:#25D366;border:2px solid #fff}
+  .wafab .wf-i{width:100%;height:100%;background:transparent}
+  .wafab .wf-i .ic{width:30px;height:30px}
+  .wafab .wf-t{display:none}
 }
-@media(min-width:700px){footer{padding-bottom:0}}
 
 /* ---------- homepage: featured package cards + extras ---------- */
 .xpbadge{position:absolute;z-index:2;left:0;top:22px;background:var(--gold);color:var(--ink);font-weight:500;font-size:.86rem;padding:7px 14px;letter-spacing:.02em}

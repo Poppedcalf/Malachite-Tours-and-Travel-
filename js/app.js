@@ -37,36 +37,48 @@ const askMsg=t=>`Hello Malachite Travel & Tours, I found you on your website [Re
 function contactLinks(){
  const q0=`Hello Malachite Travel & Tours, I found you on your website [Ref: ${ref}] and would like help planning a trip.`;
  $$('[data-wa="general"]').forEach(a=>a.href=wa(q0));
- const gq=`Hello Malachite Travel & Tours, I found you on your website [Ref: ${ref}] and would like a group or corporate proposal.\n\nEvent type:\nDates:\nGroup size:\nLocation:\n\nPlease advise on scope and pricing.`;
+ const gq=`Hello Malachite Travel & Tours, I found you on your website [Ref: ${ref}] and would like to ask about a group trip.\n\nDates:\nGroup size:\nDestination or package:\n\nPlease advise on what is possible.`;
  $$('[data-wa="group"]').forEach(a=>a.href=wa(gq));
  $$('[data-em="group"]').forEach(a=>a.href=mail('Group proposal request ['+ref+']',gq));
+ const sq=`Hello Malachite Travel & Tours, I found you on your website [Ref: ${ref}] and would like to ask how I can support The Smiling Children of Mala.\n\nI would like to help with (money, materials or not sure yet):\nMy name:\n\nPlease tell me how support is arranged and used.`;
+ $$('[data-wa="support"]').forEach(a=>a.href=wa(sq));
+ $$('[data-em="support"]').forEach(a=>a.href=mail('Supporting The Smiling Children of Mala ['+ref+']',sq));
  $$('[data-ask]').forEach(a=>{const t=TAILOR.find(x=>x.id===a.dataset.ask);if(t)a.href=a.dataset.ch==='wa'?wa(askMsg(t)):mail(`Inquiry [${ref}]: ${t.t}`,askMsg(t))});
 }
 contactLinks();
 
-/* ---------- journeys (Trips & Experiences) ---------- */
+/* ---------- packages page: filterable card grid. Published prices (PRICE in data.js) are shown per adult; everything else is "Request a Quote" ---------- */
+const priceOf=id=>{const pr=typeof PRICE!=='undefined'&&PRICE[id];return pr&&pr.status==='published'&&CONFIG.showPublishedPrices?pr:null};
+const catName=c=>c==='Kariba Houseboats'?'Lake Kariba houseboats':c;
 const hasJourneys=!!$('#tabs');let cur='All';
 if(hasJourneys){
  const cats=['All',...new Set(PK.map(p=>p.cat))];
- const tabs=()=>{$('#tabs').innerHTML=cats.map(c=>`<button class="tab" data-c="${c}" aria-pressed="${c===cur}">${c}</button>`).join('')};
- const rows=()=>{$('#pks').innerHTML=PK.filter(p=>cur==='All'||p.cat===cur).map(p=>`<article class="pk"><div class="pki">${img(p.img,p.alt,'(min-width:900px) 58vw, 100vw')}<span class="badge">${p.dur}</span></div><div><p class="cat">${p.cat}</p><h3>${p.title}</h3><ol class="route" aria-label="Route">${p.route.map(r=>`<li>${r}</li>`).join('')}</ol><p class="muted">${p.desc}</p><ul class="chips">${p.hl.map(h=>`<li>${h}</li>`).join('')}</ul><div class="acts"><button class="btn dark" data-open="${p.id}">Explore Itinerary</button><button class="btn ghost" data-plan="${p.id}">Plan This Trip</button></div></div></article>`).join('')};
+ const tabs=()=>{$('#tabs').innerHTML=cats.map(c=>`<button class="tab" data-c="${c}" aria-pressed="${c===cur}">${c==='All'?'All packages':catName(c)}</button>`).join('')};
+ const card=p=>{const pr=priceOf(p.id),cn=catName(p.cat);
+  return `<article class="pc" id="pk-${p.id}"><div class="pc-img${p.img?'':' nophoto'}">${p.img?img(p.img,p.alt,'(min-width:1040px) 33vw, (min-width:700px) 50vw, 100vw'):`<span>${cn}</span>`}<span class="badge">${p.dur}</span></div>`+
+  `<div class="pc-b"><p class="cat">${cn}</p><h3>${p.title}</h3><ol class="route" aria-label="Route">${p.route.map(r=>`<li>${r}</li>`).join('')}</ol><p class="pc-d">${p.desc}</p><ul class="chips">${p.hl.map(h=>`<li>${h}</li>`).join('')}</ul>`+
+  `<div class="pc-price">${pr?`From <b>${money(pr.amt)}</b> ${pr.basis}<small>Published starting rate. Your final price is confirmed by Malachite.</small>`:`<b style="font-size:1.4rem">Price on request</b><small>Send your dates and group size and we will quote.</small>`}</div>`+
+  `<div class="acts"><button class="btn ghost" data-open="${p.id}">Itinerary</button><button class="btn ${pr?'dark':'gold'}" data-plan="${p.id}">${pr?'Plan This Trip':'Request a Quote'}</button></div></div></article>`};
+ const rows=()=>{const L=PK.filter(p=>cur==='All'||p.cat===cur);$('#pks').innerHTML=L.map(card).join('');const c=$('#pkcount');if(c){const n=L.filter(p=>p.cat!=='Kariba Houseboats').length,h=L.length-n;c.textContent='Showing '+[n?plural(n,'package','packages')+(cur==='All'?'':' in '+catName(cur)):'',h?'Lake Kariba houseboat charters':''].filter(Boolean).join(' and ')+'.'}};
  const show=()=>{tabs();rows()};
  $('#tabs').onclick=e=>{const b=e.target.closest('[data-c]');if(b){cur=b.dataset.c;show()}};
  if(params.get('filter')&&cats.includes(params.get('filter')))cur=params.get('filter');
  show();
  window.__setFilter=c=>{cur=c;show()};
+ const hid=location.hash.match(/^#pk-([a-z]+)$/);   // deep link to one package, e.g. packages.html#pk-lz
+ if(hid){const el=document.getElementById('pk-'+hid[1]);if(el){el.classList.add('hl');setTimeout(()=>el.scrollIntoView({block:'center'}),60)}}
 }
-/* filter links (any page): apply on the Trips page, otherwise go there */
+/* filter links (any page): apply on the Packages page, otherwise go there */
 document.addEventListener('click',e=>{const f=e.target.closest('[data-filter]');if(!f)return;
  if(hasJourneys){e.preventDefault();window.__setFilter(f.dataset.filter);$('#journeys').scrollIntoView()}
- else{e.preventDefault();location.href='trips.html?filter='+encodeURIComponent(f.dataset.filter)+'#journeys'}});
+ else{e.preventDefault();location.href='packages.html?filter='+encodeURIComponent(f.dataset.filter)+'#journeys'}});
 
 /* ---------- itinerary pop-up ---------- */
 const md=$('#md');let openId='lz';
 if(md){
  document.addEventListener('click',e=>{const b=e.target.closest('[data-open]');if(!b)return;const p=PK.find(x=>x.id===b.dataset.open);openId=p.id;
   $('#mT').textContent=p.title;$('#mS').textContent=p.dur+' | '+p.route.join(', ');$('#mI').textContent=p.intro;
-  $('#mH').innerHTML=p.hl.map(h=>`<li>${h}</li>`).join('');$('#mD').innerHTML=p.days.map((d,i)=>`<li><b>Day ${i+1}</b><br>${d}</li>`).join('');md.showModal();$('.mb').scrollTop=0});
+  $('#mH').innerHTML=p.hl.map(h=>`<li>${h}</li>`).join('');const steps=p.days?p.days.map((d,i)=>[`Day ${i+1}`,d]):(p.stops||[]);$('#mD').innerHTML=steps.map(x=>`<li><b>${x[0]}</b><br>${x[1]}</li>`).join('');md.showModal();$('.mb').scrollTop=0});
  $('#mX').onclick=()=>md.close();md.addEventListener('click',e=>{if(e.target===md)md.close()});
  $('#mP').onclick=()=>{md.close();plan(openId)};
 }
@@ -114,7 +126,7 @@ if(hasPlanner){
  const noPrice=!CONFIG.showPrices;
  document.body.classList.toggle('noprice',noPrice);
  const jr=$('#jr'),FIELD={ad:'adults',ch:'children',nights:'nights'};
- jr.innerHTML='<option value="">Choose a journey</option>'+PK.map(p=>`<option value="${p.id}">${p.title} (${p.dur})</option>`).join('');
+ jr.innerHTML='<option value="">Choose a journey</option>'+[...new Set(PK.map(p=>p.cat))].map(g=>`<optgroup label="${catName(g)}">${PK.filter(p=>p.cat===g).map(p=>`<option value="${p.id}">${p.title} (${p.dur})</option>`).join('')}</optgroup>`).join('');
  $('#bg').innerHTML='<option value="">Prefer not to say</option>'+CONFIG.budgets.map(b=>`<option>${b}</option>`).join('');
  $('#dons').innerHTML=Object.entries(CONFIG.donations).map(([k,d])=>`<label class="opt"><input type="checkbox" name="don" value="${k}"><span><b>${d.label}</b><span>${noPrice?'Optional. Any amount is agreed with the team.':`Optional contribution of about ${money(d.amount)} (illustrative), to be discussed with the team.`}</span></span></label>`).join('');
  const checked=n=>$$(`input[name=${n}]:checked`).map(i=>i.value);
@@ -143,11 +155,12 @@ if(hasPlanner){
  function msgOf(s,q){
   const i=s.info,trav=plural(s.ad,'adult','adults')+(s.ch?`, ${plural(s.ch,'child','children')}`:''),dur=s.c.perNight?plural(s.ni,'night','nights'):s.p.dur;
   const ex=s.ex.map(k=>CONFIG.extras[k].label),dn=s.dn.map(k=>CONFIG.donations[k].label);
+  const pr=priceOf(s.p.id);
   const head=['Hello Malachite Travel & Tours,','',`I generated an inquiry on your website [Ref: ${ref}] for the ${s.p.title} for ${trav}. Please confirm availability.`,'',
-   'Trip details',`Journey: ${s.p.title} (${dur})`,`Accommodation preference: ${CONFIG.stays[s.stay].label}`,`Travellers: ${trav}`,`Extras: ${ex.join(', ')||'None'}`,`Voluntary contribution: ${dn.length?dn.join(', ')+' (optional, to discuss; nothing has been paid)':'None'}`,'',
+   'Trip details',`Journey: ${s.p.title} (${dur})`,...(pr?[`Starting rate shown on your website: from ${money(pr.amt)} ${pr.basis} (not a confirmed quote)`]:[]),`Accommodation preference: ${CONFIG.stays[s.stay].label}`,`Travellers: ${trav}`,`Extras: ${ex.join(', ')||'None'}`,`Voluntary contribution: ${dn.length?dn.join(', ')+' (optional, to discuss; nothing has been paid)':'None'}`,'',
    'My plans',`Preferred dates or month: ${i.dates||'Not specified'}${i.flex?' (flexible)':''}`,`Approximate budget: ${i.budget||'Not specified'}`,`Special requests: ${i.notes||'None'}`,`Name: ${i.name||'Not given'}`,`Contact: ${i.contact||'Reply to this message'}`,''];
   const tail=q?['Provisional estimate (demonstration only)',...q.lines.map(l=>`- ${l.k}: ${l.txt} = ${money(l.amt)}`),`Per adult: about ${money(q.perAdult)}`,`Group total: about ${money(q.total)}`,'','I understand this estimate is provisional. Final pricing, availability and inclusions are to be confirmed by Malachite. Thank you.']
-   :['I understand that no price has been quoted on the website. Please send me a proposal with pricing and availability. Thank you.'];
+   :[pr?'I understand the starting rate on the website is not a confirmed quote. Please send me a proposal with pricing and availability for my dates. Thank you.':'I understand that no price has been quoted on the website. Please send me a proposal with pricing and availability. Thank you.'];
   return head.concat(tail).join('\n');
  }
  function update(){
@@ -158,6 +171,7 @@ if(hasPlanner){
   if(!ok)return;
   const T=plural(s.ad,'adult','adults')+(s.ch?`, ${plural(s.ch,'child','children')}`:'');
   const rowsDl=[['Journey',s.p.title],['Duration',s.c.perNight?plural(s.ni,'night','nights'):s.p.dur],['Accommodation',CONFIG.stays[s.stay].label],['Travellers',T]];
+  const pr=priceOf(s.p.id);if(pr)rowsDl.splice(2,0,['Published starting rate','From '+money(pr.amt)+' '+pr.basis]);
   if(noPrice){
    if(s.ex.length)rowsDl.push(['Extras',s.ex.map(k=>CONFIG.extras[k].label).join(', ')]);
    if(s.dn.length)rowsDl.push(['Contribution',s.dn.map(k=>CONFIG.donations[k].label).join(', ')+' (optional)']);
@@ -183,16 +197,41 @@ if(hasPlanner){
  const dn=params.get('don');if(dn&&$(`input[name=don][value=${dn}]`)){$(`input[name=don][value=${dn}]`).checked=true;touch()}
 }
 
-/* ---------- mobile action bar hides over the planner and closing sections; scroll reveal ---------- */
-const bar=$('#mbar'),vis=new Set();
+/* ---------- homepage quick enquiry: builds a ready-written WhatsApp / email message, nothing is sent until the visitor sends it ---------- */
+const qi=$('#qi');
+if(qi){
+ qi.innerHTML='<option value="">Not sure yet, help me choose</option>'+[...new Set(PK.map(p=>p.cat))].map(g=>`<optgroup label="${catName(g)}">${PK.filter(p=>p.cat===g).map(p=>`<option value="${p.id}">${p.title} (${p.dur})</option>`).join('')}</optgroup>`).join('');
+ const qUpd=()=>{const p=PK.find(x=>x.id===qi.value),n=$('#qn').value.trim(),m=$('#qm').value.trim(),t=Math.max(1,Math.min(60,Math.round(Number($('#qt').value))||1));
+  const body=`Hello Malachite Travel & Tours,\n\nI found you on your website [Ref: ${ref}] and would like help planning a trip.\n\nInterested in: ${p?p.title+' ('+p.dur+')':'Not sure yet, please help me choose'}\nWhen: ${m||'Not decided yet'}\nTravellers: ${t}\nName: ${n||'Not given'}\n\nPlease let me know what is possible. I understand that no rate is confirmed until you send me a proposal.`;
+  $('#qwa').href=wa(body);$('#qem').href=mail('Trip inquiry ['+ref+']',body)};
+ $('#qe').addEventListener('input',()=>{if(sent)newRef();qUpd()});$('#qe').addEventListener('change',()=>{if(sent)newRef();qUpd()});qUpd();
+}
+
+/* ---------- team profiles: listed automatically once TEAM in data.js has entries ---------- */
+const tmL=$('#teamList');
+if(tmL&&typeof TEAM!=='undefined'&&TEAM.length){tmL.hidden=false;tmL.innerHTML=TEAM.map(m=>`<li>${m.img?img(m.img,m.alt||m.name,'(min-width:900px) 25vw, 50vw'):''}<b>${m.name}</b><small>${m.role}</small>${m.bio?`<p>${m.bio}</p>`:''}</li>`).join('')}
+
+/* ---------- floating WhatsApp button: steps aside whenever a section would sit underneath it ----------
+   Hidden while any contact section, the planner, the footer (or, on wide screens, the strip at the bottom of the homepage hero)
+   overlaps the band of the screen where the button lives. Elsewhere it stays visible while scrolling. */
+const bar=$('#wafab');
+if(bar){
+ const zones=[...$$('[data-nobar]'),...$$('footer')],hero=$('section.hero'),wide=matchMedia('(min-width:800px)'),zone=96;
+ const hits=el=>{const r=el.getBoundingClientRect();return r.top<innerHeight&&r.bottom>innerHeight-zone};
+ let tk=0;
+ const upd=()=>{tk=0;bar.classList.toggle('off',zones.some(hits)||(wide.matches&&!!hero&&hits(hero)))};
+ const req=()=>{if(!tk)tk=requestAnimationFrame(upd)};
+ addEventListener('scroll',req,{passive:true});addEventListener('resize',req);addEventListener('load',req);upd();
+}
+/* ---------- scroll reveal ---------- */
 if('IntersectionObserver'in window){
- if(bar){const o=new IntersectionObserver(es=>{es.forEach(e=>e.isIntersecting?vis.add(e.target):vis.delete(e.target));bar.classList.toggle('off',vis.size>0)});$$('[data-nobar]').forEach(x=>o.observe(x))}
  const r=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');r.unobserve(e.target)}}),{threshold:.12});$$('.rv').forEach(x=>r.observe(x));
  /* destinations: highlight the chapter in view */
  const sn=$$('.subnav a');
  if(sn.length){const m=new Map(sn.map(a=>[a.getAttribute('href').slice(1),a]));
   const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){sn.forEach(a=>a.classList.remove('on'));const a=m.get(e.target.id);if(a)a.classList.add('on')}}),{rootMargin:'-40% 0px -55% 0px'});
-  m.forEach((a,id)=>{const el=document.getElementById(id);if(el)so.observe(el)})}
+  m.forEach((a,id)=>{const el=document.getElementById(id);if(el)so.observe(el)})
+  addEventListener('scroll',()=>{if(scrollY<240)sn.forEach(a=>a.classList.remove('on'))},{passive:true})}
 }else{$$('.rv').forEach(x=>x.classList.add('in'))}
 
 /* ---------- travel journal: lists articles from journal/index.json (empty until articles are added) ---------- */

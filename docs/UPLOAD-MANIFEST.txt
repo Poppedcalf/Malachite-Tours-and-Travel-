@@ -1,0 +1,79 @@
+UPLOAD MANIFEST: files that differ from the current `Multi-page` branch (commit 6426e05)
+Compared on 20 Nov 2026. Nothing has been pushed.
+
+Upload ALL of the files below to `Multi-page` in one go. The JavaScript, the data file and the images must travel with the HTML and CSS; the current branch has the new HTML but the old JavaScript and data, which is why the live Packages page and WhatsApp button are likely broken.
+Do not merge `main` into `Multi-page`. Files not listed here are identical on the branch and need no action.
+
+CHANGED (28):
+  404.html
+  README.md
+  _src/pages/about.html
+  _src/pages/credentials.html
+  _src/pages/destinations.html
+  _src/pages/index.html
+  _src/pages/journal.html
+  _src/pages/packages.html
+  _src/pages/plan.html
+  _src/pages/social-responsibility.html
+  _src/partials/footer.html
+  _src/partials/header.html
+  _src/partials/team.html
+  about.html
+  credentials.html
+  css/style.css
+  destinations.html
+  docs/ASSET-INVENTORY.md
+  docs/MISSING-INFO.md
+  docs/PHASE3-SUMMARY.md
+  index.html
+  journal.html
+  js/app.js
+  js/data.js
+  packages.html
+  plan.html
+  social-responsibility.html
+  trips.html
+
+NEW (36):
+  _backup/phase2/_src/build.py
+  docs/REFINEMENT-SUMMARY.md
+  docs/UPLOAD-MANIFEST.txt
+  images/cape-town-aerial-1200.jpg
+  images/cape-town-aerial-640.jpg
+  images/community-cleanup-1200.jpg
+  images/community-cleanup-1920.jpg
+  images/community-cleanup-640.jpg
+  images/community-football-1200.jpg
+  images/community-football-1920.jpg
+  images/community-football-640.jpg
+  images/craft-market-1200.jpg
+  images/craft-market-1920.jpg
+  images/craft-market-640.jpg
+  images/cultural-village-1200.jpg
+  images/cultural-village-1920.jpg
+  images/cultural-village-640.jpg
+  images/falls-helicopter.jpg
+  images/great-zimbabwe-aerial-1200.jpg
+  images/great-zimbabwe-aerial-640.jpg
+  images/harare-night-1200.jpg
+  images/harare-night-640.jpg
+  images/kenya-beach-resort-1200.jpg
+  images/kenya-beach-resort-1920.jpg
+  images/kenya-beach-resort-640.jpg
+  images/leopard-night-1200.jpg
+  images/leopard-night-640.jpg
+  images/leopard-resting-1200.jpg
+  images/leopard-resting-1920.jpg
+  images/leopard-resting-640.jpg
+  images/rhino-flamingos-1200.jpg
+  images/rhino-flamingos-1920.jpg
+  images/rhino-flamingos-640.jpg
+  images/safari-tents-1200.jpg
+  images/safari-tents-640.jpg
+  images/zambezi-canoe.jpg
+
+ON THE BRANCH BUT NOT IN THIS PROJECT (1):
+  _backup/phase2/_src/partials/A
+  (a stray empty-looking file from an earlier hand upload; harmless, can be deleted)
+
+NOT TOUCHED: videos/hero.mp4, videos/hero-mobile.mp4, the hero video markup and script, robots.txt, hosting files.

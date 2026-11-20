@@ -1,5 +1,27 @@
 # Information needed from Malachite
 
+## R. Refinement round (November 2026): questions for Mr Shoniwa
+
+This round re-wrote the site so that Malachite is presented as a Kariba-based company offering packages across Zimbabwe, Southern Africa and East Africa. Only the brochure, the official website and the company notes already supplied were used. Where they were silent, the site now says less. Please confirm the items below, most important first.
+
+| # | Item | Where it appears | What was found | What to confirm |
+|---|---|---|---|---|
+| 1 | Awards, affiliation, partners, supported organisations | Hero strip (not touched), Credentials page, About Us link | Read from plaques and logos in an email screenshot. None of them is in the brochure, and none appears on the official homepage when it was checked on 20 Nov 2026. | Is each one genuine, current and cleared for use? The items are: "African Top 100 Tour Operators" / "Africa Travel 100"; "Best Tour Operator Stand, 2024, Sanganai"; ZTA affiliation; the eight named partners; Tashinga Initiative, Zambezi Elephant Fund, Kariba Animal Welfare Fund Trust, Wild Zambezi. Anything not confirmed should be removed. The Facebook link @malachitetours also comes from earlier material. |
+| 2 | Prices | Packages page and planner (two packages only) | The brochure has no prices. "From $2,480 per adult" (Mala Trans Borders Pack) and "From $3,650 per adult" (Mala Lower Zambezi Expedition Pack) come from the official site's listings. All other packages show "Price on request". | Are those two still current, and in US dollars? The official site's package pages also contain leftover text from an unrelated template, so please treat them with care. Set `showPublishedPrices:false` in `js/data.js` to hide both until confirmed. |
+| 3 | Day-by-day itineraries | Trans Borders and Lower Zambezi pop-ups | The earlier build had day-by-day plans that cannot be traced to the brochure. They were replaced with the brochure's stages (as for every other package). | Send the official day-by-day text if you want it shown. |
+| 4 | Houseboat charters | Packages, Destinations, planner | The brochure lists houseboat charters as a service, not a numbered package, and gives no length. The card now says "Duration on request". The planner field still accepts 1 to 7 nights (a limit carried over from the earlier build) and the earlier "tender-boat" and "vessel" wording was removed. | The real range of charter lengths, and whether to keep a nights field. |
+| 5 | Package name | Destinations (Victoria Falls) | The earlier build called the Trans Borders Pack "Trans-Trio Borders". The brochure says "Mala Trans Borders Pack", which the site now uses everywhere. | Which name is official. |
+| 6 | Planner options not in the brochure | Plan Your Trip | Accommodation choices per package (lodge or hotel, tented camp, houseboat), optional extras (tiger fishing, photographic safari, transfers), a "children under 12" category, budget bands in US dollars, and two voluntary-contribution tick-boxes (Smiling Children of Mala; vulture and wildlife protection). None is published as a price. | Which of these you want to keep. Group enquiries were kept because the official site's menu has "Groups & Incentives"; "corporate" wording was removed. |
+| 7 | Team | Home | No names, roles or portraits were supplied, so the section shows three role descriptions taken from the brochure (tailored packages, expert guides, transfers). The email signature spells the name "Shonhiwa"; your brief says "Shoniwa". | The correct spelling, role and a portrait (with consent), and any other team members. Add them in `TEAM` in `js/data.js` and they appear automatically. |
+| 8 | Where the company is based | Everywhere | "Based in Kariba" and "office in Kariba" follow your brief and the brochure address (Stand 643, ZV Mall, Kariba). | Whether Kariba is the only office. |
+| 9 | Phone labels | Plan Your Trip, footer | +263 61 214 5623 is labelled "telephone" (the brochure says "Tel"); +263 775 515 400 is labelled "mobile and WhatsApp". | That the mobile number is a WhatsApp number someone answers. |
+| 10 | Full Circle route | Packages | The brochure heading lists Mutare, but its day-by-day text does not describe it. The site follows the eight described stages. | Whether Mutare is part of the route. |
+| 11 | Houseboat and tiger-fish photographs | Not used | Supplied images could not be confirmed as Malachite's own, rights-cleared photographs. | A line confirming they are, and they can be added. |
+| 12 | Official website | (whole site) | The homepage as fetched shows a menu ("Activities", "Groups & Incentives", "Itineraries", "Signature Products"), testimonial names and no address or phone number. It looks like a template and could not confirm company facts. | Whether the official site is being rebuilt. |
+
+Earlier open items are kept below (sections A and 1 onward). Section A4 and A8 are superseded by items 7 and the notes in `docs/REFINEMENT-SUMMARY.md`.
+
+---
 ## A. Phase 3 (November 2026): please confirm before launch
 
 Nothing was invented for this upgrade. Where the brochure, the official website (www.malachitetours.com) and earlier materials disagreed, the site shows less rather than guessing.
@@ -40,7 +62,7 @@ Nothing was invented for this upgrade. Where the brochure, the official website 
 | Missing | Tanzania, Durban, vulture feeding, tree planting, team portraits | Tanzania and Durban are text-led and vulture and tree-planting have no picture rather than borrowing an unrelated one. |
 
 ### A4. People and company story
-- **Team**: no names, roles or portraits were supplied. The site shows three role descriptions (planners, guides, transfers). Add real profiles in `TEAM` in `js/data.js`.
+- **Team**: no names, roles or portraits were supplied. The site shows three role descriptions taken from the brochure (tailored packages, expert guides, transfers). Add real profiles in `TEAM` in `js/data.js`. See item 7 above.
 - **Company story**: founding year, founders, mission and values were not supplied, so About Us does not state them.
 
 ### A5. Social responsibility
@@ -49,7 +71,7 @@ Nothing was invented for this upgrade. Where the brochure, the official website 
 - The planner still offers two optional "voluntary contribution" tick-boxes. Nothing is collected online. Confirm you want them kept.
 
 ### A6. Existing content that is not in the brochure (carried over, unverified)
-- The hero strip (inside the protected hero, not touched): "African Top 100 Tour Operators", ZTA affiliation, and "Supports the Tashinga Initiative and Zambezi Elephant Fund".
+- The hero strip (inside the hero, not touched): "African Top 100 Tour Operators", ZTA affiliation, and "Supports the Tashinga Initiative and Zambezi Elephant Fund". See item 1 above.
 - The Credentials page (awards, ZTA, eight partners, organisations supported). It is still published and linked from About Us and the footer. See section 1 below.
 - Footer credit "Engineered by Local Edge".
 
@@ -57,8 +79,8 @@ Nothing was invented for this upgrade. Where the brochure, the official website 
 Canonical, social-share and sitemap addresses now use https://malachite-travel-and-tours.pages.dev/. If you later attach www.malachitetours.com to this Cloudflare project, change `BASE` in `_tools/build.py` and rebuild.
 
 ### A8. Small leftovers
-- The hero button still says "Plan Your Journey" while the menu says "Plan Your Trip". The hero is protected, so this was left.
-- The Travel Journal page still exists but is not in the menu until there are articles.
+- The hero headline, intro line and first button were re-worded in the refinement round (text only; the video, its script and its styles were not touched). The earlier wording is listed in `docs/REFINEMENT-SUMMARY.md` in case you want it back.
+- The Travel Journal page still exists but is linked from nowhere until there are articles.
 
 ---
 

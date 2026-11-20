@@ -1,3 +1,5 @@
+> Update, November 2026: the home page no longer has a gallery, houseboat band or giving-back section, and its featured packages and destination tiles use different photographs (see `REFINEMENT-SUMMARY.md`). Photo locations still needing confirmation are listed in `MISSING-INFO.md`.
+
 # Asset inventory
 
 Every file supplied for Phase 2, how suitable it is and where it is used. Photographs without a confirmed location carry neutral captions. Items marked CONFIRM are listed in MISSING-INFO.md.
