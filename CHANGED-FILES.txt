@@ -1,0 +1,15 @@
+packages.html
+trips.html
+social-responsibility.html
+about.html
+destinations.html
+404.html
+index.html
+journal.html
+plan.html
+credentials.html
+images/malachite-logo-official.png
+_src/partials/header.html
+_src/pages/index.html
+css/style.css
+docs/REFINEMENT-SUMMARY.md

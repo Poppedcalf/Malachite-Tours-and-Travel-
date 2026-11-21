@@ -39,3 +39,14 @@ Not tested: real phones, Safari, and the font files (blocked in the test environ
 
 ## 4. Still needed from Malachite
 See `MISSING-INFO.md`, section R.
+
+## Round 3: hero logo, orange accent, hover refinement
+
+- Hero: typed "Malachite / Travel & Tours" wordmark removed; supporting text set to the exact wording supplied; headline reduced slightly (same font).
+- Logo: the supplied official logo is used unaltered (`images/malachite-logo-official.png`). Its lettering is dark, so while the header is transparent over the hero it sits on a light rounded plate; once the header turns solid it is shown directly. Footer and closing band still use the older logo file (optional follow-up for consistency).
+- Accent: gold replaced by orange (`--gold:#F28C28`, text-on-light `--gold2:#B35A0C`), sampled from the logo artwork; the official website's CSS could not be checked, so the exact shade should be confirmed. Deep green remains dominant.
+- Hover/cursor: subtle button lift and soft shadow, orange selection colour and focus ring; fine-pointer only, disabled under reduced motion; no effect on touch.
+- Hero video markup, sources and JS are untouched.
+
+## Future improvement (not implemented)
+Rank packages within each filter by real popularity, demand, or booking/enquiry data (e.g. South Africa filter: Cape Town first). No rankings have been invented; package order, filters and data are unchanged.
