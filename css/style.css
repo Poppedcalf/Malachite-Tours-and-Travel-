@@ -325,7 +325,7 @@ details p{padding:0 0 22px;max-width:62ch;font-size:1rem}
 .fin::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,32,31,.9),rgba(0,32,31,.78) 50%,rgba(0,32,31,.92))}
 .fin h2{color:#fff;max-width:16ch;font-size:clamp(2.6rem,6vw,4.6rem)}
 .fin p{max-width:52ch;margin-top:12px}
-.fin .herologo{height:clamp(110px,15vw,150px);width:auto;margin:0 0 22px -8px}
+.fin .herologo{height:clamp(70px,9vw,92px);width:auto;margin:0 0 22px;background:rgba(255,255,255,.94);padding:8px 16px;border-radius:8px}
 .cg2{display:grid;gap:28px;margin-top:56px;padding-top:36px;border-top:1px solid rgba(242,140,40,.5);font-size:.97rem}
 .cg2 b{display:block;font:600 1.4rem var(--serif);color:var(--gold);margin-bottom:4px}.cg2 a{display:inline-block;padding:3px 0}
 @media(min-width:800px){.cg2{grid-template-columns:repeat(3,1fr)}}
@@ -335,7 +335,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.82);font-size:.95rem}
 .fg{display:grid;gap:36px;padding:64px 20px 40px;max-width:1200px;margin:0 auto}
 .fg h2{font:600 1.3rem var(--serif);color:#fff;margin-bottom:10px;letter-spacing:0}
 .fg ul{list-style:none;margin:0;padding:0;display:grid;gap:2px}.fg a{text-decoration:none;display:inline-block;padding:4px 0}.fg a:hover{color:var(--gold)}
-.fg img{height:128px;width:auto;margin-bottom:12px}.fg .lwm{display:block;margin-bottom:12px;color:#fff}.fg .lwm[hidden]{display:none}
+.fg img{height:76px;width:auto;margin-bottom:12px;background:rgba(255,255,255,.94);padding:6px 14px;border-radius:8px}.fg .lwm{display:block;margin-bottom:12px;color:#fff}.fg .lwm[hidden]{display:none}
 .att{border-top:1px solid rgba(255,255,255,.12);text-align:center;font-size:.8rem;padding:18px 20px;color:rgba(255,255,255,.6)}
 @media(min-width:800px){.fg{grid-template-columns:1.3fr 1fr 1fr 1.2fr}}
 
