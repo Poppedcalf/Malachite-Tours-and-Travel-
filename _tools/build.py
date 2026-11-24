@@ -20,7 +20,7 @@ SRC = ROOT / '_src'
 BASE = 'https://malachite-travel-and-tours.pages.dev/'   # canonical host (Cloudflare Pages)
 
 NAV = [('home','index.html','Home'),('destinations','destinations.html','Destinations'),('packages','packages.html','Packages'),
-       ('social','social-responsibility.html','Social Responsibility'),('about','about.html','About Us')]
+       ('social','social-responsibility.html','Social Responsibility'),('testimonials','testimonials.html','Testimonials'),('about','about.html','About Us')]
 
 # ---------- photo registry (sizes available per photo) ----------
 def build_registry():

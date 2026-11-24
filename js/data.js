@@ -20,7 +20,7 @@ const CONFIG={
   // To copy another inbox once Malachite confirms it, add it to this list.
   emails:['malachitetours@gmail.com'],
   showPrices:false,          // planner estimates stay hidden
-  showPublishedPrices:true,  // show the starting rates listed in PRICE below (published by Malachite)
+  showPublishedPrices:false, // all packages are quoted on request; the PRICE table below is kept for reference only and is not shown
   refPrefix:'LE-MK-',
   limits:{adults:[1,30],children:[0,20],nights:[1,7]},
   childFactor:0.5,
@@ -53,6 +53,11 @@ const CONFIG={
    - mc (Culture Pack): "Marvel - Zimbabwe Culture Apack" lists $3,600 / adult; a second listing "8 Days - Mala Marvel" shows $700 (was $800) / adult and $450 / child, but its page text is a leftover Nepal trekking template.
    - fc (Full Circle): $6,200 / adult is attached to a page titled 18 days whose itinerary is the 10-day culture route, not the brochure's Full Circle loop.
    Inclusions and exclusions on those pages are also leftover Nepal template text, so they are NOT used on this site. */
+/* TESTIMONIALS: add genuine guest testimonials here (with the guest's permission). Shape:
+   {q:"Quote, word for word.", name:"Guest name", trip:"Country, trip and month (optional)"}
+   None are published yet. Do not add invented or paraphrased reviews. */
+const TESTIMONIALS=[];
+
 const PRICE={
  tt:{status:'published',amt:2480,basis:'per adult'},
  lz:{status:'published',amt:3650,basis:'per adult'},

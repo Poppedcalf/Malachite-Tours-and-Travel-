@@ -59,7 +59,7 @@ if(hasJourneys){
   `<div class="pc-b"><p class="cat">${cn}</p><h3>${p.title}</h3><ol class="route" aria-label="Route">${p.route.map(r=>`<li>${r}</li>`).join('')}</ol><p class="pc-d">${p.desc}</p><ul class="chips">${p.hl.map(h=>`<li>${h}</li>`).join('')}</ul>`+
   `<div class="pc-price">${pr?`From <b>${money(pr.amt)}</b> ${pr.basis}<small>Published starting rate. Your final price is confirmed by Malachite.</small>`:`<b style="font-size:1.4rem">Price on request</b><small>Send your dates and group size and we will quote.</small>`}</div>`+
   `<div class="acts"><button class="btn ghost" data-open="${p.id}">Itinerary</button><button class="btn ${pr?'dark':'gold'}" data-plan="${p.id}">${pr?'Plan This Trip':'Request a Quote'}</button></div></div></article>`};
- const rows=()=>{const L=PK.filter(p=>cur==='All'||p.cat===cur);$('#pks').innerHTML=L.map(card).join('');const c=$('#pkcount');if(c){const n=L.filter(p=>p.cat!=='Kariba Houseboats').length,h=L.length-n;c.textContent='Showing '+[n?plural(n,'package','packages')+(cur==='All'?'':' in '+catName(cur)):'',h?'Lake Kariba houseboat charters':''].filter(Boolean).join(' and ')+'.'}};
+ const rows=()=>{const L=PK.filter(p=>cur==='All'||p.cat===cur);$('#pks').innerHTML=L.map(card).join('');const c=$('#pkcount');if(c){const hh=L.length&&L.every(p=>p.cat==='Kariba Houseboats');c.textContent=cur==='All'?'Showing packages and Lake Kariba houseboat charters.':hh?'Showing Lake Kariba houseboat charters.':'Showing packages in '+catName(cur)+'.'}};
  const show=()=>{tabs();rows()};
  $('#tabs').onclick=e=>{const b=e.target.closest('[data-c]');if(b){cur=b.dataset.c;show()}};
  if(params.get('filter')&&cats.includes(params.get('filter')))cur=params.get('filter');
@@ -244,6 +244,14 @@ if(jg){
   if(empty)empty.hidden=true;
   jg.innerHTML=list.map(a=>`<a class="jcard rv in" href="${a.url}"><div class="im">${a.image?img(a.image,a.alt||'', '(min-width:800px) 33vw, 100vw'):''}</div><span class="cat">${a.category||''}</span><h3>${a.title}</h3><p>${a.summary||''}</p></a>`).join('');
  });
+}
+
+/* ---------- testimonials page: cards come from TESTIMONIALS in data.js; the empty state shows until there are some ---------- */
+if($('#tsGrid')){
+ const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+ const T=typeof TESTIMONIALS!=='undefined'?TESTIMONIALS:[];
+ $('#tsGrid').innerHTML=T.map(t=>`<figure class="tcard rv"><blockquote><p>${esc(t.q)}</p></blockquote><figcaption><b>${esc(t.name)}</b>${t.trip?`<span>${esc(t.trip)}</span>`:''}</figcaption></figure>`).join('');
+ if(T.length)$('#tsEmpty').hidden=true;
 }
 
 /* ---------- hero video (homepage): loads only when the device and connection suit it ---------- */
