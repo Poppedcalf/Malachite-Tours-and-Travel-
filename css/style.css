@@ -61,12 +61,11 @@ header.sm .hrow{padding:6px 20px}
 .logo{display:block;flex:none;color:#fff;text-decoration:none}
 header.sm .logo{color:var(--ink)}
 .logo img{height:var(--lh);width:auto;transition:height .35s}
-/* logos: clean white-lettered artwork over the hero and in dark bands; dark-lettered artwork once the header is light. No plates or backgrounds. */
-.logo img{height:calc(var(--lh)*.85);width:auto}
+/* white-lettered logo over the hero and the dark menu-less header; black-lettered once the header is solid (light) */
+.logo img{height:calc(var(--lh)*.85)}
 .logo .lb{display:none}
 header.top.sm .logo .lw,header.top:has(#menu.open) .logo .lw{display:none}
 header.top.sm .logo .lb,header.top:has(#menu.open) .logo .lb{display:block}
-.lwm[hidden],.logo img[hidden]{display:none!important}
 nav.main{display:none;gap:clamp(16px,1.6vw,28px);font-size:.92rem;font-weight:500;letter-spacing:.02em;white-space:nowrap}
 nav.main a{text-decoration:none;padding:8px 0;background:linear-gradient(var(--gold),var(--gold)) 0 100%/0 2px no-repeat;transition:background-size .35s var(--ease)}
 nav.main a:hover{background-size:100% 2px}
@@ -327,7 +326,7 @@ details p{padding:0 0 22px;max-width:62ch;font-size:1rem}
 .fin::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,32,31,.9),rgba(0,32,31,.78) 50%,rgba(0,32,31,.92))}
 .fin h2{color:#fff;max-width:16ch;font-size:clamp(2.6rem,6vw,4.6rem)}
 .fin p{max-width:52ch;margin-top:12px}
-.fin .herologo{height:clamp(84px,10vw,108px);width:auto;margin:0 0 22px}
+.fin .herologo{height:clamp(80px,10vw,104px);width:auto;margin:0 0 22px -18px}
 .cg2{display:grid;gap:28px;margin-top:56px;padding-top:36px;border-top:1px solid rgba(242,140,40,.5);font-size:.97rem}
 .cg2 b{display:block;font:600 1.12rem var(--serif);color:var(--gold);margin-bottom:4px}.cg2 a{display:inline-block;padding:3px 0}
 @media(min-width:800px){.cg2{grid-template-columns:repeat(3,1fr)}}
@@ -337,7 +336,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.82);font-size:.95rem}
 .fg{display:grid;gap:36px;padding:64px 20px 40px;max-width:1200px;margin:0 auto}
 .fg h2{font:600 1.04rem var(--serif);color:#fff;margin-bottom:10px;letter-spacing:0}
 .fg ul{list-style:none;margin:0;padding:0;display:grid;gap:2px}.fg a{text-decoration:none;display:inline-block;padding:4px 0}.fg a:hover{color:var(--gold)}
-.fg img{height:96px;width:auto;margin-bottom:12px}.fg .lwm{display:block;margin-bottom:12px;color:#fff}.fg .lwm[hidden]{display:none}
+.fg img{height:84px;width:auto;margin-bottom:12px;margin-left:-18px}.fg .lwm{display:block;margin-bottom:12px;color:#fff}.fg .lwm[hidden]{display:none}
 .att{border-top:1px solid rgba(255,255,255,.12);text-align:center;font-size:.8rem;padding:18px 20px;color:rgba(255,255,255,.6)}
 @media(min-width:800px){.fg{grid-template-columns:1.3fr 1fr 1fr 1.2fr}}
 
