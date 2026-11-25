@@ -11,7 +11,7 @@
 <link rel="icon" type="image/png" href="images/malachite-wing-symbol.png">
 <link rel="preload" as="image" href="images/falls-aerial-gorge-1200.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap">
 <link rel="stylesheet" href="css/style.css?v=20261124">
 <script src="js/boot.js?v=20261124"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"TravelAgency","name":"Malachite Travel & Tours","url":"https://malachite-travel-and-tours.pages.dev/","telephone":"+263775515400","email":"malachitetours@gmail.com","address":{"@type":"PostalAddress","streetAddress":"Stand 643, ZV Mall","addressLocality":"Kariba","addressCountry":"ZW"},"sameAs":["https://www.facebook.com/malachitetours/"]}</script>
@@ -57,9 +57,10 @@
 <section class="sec how" id="how"><div class="wrap">
   <div class="rv"><h2>How planning works</h2><div class="rule"></div></div>
   <ol class="hs rv">
-    <li><b>Choose a destination or experience</b><span>Browse the <a href="packages.html" class="lnk dk">packages</a> or <a href="destinations.html" class="lnk dk">destinations</a>, or tell us what you have in mind.</span></li>
-    <li><b>Share your plans</b><span>Dates, group size and preferences, in the planner or on WhatsApp.</span></li>
-    <li><b>Discuss the details</b><span>Routing, accommodation and final pricing, with Malachite.</span></li>
+    <li><b>Explore</b><span>Browse the <a href="packages.html" class="lnk dk">packages</a> and <a href="destinations.html" class="lnk dk">destinations</a>.</span></li>
+    <li><b>Share your requirements</b><span>Dates, group size and preferences, in the planner or on WhatsApp.</span></li>
+    <li><b>Discuss your preferences</b><span>Routing and accommodation, with Malachite.</span></li>
+    <li><b>Receive a tailored proposal</b><span>With pricing and availability for your dates.</span></li>
     <li><b>Confirm directly</b><span>Arrangements are confirmed with the company, not on this website.</span></li>
   </ol>
   <p class="callout rv"><b>An inquiry is not a reservation.</b> This website does not confirm accommodation, availability, payment or bookings. It helps you send a clear request to the Malachite team.</p>
@@ -67,27 +68,31 @@
 
 <section class="sec plan" id="planner" data-nobar><div class="wrap">
   <div class="rv shead"><h2>Plan your trip</h2><div class="rule"></div><p class="lead muted">A few short steps. You will see a summary of your trip, then choose to send it to our team on WhatsApp or by email. We reply with a proposal for your dates and group.</p></div>
+  <ol class="stp5" id="steps" aria-label="Planner progress">
+    <li data-s="1"><a href="#s1">Journey</a></li><li data-s="2"><a href="#s2">Stay</a></li><li data-s="3"><a href="#s3">Travellers</a></li><li data-s="4"><a href="#s4">Extras</a></li><li data-s="5"><a href="#s5">Your plans</a></li>
+  </ol>
   <div class="pg">
     <form class="form" id="q" novalidate onsubmit="return false">
-      <fieldset><legend><i>1</i>Choose a journey</legend>
+      <fieldset id="s1"><legend><i>1</i>Choose a journey</legend>
         <label for="jr" style="position:absolute;left:-999px">Journey</label>
         <select id="jr"></select>
         <div class="nl" id="nightsBox" hidden style="margin-top:14px"><label for="nights">Nights on the water (1 to 7)</label><div class="stp"><button type="button" data-st="nights" data-d="-1" aria-label="Fewer nights">&minus;</button><input id="nights" type="number" inputmode="numeric" min="1" max="7" value="2"><button type="button" data-st="nights" data-d="1" aria-label="More nights">+</button></div></div>
       </fieldset>
-      <fieldset><legend><i>2</i>Accommodation preference</legend><div class="opts" id="stays"><p class="hint">Choose a journey to see the options that suit it.</p></div></fieldset>
-      <fieldset><legend><i>3</i>Who is travelling</legend>
+      <fieldset id="s2"><legend><i>2</i>Accommodation preference</legend><div class="opts" id="stays"><p class="hint">Choose a journey to see the options that suit it.</p></div></fieldset>
+      <fieldset id="s3"><legend><i>3</i>Who is travelling</legend>
         <div class="two">
           <label for="ad">Adults<div class="stp"><button type="button" data-st="ad" data-d="-1" aria-label="Fewer adults">&minus;</button><input id="ad" type="number" inputmode="numeric" min="1" max="30" value="2"><button type="button" data-st="ad" data-d="1" aria-label="More adults">+</button></div></label>
           <label for="ch">Children under 12<div class="stp"><button type="button" data-st="ch" data-d="-1" aria-label="Fewer children">&minus;</button><input id="ch" type="number" inputmode="numeric" min="0" max="20" value="0"><button type="button" data-st="ch" data-d="1" aria-label="More children">+</button></div></label>
         </div>
         <p class="err" id="err" role="alert"></p>
       </fieldset>
-      <fieldset><legend><i>4</i>Customise your trip</legend>
+      <fieldset id="s4"><legend><i>4</i>Customise your trip</legend>
         <div class="opts" id="extras"><p class="hint">Optional extras appear once you choose a journey.</p></div>
-        <p class="hint" style="margin:20px 0 10px"><b>Voluntary contributions (optional)</b><br>Never required. They are added to your inquiry for the team to discuss with you. Nothing is collected on this website.</p>
-        <div class="opts" id="dons"></div>
+        <details class="dd" id="donBox"><summary>Voluntary contributions (optional)</summary>
+        <p class="hint" style="margin:12px 0 10px">Never required. They are added to your inquiry for the team to discuss with you. Nothing is collected on this website.</p>
+        <div class="opts" id="dons"></div></details>
       </fieldset>
-      <fieldset><legend><i>5</i>Your plans (optional)</legend>
+      <fieldset id="s5"><legend><i>5</i>Your plans (optional)</legend>
         <p class="hint" style="margin-bottom:14px">The more you share, the better the proposal. Everything here is included in your inquiry message.</p>
         <div class="two"><label for="dt">Travel dates or month<input id="dt" type="text" placeholder="For example, July 2027" maxlength="80"></label>
           <label for="bg">Approximate budget<select id="bg"></select></label></div>
@@ -103,13 +108,15 @@
       <div id="sumEmpty"><p id="emptyMsg" style="margin-top:12px"></p><a class="btn wa" data-wa="general" target="_blank" rel="noopener" style="margin-top:20px"><svg class="ic"><use href="#i-wa"/></svg>Prefer to chat first? WhatsApp us</a></div>
       <div id="sumFull" hidden>
         <dl id="sumDl"></dl>
-        <p class="nopr">Where Malachite has published a starting rate it is shown above. Send this summary and the team will reply with a proposal for your dates and group.</p>
+        <p class="nopr">Pricing is on request. Send this summary and the team will reply with a tailored proposal for your dates and group.</p>
         <div class="bk" id="bk" aria-label="Estimate breakdown"></div>
         <div class="tot"><div><span>Indicative per adult</span><p class="big" id="pp"></p></div><div><span>Indicative group total</span><p class="big" id="tot"></p></div></div>
         <p class="disc" id="disc"></p>
         <p class="ref">Quote reference <b id="refTxt"></b></p>
         <a class="btn wa" id="wa" target="_blank" rel="noopener"><svg class="ic"><use href="#i-wa"/></svg>Send inquiry on WhatsApp</a>
         <a class="btn line" id="em"><svg class="ic"><use href="#i-mail"/></svg>Email proposal request</a>
+        <button type="button" class="btn line" id="cp">Copy summary</button><p class="fine" id="cpS" role="status" aria-live="polite"></p>
+        <div class="nxt"><b>What happens next</b><ol><li>You send the prepared message on WhatsApp or by email.</li><li>The Malachite team replies to talk through your plans.</li><li>You receive a tailored proposal with pricing for your dates.</li><li>Nothing is booked or paid until you confirm directly with Malachite.</li></ol></div>
         <p class="fine">These buttons open WhatsApp or your email app with a prepared message. You review and send it yourself. This is an inquiry, not a reservation, and nothing is booked or paid here.</p>
       </div>
     </aside>

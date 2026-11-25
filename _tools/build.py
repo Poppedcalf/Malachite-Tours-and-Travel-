@@ -109,6 +109,8 @@ def render_page(path):
         html = html.replace('</head>', f'<meta http-equiv="refresh" content="0;url={tgt}"><meta name="robots" content="noindex,follow">\n<script>location.replace("{tgt}"+location.search+location.hash)</script>\n</head>', 1)
     if meta.get('abs') == 'yes':   # 404 page: assets resolve from the site root whatever the broken URL looks like
         html = html.replace('<head>', f'<head>\n<base href="{BASE}">', 1).replace('</head>', '<meta name="robots" content="noindex">\n</head>', 1)
+    if meta.get('noindex') == 'yes':   # empty or unpublished content pages stay out of search results until they have real content
+        html = html.replace('</head>', '<meta name="robots" content="noindex,follow">\n</head>', 1)
     left = re.findall(r'\{\{[^}]*\}\}', html)
     if left: raise SystemExit(f'{out}: unresolved placeholders {left[:3]}')
     dest = ROOT / out; dest.parent.mkdir(parents=True, exist_ok=True)
@@ -122,7 +124,7 @@ def refresh_data_js():
     p.write_text(s2, encoding='utf-8')
 
 def write_site_files(built):
-    skip = {'404.html', 'trips.html'}
+    skip = {'404.html', 'trips.html', 'testimonials.html', 'journal.html'}   # testimonials and journal are noindex until real content is published
     urls = [BASE + ('' if o == 'index.html' else o) for o in built if o not in skip]
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + ''.join(f'  <url><loc>{u}</loc></url>\n' for u in urls) + '</urlset>\n'
     (ROOT / 'sitemap.xml').write_text(sm, encoding='utf-8')

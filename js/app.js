@@ -54,14 +54,22 @@ const hasJourneys=!!$('#tabs');let cur='All';
 if(hasJourneys){
  const cats=['All',...new Set(PK.map(p=>p.cat))];
  const tabs=()=>{$('#tabs').innerHTML=cats.map(c=>`<button class="tab" data-c="${c}" aria-pressed="${c===cur}">${c==='All'?'All packages':catName(c)}</button>`).join('')};
- const card=p=>{const pr=priceOf(p.id),cn=catName(p.cat);
-  return `<article class="pc" id="pk-${p.id}"><div class="pc-img${p.img?'':' nophoto'}">${p.img?img(p.img,p.alt,'(min-width:1040px) 33vw, (min-width:700px) 50vw, 100vw'):`<span>${cn}</span>`}<span class="badge">${p.dur}</span></div>`+
-  `<div class="pc-b"><p class="cat">${cn}</p><h3>${p.title}</h3><ol class="route" aria-label="Route">${p.route.map(r=>`<li>${r}</li>`).join('')}</ol><p class="pc-d">${p.desc}</p><ul class="chips">${p.hl.map(h=>`<li>${h}</li>`).join('')}</ul>`+
-  `<div class="pc-price">${pr?`From <b>${money(pr.amt)}</b> ${pr.basis}<small>Published starting rate. Your final price is confirmed by Malachite.</small>`:`<b style="font-size:1.4rem">Price on request</b><small>Send your dates and group size and we will quote.</small>`}</div>`+
-  `<div class="acts"><button class="btn ghost" data-open="${p.id}">Itinerary</button><button class="btn ${pr?'dark':'gold'}" data-plan="${p.id}">${pr?'Plan This Trip':'Request a Quote'}</button></div></div></article>`};
- const rows=()=>{const L=PK.filter(p=>cur==='All'||p.cat===cur);$('#pks').innerHTML=L.map(card).join('');const c=$('#pkcount');if(c){const hh=L.length&&L.every(p=>p.cat==='Kariba Houseboats');c.textContent=cur==='All'?'Showing packages and Lake Kariba houseboat charters.':hh?'Showing Lake Kariba houseboat charters.':'Showing packages in '+catName(cur)+'.'}};
- const show=()=>{tabs();rows()};
- $('#tabs').onclick=e=>{const b=e.target.closest('[data-c]');if(b){cur=b.dataset.c;show()}};
+ const xs=[{id:'all',t:'Any experience'},...EXPERIENCES];let curX='all';
+ const xtabs=()=>{$('#xtabs').innerHTML=xs.map(x=>`<button class="tab" data-x="${x.id}" aria-pressed="${x.id===curX}">${x.t}</button>`).join('')};
+ const card=p=>{const pr=priceOf(p.id),cn=catName(p.cat),ch=p.cat==='Kariba Houseboats';
+  return `<article class="pc${ch?' charter':''}" id="pk-${p.id}"><div class="pc-img${p.img?'':' nophoto'}">${p.img?img(p.img,p.alt,'(min-width:1040px) 33vw, (min-width:700px) 50vw, 100vw'):`<span>${cn}</span>`}<span class="badge">${p.dur}</span></div>`+
+  `<div class="pc-b"><p class="cat">${cn}</p><h3>${p.title}</h3><ol class="route" aria-label="Route">${p.route.map(r=>`<li>${r}</li>`).join('')}</ol><p class="pc-d">${p.desc}</p><ul class="chips" aria-label="Main experiences">${p.hl.map(h=>`<li>${h}</li>`).join('')}</ul>`+
+  `<div class="pc-price">${pr?`From <b>${money(pr.amt)}</b> ${pr.basis}`:`<b>Price on request</b><small>Send your dates and group size and we will quote.</small>`}</div>`+
+  `<div class="acts"><button class="btn ghost" data-open="${p.id}" aria-label="View itinerary: ${p.title}">Itinerary</button><button class="btn gold" data-plan="${p.id}" aria-label="Request a quote: ${p.title}">Request a Quote</button></div></div></article>`};
+ const inX=p=>curX==='all'||(xs.find(x=>x.id===curX).ids||[]).includes(p.id);
+ const rows=()=>{const L=PK.filter(p=>(cur==='All'||p.cat===cur)&&inX(p)),A=L.filter(p=>p.cat!=='Kariba Houseboats'),H=L.filter(p=>p.cat==='Kariba Houseboats');
+  $('#pks').innerHTML=A.map(card).join('');$('#pkhT').hidden=!A.length;$('#pks').hidden=!A.length;
+  $('#pkh').innerHTML=H.map(card).join('');$('#charters').hidden=!H.length;$('#pkNone').hidden=!!L.length;
+  const c=$('#pkcount');if(c){const xt=curX==='all'?'':' for '+xs.find(x=>x.id===curX).t.toLowerCase();c.textContent=!L.length?'':cur==='All'?(H.length?'Showing packages and Lake Kariba houseboat charters':'Showing packages')+xt+'.':(cur==='Kariba Houseboats'?'Showing Lake Kariba houseboat charters':'Showing packages in '+catName(cur))+xt+'.'}};
+ const show=()=>{tabs();xtabs();rows()};
+ $('#tabs').onclick=e=>{const b=e.target.closest('[data-c]');if(b){cur=b.dataset.c;show();$('#tabs [aria-pressed=true]').focus()}};
+ $('#xtabs').onclick=e=>{const b=e.target.closest('[data-x]');if(b){curX=b.dataset.x;show();$('#xtabs [aria-pressed=true]').focus()}};
+ if(xs.some(x=>x.id===params.get('exp')))curX=params.get('exp');
  if(params.get('filter')&&cats.includes(params.get('filter')))cur=params.get('filter');
  show();
  window.__setFilter=c=>{cur=c;show()};
@@ -163,8 +171,10 @@ if(hasPlanner){
    :[pr?'I understand the starting rate on the website is not a confirmed quote. Please send me a proposal with pricing and availability for my dates. Thank you.':'I understand that no price has been quoted on the website. Please send me a proposal with pricing and availability. Thank you.'];
   return head.concat(tail).join('\n');
  }
+ let lastMsg='';
+ function steps(s){const f=n=>$(`#steps [data-s="${n}"]`);const i=s.info;f(1).classList.toggle('done',!!s.p);f(2).classList.toggle('done',!!s.p&&!!s.stay);f(3).classList.toggle('done',!s.err.length);f(4).classList.toggle('done',s.ex.length>0||s.dn.length>0);f(5).classList.toggle('done',!!(i.dates||i.name||i.contact||i.notes||i.budget));if(s.dn.length)$('#donBox').open=true}
  function update(){
-  const s=read();$('#err').textContent=s.err.join(' ');
+  const s=read();steps(s);$('#err').textContent=s.err.join(' ');
   contactLinks();
   const ok=!!s.p&&!s.err.length&&!!s.stay;$('#sumFull').hidden=!ok;$('#sumEmpty').hidden=ok;
   $('#emptyMsg').textContent=s.p?'Check your traveller details to see your summary.':(noPrice?'Choose a journey to see your trip summary.':'Choose a journey to see an illustrative estimate for your group.');
@@ -181,9 +191,10 @@ if(hasPlanner){
   let m,q=null;
   if(noPrice){m=msgOf(s,null)}
   else{q=quote(s);$('#bk').innerHTML=q.lines.map(l=>`<div><span>${l.k}<small>${l.txt}</small></span><b>${money(l.amt)}</b></div>`).join('');$('#pp').textContent=money(q.perAdult);$('#tot').textContent=money(q.total);$('#disc').textContent=CONFIG.disclaimer;m=msgOf(s,q)}
-  $('#wa').href=wa(m);$('#em').href=mail('Itinerary request ['+ref+']: '+s.p.title,m);
+  $('#wa').href=wa(m);$('#em').href=mail('Itinerary request ['+ref+']: '+s.p.title,m);lastMsg=m;
  }
  touch=()=>{if(sent)newRef();update()};
+ $('#cp').onclick=async()=>{const st=$('#cpS');try{if(navigator.clipboard&&window.isSecureContext)await navigator.clipboard.writeText(lastMsg);else{const t=document.createElement('textarea');t.value=lastMsg;t.setAttribute('readonly','');t.style.cssText='position:fixed;left:-999px';document.body.appendChild(t);t.select();const ok=document.execCommand('copy');t.remove();if(!ok)throw 0}st.textContent='Summary copied. Paste it into WhatsApp, an email or a message to Malachite.';sent=true}catch(_){st.textContent='Copying is not available here. Please use the WhatsApp or email buttons instead.'}};
  function clamp(el){const r=CONFIG.limits[FIELD[el.id]];let v=Math.round(Number(el.value));if(!Number.isFinite(v)||el.value.trim()==='')v=r[0];v=Math.min(r[1],Math.max(r[0],v));const ch=String(v)!==el.value.trim();el.value=v;return ch}
  const form=$('#q');
  form.addEventListener('input',touch);
