@@ -89,3 +89,28 @@ Eighteen photographs were supplied. Fourteen are new on the site, two duplicate 
 
 Every new photograph was auto-rotated, resized to 640, 1200 and 1920 px widths where the source allowed (narrower sources keep a single file), and compressed. Originals were not modified.
 
+
+## Supplied in Round 8 (November 2026)
+
+Eighteen more photographs were supplied. All are used. Every one was auto-rotated and resized to 640 and 1200 px (and 1920 px when the source allowed), compressed, and registered for `srcset`. Originals were not modified. The supplied files were named durban.jpg, durban_2.jpg, durban_3.jpg, elephant.jpg, elephants.jpg, giraffe.jpg, gorilla_tracking.jpg, houseboat.jpg, house-boats-img4.jpg, Lake-Kariba-Cruiser.jpg, lions.jpg, masai_mara.jpg, tanzania.jpg, tanzania_2.jpg, uganda-lake_bunyonyi.jpg, victoria_falls-zimbabwe.jpg, zebras-wldebeest-hotairballoon.jpg and capetown.jpg; the slugs below were chosen from what each picture shows. Locations are what the file names suggest; **none is confirmed**, so captions describe only what is visible.
+
+| Slug (in `images/`) | What it shows | Largest file kept | Notes |
+|---|---|---|---|
+| falls-gorge-bridge | Footbridge beside waterfalls and a gorge | 1200x1800 | Portrait. Location taken from the file name; CONFIRM |
+| cape-town-peninsula-aerial | Aerial of Cape Town, Table Mountain, stadium and coast | 1920x1280 | Landmarks visible |
+| durban-skyline-dusk | Durban skyline at dusk | 1920x1080 | Location from file name; CONFIRM |
+| durban-palms-stadium | Palms, promenade and stadium | 1920x1280 | CONFIRM |
+| durban-pool-sunset | Pool at sunset; hotel signage visible | 1920x1440 | Third-party signage |
+| zanzibar-beach-jetty | Beach and jetty | 1920x1439 | Zanzibar from the package; CONFIRM |
+| zanzibar-beach-boats | White-sand beach with small boats | 1200x1600 | Portrait. CONFIRM |
+| balloon-zebras-plains | Zebras and wildebeest below a hot-air balloon | 1920x1536 | Shown with the Tanzania and Kenya content; CONFIRM which |
+| maasai-jumping-dance | Maasai men jumping in a line | 1920x1246 | Consent for identifiable people |
+| gorilla-young-leaves | Gorilla among green leaves | 1920x1280 | |
+| elephant-woodland-light | A single elephant in dry grass | 1920x1280 | Neutral caption; CONFIRM location |
+| elephants-river-shore | Elephants on a sandy river shore | 1920x1280 | Used with Botswana and the Falls region; CONFIRM |
+| lions-golden-grass | Lioness and cubs in golden grass | 1920x1509 | Neutral caption; CONFIRM |
+| giraffe-acacia | Giraffe beside a tall tree | 1200x1800 | Portrait; neutral caption; CONFIRM |
+| houseboat-sunset-stern | Houseboat stern at sunset | 1200x1200 | Square source |
+| kariba-sunset-cruiser | Cruiser at sunset | 650x400 | Low resolution: shown small only; flags on the boat |
+| kariba-day-cruiser | Day cruiser on the lake | 700x400 | Low resolution: shown small only; the hull shows another operator's name |
+| delta-channels-aerial | Winding river channels through wetland (not a lake) | 1920x1195 | Does not match its file name. Used only as the Plan Your Trip hero, location-neutral |

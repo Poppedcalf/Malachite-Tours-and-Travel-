@@ -1,5 +1,22 @@
 # Information needed from Malachite
 
+## R8. Redesign round (November 2026): please confirm
+
+Full list with context: `docs/ROUND8-REDESIGN.md`, "For approval".
+
+| # | Item | What was found | What to confirm |
+|---|---|---|---|
+| 1 | Houseboat spotlight on the home page | New in this round, between Packages and Team | Keep it, or remove `#houseboats` from `_src/pages/index.html` |
+| 2 | `uganda-lake_bunyonyi.jpg` | Shows river channels through wetland, not a lake | Where it was taken. It is used only as the Plan Your Trip hero, with no place named |
+| 3 | Photograph locations | Lions, giraffe, two elephant photographs, Botswana, Zanzibar, Kenya and Durban placements follow file names and packages | The place for each (captions are neutral until then) |
+| 4 | Third-party branding in photographs | Day-cruiser hull name, flags on the boats, hotel signage in a Durban photograph | Rights, or replacement photographs |
+| 5 | Low-resolution cruiser photographs | About 650 px wide, shown small | Larger originals |
+| 6 | Consent | Identifiable people in the community and dance photographs | Written consent or removal |
+| 7 | "Mala" or "Malawi" | The site uses "The Smiling Children of Mala" | The correct name of the programme and foundation wording |
+| 8 | Planner budget bands | Visitor budget choices that show dollar amounts | Keep them, or remove all dollar amounts from the planner |
+| 9 | Page titles | Destinations and Packages titles exceed 60 characters | Shorter wording if wanted |
+
+---
 ## R. Refinement round (November 2026): questions for Mr Shoniwa
 
 This round re-wrote the site so that Malachite is presented as a Kariba-based company offering packages across Zimbabwe, Southern Africa and East Africa. Only the brochure, the official website and the company notes already supplied were used. Where they were silent, the site now says less. Please confirm the items below, most important first.

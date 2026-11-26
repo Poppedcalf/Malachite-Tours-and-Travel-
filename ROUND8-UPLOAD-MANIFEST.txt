@@ -1,0 +1,93 @@
+ROUND 8 REDESIGN: files that differ from the current `Multi-page` branch (commit 5691b12)
+Nothing has been pushed, merged or deployed.
+
+Upload ALL files below to `Multi-page` in one go (HTML, CSS, JavaScript, data and images must travel together). Do not merge `main`. Files not listed are identical on the branch.
+
+NEW (47):
+  docs/ROUND8-REDESIGN.md
+  images/balloon-zebras-plains-1200.jpg
+  images/balloon-zebras-plains-1920.jpg
+  images/balloon-zebras-plains-640.jpg
+  images/cape-town-peninsula-aerial-1200.jpg
+  images/cape-town-peninsula-aerial-1920.jpg
+  images/cape-town-peninsula-aerial-640.jpg
+  images/delta-channels-aerial-1200.jpg
+  images/delta-channels-aerial-1920.jpg
+  images/delta-channels-aerial-640.jpg
+  images/durban-palms-stadium-1200.jpg
+  images/durban-palms-stadium-1920.jpg
+  images/durban-palms-stadium-640.jpg
+  images/durban-pool-sunset-1200.jpg
+  images/durban-pool-sunset-1920.jpg
+  images/durban-pool-sunset-640.jpg
+  images/durban-skyline-dusk-1200.jpg
+  images/durban-skyline-dusk-1920.jpg
+  images/durban-skyline-dusk-640.jpg
+  images/elephant-woodland-light-1200.jpg
+  images/elephant-woodland-light-1920.jpg
+  images/elephant-woodland-light-640.jpg
+  images/elephants-river-shore-1200.jpg
+  images/elephants-river-shore-1920.jpg
+  images/elephants-river-shore-640.jpg
+  images/falls-gorge-bridge-1200.jpg
+  images/falls-gorge-bridge-640.jpg
+  images/giraffe-acacia-1200.jpg
+  images/giraffe-acacia-640.jpg
+  images/gorilla-young-leaves-1200.jpg
+  images/gorilla-young-leaves-1920.jpg
+  images/gorilla-young-leaves-640.jpg
+  images/houseboat-sunset-stern-1200.jpg
+  images/houseboat-sunset-stern-640.jpg
+  images/kariba-day-cruiser-640.jpg
+  images/kariba-sunset-cruiser-640.jpg
+  images/lions-golden-grass-1200.jpg
+  images/lions-golden-grass-1920.jpg
+  images/lions-golden-grass-640.jpg
+  images/maasai-jumping-dance-1200.jpg
+  images/maasai-jumping-dance-1920.jpg
+  images/maasai-jumping-dance-640.jpg
+  images/zanzibar-beach-boats-1200.jpg
+  images/zanzibar-beach-boats-640.jpg
+  images/zanzibar-beach-jetty-1200.jpg
+  images/zanzibar-beach-jetty-1920.jpg
+  images/zanzibar-beach-jetty-640.jpg
+
+CHANGED (34):
+  404.html
+  README.md
+  _src/pages/404.html
+  _src/pages/about.html
+  _src/pages/credentials.html
+  _src/pages/destinations.html
+  _src/pages/index.html
+  _src/pages/journal.html
+  _src/pages/packages.html
+  _src/pages/plan.html
+  _src/pages/social-responsibility.html
+  _src/pages/testimonials.html
+  _src/partials/footer.html
+  _src/partials/head.html
+  _templates/article-layout-preview.html
+  _templates/article.html
+  _tools/build.py
+  about.html
+  credentials.html
+  css/style.css
+  destinations.html
+  docs/ASSET-INVENTORY.md
+  docs/JOURNAL-GUIDE.md
+  docs/MISSING-INFO.md
+  docs/UPGRADE-NOTES.md
+  index.html
+  journal.html
+  js/app.js
+  js/data.js
+  packages.html
+  plan.html
+  social-responsibility.html
+  testimonials.html
+  trips.html
+
+ON THE BRANCH BUT NOT IN THIS PROJECT (leave them as they are): CHANGED-FILES.txt, _backup/phase2/_src/partials/A, images/malachite-favicon-180.png, images/malachite-favicon-32.png, images/malachite-favicon.png
+
+videos/hero.mp4 is unchanged and is not included in either ZIP.

@@ -26,4 +26,6 @@ You need Python 3 (free) to run `python3 _tools/build.py`. Without it, you can s
    Categories used on the page: Destination guides, Travel inspiration, Travel tips, Company updates.
 6. Run `python3 _tools/build.py`, then upload the new article, `journal/index.json` and any new photos.
 
-`_templates/article-layout-preview.html` shows the article layout with placeholder text. Open it on your computer to see the design. It is not published.
+When `journal/index.json` holds articles, the Travel Journal page lists them, the "coming soon" panel disappears, and filter buttons appear for the categories in use. Each article page ends with a "Keep reading" row linking to up to three other articles (hidden while there are none). Before the first article goes live, remove `noindex: yes` from `_src/pages/journal.html` and the `journal.html` entry in `skip` in `_tools/build.py`, so the page is indexed and listed in `sitemap.xml`.
+
+`_templates/article-layout-preview.html` shows the article layout with placeholder text. Open it on your computer to see the design (it is rebuilt with the rest of the site, so it always matches the current header, footer and styles). It is marked `noindex`.
