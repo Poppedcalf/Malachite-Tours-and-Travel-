@@ -46,16 +46,6 @@ function contactLinks(){
  $$('[data-ask]').forEach(a=>{const t=TAILOR.find(x=>x.id===a.dataset.ask);if(t)a.href=a.dataset.ch==='wa'?wa(askMsg(t)):mail(`Inquiry [${ref}]: ${t.t}`,askMsg(t))});
 }
 contactLinks();
-/* package and destination aware WhatsApp links: data-wapk="<package id>" and data-wadest="<destination or topic>" */
-const pkMsg=p=>`Hello Malachite Travel & Tours, I found you on your website [Ref: ${ref}] and would like a quote for ${p.title} (${p.dur}).\n\nPreferred dates or month:\nGroup size:\nInterests or special requests:\n\nPlease let me know what is possible. I understand that no rate is confirmed until you send me a proposal.`;
-const destMsg=d=>`Hello Malachite Travel & Tours, I found you on your website [Ref: ${ref}] and would like help planning a trip to ${d}.\n\nPreferred dates or month:\nGroup size:\nInterests or special requests:\n\nPlease let me know what is possible.`;
-function pkLinks(){
- $$('[data-wapk]').forEach(a=>{const p=PK.find(x=>x.id===a.dataset.wapk);if(p)a.href=wa(pkMsg(p))});
- $$('[data-wadest]').forEach(a=>a.href=wa(destMsg(a.dataset.wadest)));
-}
-pkLinks();
-/* a second enquiry after one was sent gets a fresh reference before the link opens */
-document.addEventListener('click',e=>{if(sent&&e.target.closest('[data-wapk],[data-wadest],[data-wa]')){newRef();contactLinks();pkLinks()}},true);
 
 /* ---------- packages page: filterable card grid. Published prices (PRICE in data.js) are shown per adult; everything else is "Request a Quote" ---------- */
 const priceOf=id=>{const pr=typeof PRICE!=='undefined'&&PRICE[id];return pr&&pr.status==='published'&&CONFIG.showPublishedPrices?pr:null};
@@ -67,26 +57,22 @@ if(hasJourneys){
  const xs=[{id:'all',t:'Any experience'},...EXPERIENCES];let curX='all';
  const xtabs=()=>{$('#xtabs').innerHTML=xs.map(x=>`<button class="tab" data-x="${x.id}" aria-pressed="${x.id===curX}">${x.t}</button>`).join('')};
  const card=p=>{const pr=priceOf(p.id),cn=catName(p.cat),ch=p.cat==='Kariba Houseboats';
-  const price=`<div class="pc-price">${pr?`From <b>${money(pr.amt)}</b> ${pr.basis}`:`<b>Price on request</b><small>Send your dates and group size and we will quote.</small>`}</div>`;
-  const acts=`<div class="acts"><button class="btn ghost sm" data-open="${p.id}" aria-label="View itinerary: ${p.title}">Itinerary</button><button class="btn gold sm" data-plan="${p.id}" aria-label="Request a quote: ${p.title}">Request a Quote</button><a class="btn wa2 sm" data-wapk="${p.id}" href="https://wa.me/${CONFIG.whatsapp}" target="_blank" rel="noopener" aria-label="Ask about ${p.title} on WhatsApp (opens in a new tab)"><svg class="ic"><use href="#i-wa"/></svg>WhatsApp</a></div>`;
-  if(ch)return `<article class="pc charter" id="pk-${p.id}"><div class="chm"><figure class="m1">${img('houseboat-sunset-stern','A double-deck houseboat glowing in the light of sunset on the water','(min-width:900px) 38vw, 100vw')}<span class="pcap">A houseboat at sunset</span></figure><figure class="m2">${img('kariba-sunset-cruiser','A cruiser silhouetted against an orange sunset on open water','(min-width:900px) 20vw, 50vw')}</figure><figure class="m3">${img('kariba-day-cruiser','A two-deck day cruiser on open blue water','(min-width:900px) 20vw, 50vw')}</figure></div>`+
-   `<div class="chb"><p class="cat">${cn} | ${p.dur}</p><h3>${p.title}</h3><p class="pc-d">${p.desc}</p><p class="chin">${p.intro}</p><ol class="chs">${p.stops.map((s,n)=>`<li><i>${String(n+1).padStart(2,'0')}</i><div><b>${s[0]}</b><span>${s[1]}</span></div></li>`).join('')}</ol>${price}${acts}</div></article>`;
-  return `<article class="pc" id="pk-${p.id}"><div class="pc-img${p.img?'':' nophoto'}">${p.img?img(p.img,p.alt,'(min-width:1040px) 33vw, (min-width:700px) 50vw, 100vw'):`<span>${cn}</span>`}<span class="badge">${p.dur}</span></div>`+
-  `<div class="pc-b"><p class="cat">${cn}</p><h3>${p.title}</h3><ol class="route" aria-label="Route">${p.route.map(r=>`<li>${r}</li>`).join('')}</ol><p class="pc-d">${p.desc}</p><ul class="chips" aria-label="Main experiences">${p.hl.map(h=>`<li>${h}</li>`).join('')}</ul>${price}${acts}</div></article>`};
+  return `<article class="pc${ch?' charter':''}" id="pk-${p.id}"><div class="pc-img${p.img?'':' nophoto'}">${p.img?img(p.img,p.alt,'(min-width:1040px) 33vw, (min-width:700px) 50vw, 100vw'):`<span>${cn}</span>`}<span class="badge">${p.dur}</span></div>`+
+  `<div class="pc-b"><p class="cat">${cn}</p><h3>${p.title}</h3><ol class="route" aria-label="Route">${p.route.map(r=>`<li>${r}</li>`).join('')}</ol><p class="pc-d">${p.desc}</p><ul class="chips" aria-label="Main experiences">${p.hl.map(h=>`<li>${h}</li>`).join('')}</ul>`+
+  `<div class="pc-price">${pr?`From <b>${money(pr.amt)}</b> ${pr.basis}`:`<b>Price on request</b><small>Send your dates and group size and we will quote.</small>`}</div>`+
+  `<div class="acts"><button class="btn ghost" data-open="${p.id}" aria-label="View itinerary: ${p.title}">Itinerary</button><button class="btn gold" data-plan="${p.id}" aria-label="Request a quote: ${p.title}">Request a Quote</button></div></div></article>`};
  const inX=p=>curX==='all'||(xs.find(x=>x.id===curX).ids||[]).includes(p.id);
  const rows=()=>{const L=PK.filter(p=>(cur==='All'||p.cat===cur)&&inX(p)),A=L.filter(p=>p.cat!=='Kariba Houseboats'),H=L.filter(p=>p.cat==='Kariba Houseboats');
-  {const n=A.length,m=n%3,F=n<2||m===0?[]:m===2?[0]:n<4?[]:n>=7?[0,5]:[0,2];/* feature cards chosen so the three-column grid always ends on a full row */
-  $('#pks').innerHTML=A.map((p,i)=>card(p).replace('<article class="pc"',F.includes(i)?'<article class="pc feat"':'<article class="pc"')).join('')}$('#pkhT').hidden=!A.length;$('#pks').hidden=!A.length;
+  $('#pks').innerHTML=A.map(card).join('');$('#pkhT').hidden=!A.length;$('#pks').hidden=!A.length;
   $('#pkh').innerHTML=H.map(card).join('');$('#charters').hidden=!H.length;$('#pkNone').hidden=!!L.length;
   const c=$('#pkcount');if(c){const xt=curX==='all'?'':' for '+xs.find(x=>x.id===curX).t.toLowerCase();c.textContent=!L.length?'':cur==='All'?(H.length?'Showing packages and Lake Kariba houseboat charters':'Showing packages')+xt+'.':(cur==='Kariba Houseboats'?'Showing Lake Kariba houseboat charters':'Showing packages in '+catName(cur))+xt+'.'}};
- const show=()=>{tabs();xtabs();rows();pkLinks()};
+ const show=()=>{tabs();xtabs();rows()};
  $('#tabs').onclick=e=>{const b=e.target.closest('[data-c]');if(b){cur=b.dataset.c;show();$('#tabs [aria-pressed=true]').focus()}};
  $('#xtabs').onclick=e=>{const b=e.target.closest('[data-x]');if(b){curX=b.dataset.x;show();$('#xtabs [aria-pressed=true]').focus()}};
  if(xs.some(x=>x.id===params.get('exp')))curX=params.get('exp');
  if(params.get('filter')&&cats.includes(params.get('filter')))cur=params.get('filter');
  show();
  window.__setFilter=c=>{cur=c;show()};
- if(location.hash==='#charters'){const ch=$('#charters');if(ch&&!ch.hidden)setTimeout(()=>ch.scrollIntoView(),80)}
  const hid=location.hash.match(/^#pk-([a-z]+)$/);   // deep link to one package, e.g. packages.html#pk-lz
  if(hid){const el=document.getElementById('pk-'+hid[1]);if(el){el.classList.add('hl');setTimeout(()=>el.scrollIntoView({block:'center'}),60)}}
 }
@@ -106,34 +92,17 @@ if(md){
 }
 
 /* ---------- galleries + lightbox (one dialog, any number of galleries) ---------- */
-const lb=$('#lb');let LBL=[],li=0;
-const galList=k=>(GAL[k]||[]).map(g=>({src:phSrc(g[0],1200),alt:g[1],cap:g[2]}));
-const bigSrc=im=>{const ss=(im.getAttribute('srcset')||'').split(',').map(x=>x.trim().split(/\s+/)).filter(x=>x[1]).map(x=>[x[0],parseInt(x[1])]).sort((p,q)=>p[1]-q[1]);const pick=ss.find(x=>x[1]>=1400)||ss[ss.length-1];return pick?pick[0]:im.currentSrc||im.src};
+const lb=$('#lb');let lbKey='home',li=0;
 $$('[data-gallery]').forEach(el=>{const k=el.dataset.gallery,list=GAL[k]||[];
  el.innerHTML=list.map((g,i)=>{const p=PH[g[0]]||{};
   return `<button type="button" data-lb="${i}" aria-label="Enlarge photo: ${g[2]}"><img src="${phSrc(g[0],640)}" ${phSet(g[0])?`srcset="${phSet(g[0])}" sizes="(min-width:900px) 33vw, 50vw"`:''} alt="${g[1]}" ${p.r?`width="${p.r[0]}" height="${p.r[1]}"`:''} loading="lazy" decoding="async" onerror="imgFail(this)"><span>${g[2]}</span></button>`}).join('')});
-/* photographs inside content (figures marked data-zoom) get an enlarge button and open in the same viewer; figures in one section browse together */
-$$('figure[data-zoom]').forEach(f=>{const im=f.querySelector('img');if(!im)return;const b=document.createElement('button');b.type='button';b.className='zbtn';b.setAttribute('aria-label','Enlarge photo: '+(im.alt||''));b.innerHTML='<svg class="ic" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>';f.appendChild(b)});
 if(lb){
- const showLb=i=>{li=(i+LBL.length)%LBL.length;const g=LBL[li];$('#lbI').style.visibility='';$('#lbI').src=g.src;$('#lbI').alt=g.alt;$('#lbC').textContent=LBL.length>1?`${g.cap} (${li+1} of ${LBL.length})`:g.cap;lb.classList.toggle('single',LBL.length<2)};
- document.addEventListener('click',e=>{
-  const b=e.target.closest('[data-lb]');
-  if(b){const box=b.closest('[data-gallery]');if(box){LBL=galList(box.dataset.gallery);showLb(+b.dataset.lb);lb.showModal();return}}
-  const z=e.target.closest('figure[data-zoom] .zbtn, figure[data-zoom] img');
-  if(z){const f=z.closest('figure[data-zoom]'),scope=f.closest('section')||document,figs=[...scope.querySelectorAll('figure[data-zoom]')];
-   LBL=figs.map(x=>{const im=x.querySelector('img'),c=x.querySelector('figcaption,.pcap');return{src:bigSrc(im),alt:im.alt,cap:(c?c.textContent.trim():'')||im.alt}});showLb(figs.indexOf(f));lb.showModal()}
- });
+ const showLb=i=>{const L=GAL[lbKey];li=(i+L.length)%L.length;const g=L[li];$('#lbI').style.visibility='';$('#lbI').src=phSrc(g[0],1200);$('#lbI').alt=g[1];$('#lbC').textContent=`${g[2]} (${li+1} of ${L.length})`};
+ document.addEventListener('click',e=>{const b=e.target.closest('[data-lb]');if(!b)return;const box=b.closest('[data-gallery]');if(!box)return;lbKey=box.dataset.gallery;showLb(+b.dataset.lb);lb.showModal()});
  $('#lbP').onclick=()=>showLb(li-1);$('#lbN').onclick=()=>showLb(li+1);
  lb.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')showLb(li-1);if(e.key==='ArrowRight')showLb(li+1)});
  $('#lbX').onclick=()=>lb.close();lb.addEventListener('click',e=>{if(e.target===lb)lb.close()});
 }
-
-/* ---------- homepage: destination explorer and experience panels (hover or focus on wide screens with a mouse) ---------- */
-[['#dx','(min-width:1000px) and (hover:hover)'],['#xpn','(min-width:900px) and (hover:hover)']].forEach(([sel,mq])=>{
- const box=$(sel);if(!box)return;const items=[...box.children],m=matchMedia(mq);
- const on=el=>items.forEach(x=>x.classList.toggle('on',x===el));
- items.forEach(el=>{el.addEventListener('mouseenter',()=>{if(m.matches)on(el)});el.addEventListener('focusin',()=>{if(m.matches)on(el)})});
-});
 
 /* ---------- tailor-made list + FAQ ---------- */
 if($('#tailorList')){
@@ -277,29 +246,14 @@ if('IntersectionObserver'in window){
 }else{$$('.rv').forEach(x=>x.classList.add('in'))}
 
 /* ---------- travel journal: lists articles from journal/index.json (empty until articles are added) ---------- */
-const jg=$('#jgrid'),jm=$('#artMore');
-if(jg||jm){
+const jg=$('#jgrid');
+if(jg){
  fetch('journal/index.json',{cache:'no-cache'}).then(r=>r.ok?r.json():[]).catch(()=>[]).then(list=>{
   list=(Array.isArray(list)?list:[]).filter(a=>a&&a.title&&a.url);
-  const cardH=a=>`<a class="jcard rv in" href="${a.url}" data-cat="${(a.category||'').replace(/"/g,'&quot;')}"><div class="im">${a.image?img(a.image,a.alt||'','(min-width:800px) 33vw, 100vw'):''}</div><span class="cat">${a.category||''}</span><h3>${a.title}</h3><p>${a.summary||''}</p></a>`;
-  if(jm){ /* article page: "keep reading" links to the other articles */
-   const here=location.pathname.split('/').pop(),more=list.filter(a=>a.url.split('/').pop()!==here).slice(0,3);
-   if(more.length){jm.firstElementChild.innerHTML='<h2>Keep reading</h2><div class="jgrid">'+more.map(cardH).join('')+'</div>';jm.hidden=false}
-   return}
-  const empty=$('#jempty'),fl=$('#jfilter');
+  const empty=$('#jempty'),cats=$('#jcats');
   if(!list.length){if(empty)empty.hidden=false;return}
   if(empty)empty.hidden=true;
-  jg.innerHTML=list.map(cardH).join('');
-  const cats=[...new Set(list.map(a=>a.category).filter(Boolean))];
-  if(fl&&cats.length>1){
-   fl.innerHTML=['All',...cats].map((c,i)=>`<button type="button" class="tab" data-c="${i?c.replace(/"/g,'&quot;'):''}" aria-pressed="${i?'false':'true'}">${c}</button>`).join('');
-   fl.hidden=false;
-   fl.addEventListener('click',e=>{
-    const b=e.target.closest('button');if(!b)return;
-    [...fl.querySelectorAll('button')].forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));
-    [...jg.querySelectorAll('.jcard')].forEach(c=>c.hidden=!!b.dataset.c&&c.dataset.cat!==b.dataset.c);
-   });
-  }
+  jg.innerHTML=list.map(a=>`<a class="jcard rv in" href="${a.url}"><div class="im">${a.image?img(a.image,a.alt||'', '(min-width:800px) 33vw, 100vw'):''}</div><span class="cat">${a.category||''}</span><h3>${a.title}</h3><p>${a.summary||''}</p></a>`).join('');
  });
 }
 

@@ -83,16 +83,6 @@ def parse_page(text):
 JSONLD_AGENCY = '''<script type="application/ld+json">{"@context":"https://schema.org","@type":"TravelAgency","name":"Malachite Travel & Tours","url":"%s","telephone":"+263775515400","email":"malachitetours@gmail.com","address":{"@type":"PostalAddress","streetAddress":"Stand 643, ZV Mall","addressLocality":"Kariba","addressCountry":"ZW"},"sameAs":["https://www.facebook.com/malachitetours/"]}</script>
 ''' % BASE
 
-def breadcrumb_ld(meta, out):
-    """BreadcrumbList (Home > this page) for indexable inner pages; the name is the first part of the page title."""
-    if out in ('index.html', '404.html') or meta.get('noindex') == 'yes' or meta.get('redirect') or meta.get('depth') == '1': return ''
-    import html as _h
-    name = _h.unescape(meta['title'].split(' | ')[0].strip())
-    data = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": BASE},
-        {"@type": "ListItem", "position": 2, "name": name, "item": BASE + out}]}
-    return '<script type="application/ld+json">' + json.dumps(data, ensure_ascii=False, separators=(',', ':')) + '</script>\n'
-
 def render_page(path):
     meta, body = parse_page(path.read_text(encoding='utf-8'))
     key = meta['nav']; out = meta['out']
@@ -104,14 +94,14 @@ def render_page(path):
             .replace('{{canonical}}', BASE + ('' if out == 'index.html' else out)).replace('{{base}}', BASE)
             .replace('{{preload}}', preload).replace('{{bodyclass}}', meta.get('body', ''))
             .replace('{{ogimage}}', meta.get('og', 'hero-victoria-falls.jpg'))
-            .replace('{{jsonld}}', (JSONLD_AGENCY if meta.get('jsonld') == 'agency' else '') + breadcrumb_ld(meta, out)))
+            .replace('{{jsonld}}', JSONLD_AGENCY if meta.get('jsonld') == 'agency' else ''))
     hdr = partial('header').replace('{{nav}}', '@@NAV@@').replace('{{plancur}}', ' aria-current="page"' if key == 'plan' else '')
     # first {{nav}} is desktop, second is mobile
     hdr = hdr.replace('@@NAV@@', nav_html(key, False), 1).replace('@@NAV@@', nav_html(key, True), 1)
     foot = partial('footer').replace('{{itinerary}}', partial('itinerary') if meta.get('itinerary') == 'yes' else '')
     html = head + hdr + body + foot
     if meta.get('depth') == '1':
-        html = html.replace('<head>', '<head>\n<base href="../">', 1).replace('href="#', f'href="{out}#')
+        html = html.replace('<head>', '<head>\n<base href="../">', 1).replace('href="#', f'href="{BASE}{out}#')
         html = html.replace('<link rel="icon"', '<meta name="robots" content="index,follow">\n<link rel="icon"', 1)
     if meta.get('redirect'):
         tgt = meta['redirect']
@@ -140,23 +130,9 @@ def write_site_files(built):
     (ROOT / 'sitemap.xml').write_text(sm, encoding='utf-8')
     (ROOT / 'robots.txt').write_text(f'User-agent: *\nAllow: /\n\nSitemap: {BASE}sitemap.xml\n', encoding='utf-8')
 
-def build_article_preview():
-    """_templates/article-layout-preview.html: the article template rendered with the current header, footer and styles (noindex, not listed in the sitemap)."""
-    import tempfile
-    t = ROOT / '_templates' / 'article.html'
-    if not t.exists(): return None
-    txt = t.read_text(encoding='utf-8').replace('out: journal/REPLACE-WITH-ARTICLE-SLUG.html', 'out: _templates/article-layout-preview.html')
-    with tempfile.TemporaryDirectory() as d:
-        tmp = Path(d) / 'preview.html'; tmp.write_text(txt, encoding='utf-8')
-        out = render_page(tmp)
-    dest = ROOT / out
-    dest.write_text(dest.read_text(encoding='utf-8').replace('<meta name="robots" content="index,follow">', '<meta name="robots" content="noindex,nofollow">'), encoding='utf-8')
-    return out
-
 if __name__ == '__main__':
     pages = sorted((SRC / 'pages').glob('*.html'))
     built = [render_page(p) for p in pages]
-    build_article_preview()
     refresh_data_js()
     write_site_files(built)
     print('Built:', ', '.join(built))
