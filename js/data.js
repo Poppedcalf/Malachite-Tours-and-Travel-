@@ -65,9 +65,13 @@ const CONFIG={
      trip    optional, for example "Lake Kariba houseboat"
      url     optional link to the review itself
    Video reviews: add "video":"videos/reviews/FILE.mp4","poster":"images/FILE.jpg" (a short, compressed MP4)
-   or "youtube":"VIDEO_ID" (the part after v= in the YouTube address). A video entry may have a short "q" or none.
+   or "youtube":"VIDEO_ID" (the part after v= or youtu.be/ in the YouTube address). A video entry may have a short "q" or none,
+   and "src":"video" if it is not from Google or Tripadvisor. Add "home":false to keep an entry off the homepage (Testimonials page only).
    After editing, run: python3 _tools/build.py */
 const TESTIMONIALS=[
+{"youtube":"tmhYQlIthV8","src":"video","name":"","url":"https://www.youtube.com/watch?v=tmhYQlIthV8","home":false},
+{"youtube":"8T-c5yGx0Co","src":"video","name":"","url":"https://www.youtube.com/watch?v=8T-c5yGx0Co","home":false},
+{"youtube":"vyBVQXFTorY","src":"video","name":"","url":"https://www.youtube.com/watch?v=vyBVQXFTorY","home":false}
 ];
 /* REVIEW_LINKS: Malachite's own review pages. Empty links are simply not shown.
    google       the Google Maps listing (Share > Copy link on the business profile)

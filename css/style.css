@@ -812,3 +812,6 @@ a.tsrc:hover{background:rgba(0,75,73,.16)}
 .tm3,.tm{margin-top:40px}
 .rvw .tgrid{margin-top:32px}
 .fin .cg2{margin-top:36px;padding-top:28px}
+.tsrc.video::before{content:"";display:inline-block;width:0;height:0;margin-right:7px;vertical-align:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #c00}
+.tvc{gap:10px}
+#testimonials .tgrid{margin-top:28px}

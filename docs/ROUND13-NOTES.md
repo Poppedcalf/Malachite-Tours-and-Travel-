@@ -10,3 +10,8 @@
 - Credentials: "The Zambezi Valley is both our workplace and our neighbourhood" replaced by "Conservation and community organisations we are proud to support."
 - Kariba still appears where it is the place itself: Lake Kariba, houseboat charters, the Kariba Dam, package routes and the Smiling Children of Mala programme in rural Kariba.
 - If Harare and Victoria Falls street addresses are supplied, they can be added on Plan Your Trip and About next to the Kariba one.
+
+## Video reviews (Testimonials page)
+- Three YouTube video reviews added (tmhYQlIthV8, 8T-c5yGx0Co, vyBVQXFTorY). They play on the page when pressed (youtube-nocookie, nothing loads from YouTube until then) and each links to the video on YouTube.
+- Shown on the Testimonials page only ("home":false), labelled "Guest video review" until the guest's name and trip are supplied.
+- With content on it, the Testimonials page is now open to search engines and listed in the sitemap.

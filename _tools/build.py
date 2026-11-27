@@ -162,7 +162,7 @@ def _esc(t):
     import html as _h
     return _h.escape(str(t), quote=True)
 
-SRC_NAME = {'google': 'Google review', 'tripadvisor': 'Tripadvisor review', 'guest': 'Guest message'}
+SRC_NAME = {'google': 'Google review', 'tripadvisor': 'Tripadvisor review', 'guest': 'Guest message', 'video': 'Watch on YouTube'}
 
 def review_card(r, links):
     src = r.get('src', 'guest'); rating = r.get('rating')
@@ -172,17 +172,18 @@ def review_card(r, links):
     vid = ''
     if r.get('youtube'):
         y = _esc(r['youtube'])
-        vid = (f'<div class="tvid"><button type="button" class="yt" data-yt="{y}" aria-label="Play video review from {_esc(r.get("name", "a guest"))}">'
-               f'<img src="https://i.ytimg.com/vi/{y}/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" decoding="async"><span class="ytp" aria-hidden="true"></span></button></div>')
+        vid = (f'<div class="tvid"><button type="button" class="yt" data-yt="{y}" aria-label="Play video review from {_esc(r.get("name") or "a guest")}">'
+               f'<img src="https://i.ytimg.com/vi/{y}/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" decoding="async" onerror="this.remove()"><span class="ytp" aria-hidden="true"></span></button></div>')
     elif r.get('video'):
         pst = f' poster="{_esc(r["poster"])}"' if r.get('poster') else ''
-        vid = f'<div class="tvid"><video controls preload="none" playsinline{pst} src="{_esc(r["video"])}" aria-label="Video review from {_esc(r.get("name", "a guest"))}"></video></div>'
+        vid = f'<div class="tvid"><video controls preload="none" playsinline{pst} src="{_esc(r["video"])}" aria-label="Video review from {_esc(r.get("name") or "a guest")}"></video></div>'
     quote = f'<blockquote><p>{_esc(r["q"])}</p></blockquote>' if r.get('q') else ''
     meta = ' &middot; '.join(_esc(x) for x in (r.get('trip'), r.get('date')) if x)
     link = r.get('url') or links.get(src) or ''
     label = SRC_NAME.get(src, 'Guest message')
     tag = f'<a class="tsrc {src}" href="{_esc(link)}" target="_blank" rel="noopener">{label}</a>' if link else f'<span class="tsrc {src}">{label}</span>'
-    return (f'<figure class="tcard rv">{vid}{stars}{quote}<figcaption><b>{_esc(r.get("name", ""))}</b>'
+    who = f'<b>{_esc(r["name"])}</b>' if r.get('name') else ('<b>Guest video review</b>' if vid else '')
+    return (f'<figure class="tcard rv{" tvc" if vid else ""}">{vid}{stars}{quote}<figcaption>{who}'
             f'{f"<span>{meta}</span>" if meta else ""}{tag}</figcaption></figure>')
 
 def review_links_html(links):
@@ -251,18 +252,19 @@ def prerender(body, out):
         lk = review_links_html(links)
         body = body.replace('<div class="tgrid" id="tsGrid"></div>', '<div class="tgrid" id="tsGrid">' + ''.join(review_card(r, links) for r in revs) + '</div>')
         body = body.replace('<!--REVIEW-LINKS-->', f'<p class="acts rvl rv">{"".join(lk)}</p>' if lk else '')
+        home_revs = [r for r in revs if r.get('home', True)]
         if revs:
             body = body.replace('<div class="tsempty rv" id="tsEmpty">', '<div class="tsempty rv" id="tsEmpty" hidden>')
             cnt = review_counts(revs)
             home = ('<section class="sec rvw" id="reviews"><div class="wrap">\n'
                     '  <div class="rv shead"><h2>What Our Guests Say</h2><div class="rule"></div>'
                     f'<p class="lead muted">Reviews from travellers who journeyed with Malachite{(", " + cnt) if cnt else ""}.</p></div>\n'
-                    '  <div class="tgrid">' + ''.join(review_card(r, links) for r in revs[:3]) + '</div>\n'
+                    '  <div class="tgrid">' + ''.join(review_card(r, links) for r in home_revs[:3]) + '</div>\n'
                     '  <p class="more rv"><a class="lnk" href="testimonials.html">Read all reviews</a>' +
                     (f'<a class="lnk" href="{_esc(links["google"])}" target="_blank" rel="noopener">Google</a>' if links.get('google') else '') +
                     (f'<a class="lnk" href="{_esc(links["tripadvisor"])}" target="_blank" rel="noopener">Tripadvisor</a>' if links.get('tripadvisor') else '') +
                     '</p>\n</div></section>\n')
-            body = body.replace('<!--HOME-REVIEWS-->', home)
+            body = body.replace('<!--HOME-REVIEWS-->', home if home_revs else '')
         else:
             body = body.replace('<!--HOME-REVIEWS-->', '')
     return body, extra_ld
