@@ -21,8 +21,9 @@ BASE = 'https://malachite-travel-and-tours.pages.dev/'   # canonical host (Cloud
 
 NAV = [('home','index.html','Home'),('destinations','destinations.html','Destinations'),('packages','packages.html','Packages'),
        ('mice','mice.html','MICE'),('filming','filming.html','Filming'),
-       ('social','social-responsibility.html','Social Responsibility'),('about','about.html','About Us')]
-# Testimonials, Credentials and Journal stay in the footer (header kept short, Round 9)
+       ('social','social-responsibility.html','Social Responsibility'),('testimonials','testimonials.html','Testimonials'),
+       ('about','about.html','About Us')]
+# Credentials and Journal stay in the footer
 
 # ---------- photo registry (sizes available per photo) ----------
 def build_registry():
