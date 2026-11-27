@@ -23,4 +23,4 @@ Output directory: `dist`. The 31 MB `videos/hero.mp4` stays in the repository (t
 
 **Do not edit the hero video block** (the `<video>` element and its script) in `_src/pages/index.html` or `js/app.js` without a separate task. Only the hero's three text strings were re-worded in the refinement round.
 
-Read `docs/ROUND9-NOTES.md` first (the latest round: simpler homepage, MICE, Filming, student tours), then `docs/ROUND8-REDESIGN.md` (the previous round: the full redesign, what was checked and what needs approval), then `docs/REFINEMENT-SUMMARY.md`, `docs/PHASE3-SUMMARY.md` and `docs/MISSING-INFO.md`.
+Read `docs/SEARCH-AND-GROWTH-PLAN.md` and `docs/ROUND11-SEO-PERFORMANCE.md` first (search, speed and next steps), then `docs/ROUND10-NOTES.md` and `docs/ROUND9-NOTES.md` (latest content rounds). Round 8 (`docs/ROUND8-REDESIGN.md`) was not adopted.
