@@ -828,3 +828,23 @@ a.tsrc:hover{background:rgba(0,75,73,.16)}
 @media(min-width:800px){.fck{grid-template-columns:1fr 1fr}}
 @media(min-width:1180px){.fck{grid-template-columns:repeat(3,1fr)}}
 .fcn{margin-top:22px;font-size:.92rem;color:rgba(26,26,26,.7)}
+
+/* ---------- Round 13: filming page (director's sheet + production videos) ---------- */
+.phero .fha{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px;animation:up 1s var(--ease) .24s both}
+.fwarn{padding:clamp(22px,3vw,34px) 0;border-bottom:3px solid var(--gold)}
+.fwarn p{font-size:clamp(1.05rem,1.8vw,1.3rem)}
+.fwarn b{color:#F3DA85;font-weight:600}
+.fck strong{color:var(--mal);font-weight:600}
+.fhd{max-width:46rem}
+.fsv{list-style:none;margin:26px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.fsv li{padding:9px 16px 9px 34px;border:1px solid rgba(255,255,255,.35);border-radius:40px;position:relative;font-size:.95rem}
+.fsv li::before{content:"";position:absolute;left:15px;top:50%;width:7px;height:12px;margin-top:-8px;border:solid var(--gold);border-width:0 2px 2px 0;transform:rotate(45deg)}
+.fzb{margin-top:26px;font-size:.88rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.pvg{display:grid;gap:22px;margin-top:36px}
+@media(min-width:760px){.pvg{grid-template-columns:1fr 1fr}}
+.pv{margin:0;background:#fff;border:1px solid rgba(0,75,73,.14);border-top:4px solid var(--gold)}
+.pvid{aspect-ratio:16/9;background:var(--deep);position:relative}
+.pvid .yt,.pvid .ytf{display:block;width:100%;height:100%;border:0}
+.pv figcaption{padding:14px 18px 16px;display:flex;flex-direction:column;gap:4px}
+.pv figcaption b{color:var(--mal);font-weight:600}
+.pv .tsrc{margin-top:0}

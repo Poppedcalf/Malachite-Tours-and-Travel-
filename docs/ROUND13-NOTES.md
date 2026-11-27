@@ -34,3 +34,9 @@
 - Google shows only relative dates ("a year ago"), so no month is shown on the Google cards.
 - Homepage shows Amanda Fadzai (Google), Uttej R (Tripadvisor) and Roan Seiler (Google): the first three written reviews in TESTIMONIALS, chosen to mix both sources.
 - Google listing link still to come (REVIEW_LINKS.google); until then the "Google review" tags are not links.
+
+## Filming page rebuilt on the director's sheet
+- Page order now follows the sheet: hero "Filming in Zimbabwe" (for international media: wildlife, food, people and places; one checklist, one team, from clearance to wrap) with an enquiry button; a band "Start six weeks before travel. Do not travel until you have Ministry clearance."; the six-step checklist; "Let Malachite handle it for you" (fixers, guides, permits, transport, accommodation, location permissions, on-ground support) with WhatsApp and email; "Productions we facilitated" with four YouTube videos (wN6qPJm1hmg, lD3t5WAJwhQ, mlymniKDUEc, mwLM4OLuJw0).
+- Removed (not on the sheet): the "Landscapes made for the screen" photo grid and the earlier services list.
+- Production names are not shown yet; add them in filming.html (<b> inside each figcaption) when supplied.
+- Fee figures and processing time from the sheet are still not shown (see above).
