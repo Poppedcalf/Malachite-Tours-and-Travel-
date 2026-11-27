@@ -292,4 +292,17 @@ document.addEventListener('click',e=>{const o=e.target.closest('[data-dlg]');if(
  const c=e.target.closest('dialog [data-close]');if(c){c.closest('dialog').close();return}
  if(e.target.matches&&e.target.matches('dialog.ocd'))e.target.close()});
 $$('dialog.ocd').forEach(d=>d.addEventListener('close',()=>{if(d._from)d._from.focus()}));
+/* ---------- review form (Testimonials page): builds a WhatsApp or email message; nothing is stored by the website ---------- */
+const rvf=$('#rvForm');
+if(rvf){
+ rvf.addEventListener('click',e=>{const b=e.target.closest('[data-rvsend]');if(!b)return;
+  const r=(rvf.querySelector('input[name=rr]:checked')||{}).value,t=$('#rvT').value.trim(),n=$('#rvN').value.trim(),c=$('#rvC').value.trim(),tr=$('#rvP').value.trim(),ok=$('#rvOk').checked;
+  const miss=[!r&&'a star rating',!t&&'your review',!n&&'your name'].filter(Boolean);
+  $('#rvT').setAttribute('aria-invalid',!t);$('#rvN').setAttribute('aria-invalid',!n);
+  if(miss.length){$('#rvErr').textContent='Please add '+miss.join(', ').replace(/, ([^,]*)$/,' and $1')+'.';return}
+  $('#rvErr').textContent='';
+  const msg=`Hello Malachite Travel & Tours, I would like to share a review of my trip [Ref: ${ref}].\n\nRating: ${r} out of 5\n${tr?'Trip: '+tr+'\n':''}\nMy review:\n${t}\n\nName: ${n}${c?'\nCountry: '+c:''}\n\n${ok?'I agree that Malachite may publish this review on its website, with my name and country, exactly as written.':'Please do not publish this review.'}`;
+  if(b.dataset.rvsend==='wa')window.open(wa(msg),'_blank','noopener');else location.href=mail('My review of Malachite Travel & Tours ['+ref+']',msg);
+ });
+}
 })();

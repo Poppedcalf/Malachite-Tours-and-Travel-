@@ -35,3 +35,9 @@ Run `python3 _tools/build.py`, then upload or commit as usual.
 
 ## Note on star ratings in Google
 The site does not add star-rating code for search results on purpose: Google does not show stars for reviews a business publishes about itself, and treats it as a policy issue. Stars in Google come from the Google Business Profile itself.
+
+## Reviews sent through the website
+The "Share Your Experience" form on the Testimonials page sends the review to Malachite by WhatsApp or email (nothing is stored on the site). To publish one:
+1. Check the guest ticked "Malachite may publish my review" (the message says so).
+2. Add it to `TESTIMONIALS` with `"src":"guest"`, the rating, the text exactly as sent, the name (and country in `trip` if you like), and rebuild.
+Keep the message as your record of permission. Publishing a selection is fine as long as the page does not claim to show all reviews. Do not use the form to decide who gets asked for a Google review: Google's rules require inviting every guest.

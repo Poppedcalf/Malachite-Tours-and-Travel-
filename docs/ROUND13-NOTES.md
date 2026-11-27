@@ -40,3 +40,9 @@
 - Removed (not on the sheet): the "Landscapes made for the screen" photo grid and the earlier services list.
 - Production names are not shown yet; add them in filming.html (<b> inside each figcaption) when supplied.
 - Fee figures and processing time from the sheet are still not shown (see above).
+
+## Review form, tighter spacing, title-case headings
+- Testimonials page: "Share Your Experience" form (star rating, review, name, optional country and trip, permission tick box). Sending opens WhatsApp or email with the review written out; nothing is stored by the website. Malachite chooses which to publish (add to TESTIMONIALS with "src":"guest").
+- The page now says it shows "a selection" of reviews, and invites everyone to review on Tripadvisor (and Google, once the link is added) whatever their rating. Showing only chosen reviews is fine when it is not presented as all reviews; asking only happy guests to post on Google ("review gating") is against Google's rules, so the Google/Tripadvisor invitation is shown to everyone.
+- Spacing reduced again on every page: sections 84 px to 68 px top and bottom on computers (48 px to 40 px on phones); inner-page photo headers 62% to 48% of the screen height.
+- Headings use capitals for each main word throughout (h1 to h4, card and list headings, itinerary step titles, tailor-made titles). Guest review headlines (e.g. "their activities were of high standard") and FAQ questions are left as written.

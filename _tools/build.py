@@ -256,11 +256,14 @@ def prerender(body, out):
         videos = [r for r in revs if r.get('youtube') or r.get('video')]
         grid = ''
         if written:
-            grid += ('<h3 class="tsh">Written reviews</h3>' if videos else '') + '<div class="tgrid">' + ''.join(review_card(r, links) for r in written) + '</div>'
+            grid += ('<h3 class="tsh">Written Reviews</h3>' if videos else '') + '<div class="tgrid">' + ''.join(review_card(r, links) for r in written) + '</div>'
         if videos:
-            grid += ('<h3 class="tsh">Video reviews</h3>' if written else '') + '<div class="tgrid">' + ''.join(review_card(r, links) for r in videos) + '</div>'
+            grid += ('<h3 class="tsh">Video Reviews</h3>' if written else '') + '<div class="tgrid">' + ''.join(review_card(r, links) for r in videos) + '</div>'
         body = body.replace('<div class="tgrid" id="tsGrid"></div>', '<div id="tsGrid">' + grid + '</div>')
         body = body.replace('<!--REVIEW-LINKS-->', f'<p class="acts rvl rv">{"".join(lk)}</p>' if lk else '')
+        pub = [f'<a class="lnk dk" href="{_esc(links[k])}" target="_blank" rel="noopener">{n}</a>' for k, n in (('googleWrite', 'Google'), ('tripadvisor', 'Tripadvisor')) if links.get(k)]
+        if not links.get('googleWrite') and links.get('google'): pub.insert(0, f'<a class="lnk dk" href="{_esc(links["google"])}" target="_blank" rel="noopener">Google</a>')
+        body = body.replace('<!--REVIEW-PUBLIC-->', ('<p class="rvpub">You are also welcome to review us on ' + ' or '.join(pub) + '.</p>') if pub else '')
         home_revs = [r for r in revs if r.get('home', True) and (r.get('q') or r.get('youtube') or r.get('video'))]
         if revs:
             body = body.replace('<div class="tsempty rv" id="tsEmpty">', '<div class="tsempty rv" id="tsEmpty" hidden>')
