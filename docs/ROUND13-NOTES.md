@@ -52,3 +52,7 @@
 - Filming page: the four production videos are no longer shown, played or linked (no permission from the productions yet). Replaced by "Productions We Have Supported": Malachite has supported YouTube creators, filmmakers and international crews, with four photo tiles (Wildlife, Food, People, Places, using Malachite's own photos) and an "Ask for examples of our work" WhatsApp button.
 - The four supplied video IDs are kept here only, for use once permission is given: wN6qPJm1hmg, lD3t5WAJwhQ, mlymniKDUEc, mwLM4OLuJw0.
 - The guest video reviews on the Testimonials page are unchanged.
+
+## Destinations: package lists replaced by links
+- Each country section now ends with a "See Packages in <country>" button that opens the Packages page filtered to that country (packages.html?filter=<country>#journeys). Zimbabwe also has "See Lake Kariba Houseboat Charters".
+- The package rows, itinerary and quote buttons were removed from Destinations (they live on Packages). Destinations page is about 1,600 px shorter on a computer.

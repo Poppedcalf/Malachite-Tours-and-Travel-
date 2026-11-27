@@ -871,3 +871,4 @@ a.tsrc:hover{background:rgba(0,75,73,.16)}
 .rvnext p{margin-top:6px;font-size:.95rem}
 .rvnext .acts{margin-top:14px;display:flex;flex-wrap:wrap;gap:10px}
 .rvnext:focus{outline:none}
+.cpk.acts{margin-top:clamp(24px,3vw,36px);display:flex;flex-wrap:wrap;gap:10px}
