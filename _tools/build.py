@@ -196,7 +196,7 @@ def review_counts(revs):
     return ' and '.join(parts)
 
 def cat_name(c):
-    return 'Lake Kariba houseboats' if c == 'Kariba Houseboats' else 'Student and school tours' if c == 'Student Tours' else c
+    return 'Lake Kariba houseboats' if c == 'Kariba Houseboats' else 'Educational tours' if c == 'Educational Tours' else c
 
 def pk_card(p):
     """Same markup as card() in js/app.js (prices stay hidden: every package is quoted on request)."""

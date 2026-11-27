@@ -29,7 +29,7 @@ h2{font-size:clamp(2.3rem,5.4vw,4rem);color:var(--mal)}
 h3{font-size:1.8rem}
 :focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 .wrap{max-width:1200px;margin:0 auto;padding:0 20px}
-.sec{padding:clamp(72px,10vw,136px) 0}
+.sec{padding:clamp(48px,6vw,84px) 0}
 .rule{width:56px;height:2px;background:var(--gold);margin:22px 0}
 .lead{font-size:1.15rem;max-width:58ch}
 .muted{color:rgba(26,26,26,.74)}
@@ -141,7 +141,7 @@ html:not(.js) .hv{opacity:1}
 @media(min-width:960px){.intro{grid-template-columns:1.05fr 1fr;gap:96px}}
 
 /* ---------- destinations ---------- */
-.mos{display:grid;gap:18px;margin-top:56px}
+.mos{display:grid;gap:18px;margin-top:40px}
 .dc{position:relative;min-height:380px;display:flex;align-items:flex-end;color:#fff;background:var(--for);overflow:hidden}
 .dc>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
 .dc:hover>img{transform:scale(1.045)}
@@ -419,7 +419,7 @@ figcaption{font-size:.84rem;color:rgba(26,26,26,.68);padding-top:10px}
 .chap .band .wrap{width:100%;padding-bottom:clamp(30px,5vw,56px)}
 .chap .band h2{color:#fff;font-size:clamp(2.1rem,4.8vw,3.8rem)}@media(min-width:760px){.chap .band h2{white-space:nowrap}}
 .chap .band p{margin-top:10px;max-width:56ch;color:rgba(255,255,255,.92);font-size:1.15rem}
-.chap .body{padding:clamp(56px,8vw,104px) 0}
+.chap .body{padding:clamp(44px,6vw,80px) 0}
 .chap:nth-of-type(even) .body{background:var(--sand)}
 .chap .cta{margin-top:30px;display:flex;flex-wrap:wrap;gap:10px}
 .chap .gwrap{margin-top:clamp(40px,6vw,72px)}
@@ -501,7 +501,7 @@ figcaption{font-size:.84rem;color:rgba(26,26,26,.68);padding-top:10px}
 .soc a{border-bottom:2px solid var(--gold);text-decoration:none;font-weight:500}
 
 /* ---------- home teasers + closing ---------- */
-.more{margin-top:36px}
+.more{margin-top:28px}
 .more .lnk{color:var(--mal)}.more .lnk:hover{border-color:var(--mal)}
 .xps .more .lnk{color:#fff}
 .band2{background:var(--sand)}
@@ -661,7 +661,7 @@ body:not(.noprice) .nopr{display:none}
 @media(prefers-reduced-motion:reduce){.btn:hover{transform:none}}
 
 /* ---- Packages: full-width tailor-made statement ---- */
-.tmstate{background:var(--deep);color:#fff;padding:clamp(48px,7vw,88px) 0;text-align:center}
+.tmstate{background:var(--deep);color:#fff;padding:clamp(36px,5vw,64px) 0;text-align:center}
 .tmstate p{max-width:34em;margin:0 auto;font:500 clamp(1.688rem,2.8vw,2.625rem)/1.4 var(--serif);letter-spacing:-.012em;text-wrap:balance}
 .tmstate p::before{content:"";display:block;width:56px;height:2px;background:var(--gold);margin:0 auto 26px}
 /* ---- Packages: "Something different in mind?" composition (image area reflows for 1 to 3 pictures) ---- */
@@ -708,7 +708,7 @@ body:not(.noprice) .nopr{display:none}
 .wy{list-style:none;margin:38px 0 0;padding:0;display:grid;gap:22px}
 .wy li{padding-top:16px;border-top:2px solid var(--gold)}.wy b{display:block;font:600 1.45rem/1.15 var(--serif);color:var(--mal)}.wy span{display:block;margin-top:6px;color:rgba(26,26,26,.82)}
 @media(min-width:760px){.wy{grid-template-columns:repeat(4,1fr);gap:30px}}
-.hwh{margin-top:64px;padding:clamp(28px,4vw,48px);background:var(--deep);color:#fff}
+.hwh{margin-top:44px;padding:clamp(28px,4vw,48px);background:var(--deep);color:#fff}
 .hwh h3{color:#fff;font-size:clamp(1.8rem,3vw,2.4rem)}
 .hs5{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:18px;counter-reset:h}
 .hs5 li{counter-increment:h;position:relative;padding-left:46px}
@@ -759,8 +759,8 @@ fieldset[id^=s]{scroll-margin-top:calc(var(--hdr) + 16px)}
 /* ---------- Round 10: homepage spacing, hero headline, other countries, country-based destinations ---------- */
 .hero h1.h1s{font-size:clamp(2.1rem,4.4vw,3.7rem);line-height:1.05}
 .hero h1.h1s span{display:block;margin-bottom:6px;font-style:italic;font-weight:500;font-size:.5em;letter-spacing:.02em;color:var(--gold)}
-.sec.tight-b{padding-top:clamp(48px,6vw,80px);padding-bottom:clamp(40px,5vw,64px)}
-.sec.tight-t{padding-top:clamp(40px,5vw,64px)}
+.sec.tight-b{padding-top:clamp(40px,5vw,64px);padding-bottom:clamp(32px,4vw,52px)}
+.sec.tight-t{padding-top:clamp(32px,4vw,52px)}
 .more{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center}
 .ocb{color:var(--mal)}
 .ocd{max-width:620px}
@@ -802,3 +802,13 @@ a.tsrc:hover{background:rgba(0,75,73,.16)}
 .yt:hover .ytp,.yt:focus-visible .ytp{background:#c00}
 .rvl{margin:18px 0 30px;display:flex;flex-wrap:wrap;gap:10px}
 .pkall{margin-left:6px;font-size:.92rem}
+
+/* ---------- Round 13: tighter spacing between sections ---------- */
+.sec.fin{padding:clamp(44px,5vw,72px) 0}
+.fin .herologo{height:clamp(60px,7vw,80px);margin-bottom:14px}
+.fin .hcta{margin-top:24px}
+.xpg{margin-top:40px}
+@media(min-width:700px){.xpg{margin-top:40px}}
+.tm3,.tm{margin-top:40px}
+.rvw .tgrid{margin-top:32px}
+.fin .cg2{margin-top:36px;padding-top:28px}

@@ -57,7 +57,7 @@ contactLinks();
 
 /* ---------- packages page: filterable card grid. Published prices (PRICE in data.js) are shown per adult; everything else is "Request a Quote" ---------- */
 const priceOf=id=>{const pr=typeof PRICE!=='undefined'&&PRICE[id];return pr&&pr.status==='published'&&CONFIG.showPublishedPrices?pr:null};
-const catName=c=>c==='Kariba Houseboats'?'Lake Kariba houseboats':c==='Student Tours'?'Student and school tours':c;
+const catName=c=>c==='Kariba Houseboats'?'Lake Kariba houseboats':c==='Educational Tours'?'Educational tours':c;
 const hasJourneys=!!$('#tabs');let cur='All';
 if(hasJourneys){
  const cats=['All',...new Set(PK.map(p=>p.cat))];
