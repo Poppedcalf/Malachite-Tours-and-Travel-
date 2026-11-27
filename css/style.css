@@ -818,3 +818,13 @@ a.tsrc:hover{background:rgba(0,75,73,.16)}
 .tcard .ttl{margin:0;font:600 1.02rem/1.35 var(--sans);color:var(--mal)}
 .tsh{margin:40px 0 0;font-size:clamp(1.6rem,2.6vw,2rem);color:var(--mal)}
 #tsGrid .tsh+.tgrid{margin-top:18px}
+
+/* ---------- Round 13: filming checklist ---------- */
+.fck{list-style:none;margin:36px 0 0;padding:0;display:grid;gap:18px;counter-reset:f}
+.fck li{counter-increment:f;position:relative;background:#fff;border:1px solid rgba(0,75,73,.14);border-top:4px solid var(--gold);padding:26px 24px 24px 72px}
+.fck li::before{content:counter(f);position:absolute;left:22px;top:24px;width:34px;height:34px;border-radius:50%;background:var(--mal);color:#fff;display:grid;place-items:center;font:600 .95rem var(--sans)}
+.fck b{display:block;font:600 1.35rem/1.2 var(--serif);color:var(--mal)}
+.fck p{margin-top:8px;font-size:.96rem;color:rgba(26,26,26,.84)}
+@media(min-width:800px){.fck{grid-template-columns:1fr 1fr}}
+@media(min-width:1180px){.fck{grid-template-columns:repeat(3,1fr)}}
+.fcn{margin-top:22px;font-size:.92rem;color:rgba(26,26,26,.7)}
