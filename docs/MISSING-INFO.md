@@ -1,5 +1,9 @@
 # Information needed from Malachite
 
+## R9. Round 9 (27 November 2026)
+
+See `docs/ROUND9-NOTES.md`, "Questions for Malachite": Vadoma or Binga photograph, production videos, filming permits, team portraits and role titles, places named in the new homepage text that have no package yet, photo locations, school group size, and student package details. Team names (item 7 of section R) are now supplied and published.
+
 ## R8. Redesign round (November 2026): please confirm
 
 Full list with context: `docs/ROUND8-REDESIGN.md`, "For approval".
@@ -15,6 +19,8 @@ Full list with context: `docs/ROUND8-REDESIGN.md`, "For approval".
 | 7 | "Mala" or "Malawi" | The site uses "The Smiling Children of Mala" | The correct name of the programme and foundation wording |
 | 8 | Planner budget bands | Visitor budget choices that show dollar amounts | Keep them, or remove all dollar amounts from the planner |
 | 9 | Page titles | Destinations and Packages titles exceed 60 characters | Shorter wording if wanted |
+| 10 | Harare and Victoria Falls offices | The site now says Malachite is based in Zimbabwe, with offices in Kariba, Harare and Victoria Falls. Only the Kariba address (Stand 643, ZV Mall) is published, as agreed. No Harare or Victoria Falls address, telephone number or opening hours appears anywhere, and none was invented | When you want them shown: the street address, telephone number and opening hours of each office. Each office would be added to the footer, the home-page closing block, the Plan Your Trip contact block and the structured data (`JSONLD_AGENCY` in `_tools/build.py`) |
+| 11 | Which telephone number belongs to which office | +263 61 214 5623 and +263 775 515 400 are shown without an office label | Whether any number should be labelled by office |
 
 ---
 ## R. Refinement round (November 2026): questions for Mr Shoniwa
@@ -30,7 +36,7 @@ This round re-wrote the site so that Malachite is presented as a Kariba-based co
 | 5 | Package name | Destinations (Victoria Falls) | The earlier build called the Trans Borders Pack "Trans-Trio Borders". The brochure says "Mala Trans Borders Pack", which the site now uses everywhere. | Which name is official. |
 | 6 | Planner options not in the brochure | Plan Your Trip | Accommodation choices per package (lodge or hotel, tented camp, houseboat), optional extras (tiger fishing, photographic safari, transfers), a "children under 12" category, budget bands in US dollars, and two voluntary-contribution tick-boxes (Smiling Children of Mala; vulture and wildlife protection). None is published as a price. | Which of these you want to keep. Group enquiries were kept because the official site's menu has "Groups & Incentives"; "corporate" wording was removed. |
 | 7 | Team | Home | No names, roles or portraits were supplied, so the section shows three role descriptions taken from the brochure (tailored packages, expert guides, transfers). The email signature spells the name "Shonhiwa"; your brief says "Shoniwa". | The correct spelling, role and a portrait (with consent), and any other team members. Add them in `TEAM` in `js/data.js` and they appear automatically. |
-| 8 | Where the company is based | Everywhere | "Based in Kariba" and "office in Kariba" follow your brief and the brochure address (Stand 643, ZV Mall, Kariba). | Whether Kariba is the only office. |
+| 8 | Where the company is based | Everywhere | Answered on 26 Nov 2026: Malachite is based in Zimbabwe, with offices in Kariba, Harare and Victoria Falls. The site now says so everywhere. Only the Kariba address (Stand 643, ZV Mall) is published. | Nothing further, except the Harare and Victoria Falls addresses when you want them shown (see R8, item 10). |
 | 9 | Phone labels | Plan Your Trip, footer | +263 61 214 5623 is labelled "telephone" (the brochure says "Tel"); +263 775 515 400 is labelled "mobile and WhatsApp". | That the mobile number is a WhatsApp number someone answers. |
 | 10 | Full Circle route | Packages | The brochure heading lists Mutare, but its day-by-day text does not describe it. The site follows the eight described stages. | Whether Mutare is part of the route. |
 | 11 | Houseboat and tiger-fish photographs | Not used | Supplied images could not be confirmed as Malachite's own, rights-cleared photographs. | A line confirming they are, and they can be added. |

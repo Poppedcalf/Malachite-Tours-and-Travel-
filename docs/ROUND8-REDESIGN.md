@@ -9,6 +9,12 @@ Brief: redesign every public page as a premium, editorial, image-led African tra
 - All approved copy, package data, names, contact details, WhatsApp number, e-mail addresses and every URL (`trips.html` still redirects to `packages.html`). All "Price on request" wording. No price, estimate or range was added.
 - Homepage order Hero > Destinations > Packages > Team > Contact > Footer still holds (see "For approval", item 1).
 
+## Update: company positioning (26 November 2026)
+Malachite is not based only in Kariba. All copy now reads "based in Zimbabwe, with offices in Kariba, Harare and Victoria Falls".
+- Changed: footer, home-page introduction, third fact tile ("3 offices") and "Why Malachite" item, home closing block, About (hero, Who we are, fact ledger, "Six countries, three offices in Zimbabwe"), Plan Your Trip (title, description, contact block, photo caption), team introduction, Testimonials description, and the structured data description. The Credentials introduction no longer calls the Zambezi Valley "our workplace and our neighbourhood".
+- Not changed: the Kariba address (Stand 643, ZV Mall), shown as "Kariba office". Telephone numbers, e-mail, WhatsApp, hero block and all URLs are as before. Lake Kariba remains a destination and houseboat charters stay in the packages.
+- Not published: Harare and Victoria Falls addresses, telephone numbers and opening hours (none were supplied; none were invented).
+
 ## Pages redesigned
 | Page | What changed |
 |---|---|
@@ -78,6 +84,7 @@ Real Chromium (Playwright), local files and a local web server, at 390, 768, 100
 8. **Budget bands in the planner** ("Under US$1,500 per person" and so on) are the visitor's own choice, carried over from earlier rounds. They are not Malachite prices; remove them if you want no dollar amounts anywhere.
 9. **Partner name spellings** (eight names as read from the email screenshot) and the still-missing **clean white-lettered logo** and **partner logos**.
 10. **Page titles** for Destinations and Packages are longer than 60 characters and may be shortened in search results.
+11. **Harare and Victoria Falls offices.** The site names them but publishes no address, telephone number or opening hours for either, as agreed. Send those details when you want them shown (see `MISSING-INFO.md`, R8 item 10).
 
 ## Deployment
 Nothing in the build or hosting changed: Cloudflare Pages, the build command in `README.md` is unchanged (it still excludes `videos/hero.mp4`) and the output directory is still `dist`. Upload the project to the repository, let Cloudflare run the existing build command, and check the preview URL before promoting. New files: `images/*` (18 sets), `_src/pages/*`, `docs/ROUND8-REDESIGN.md`. CSS and JS links now carry `?v=20261126` (set in `_src/partials/head.html` and `footer.html`); change it if browsers show old styling after a later edit.
