@@ -38,3 +38,12 @@ Real Chromium at 390, 768, 1000 and 1440 px on all pages including the two new o
 6. **Photo locations**: the Botswana, Tanzania and Kenya photographs are matched to the text, not confirmed. Please confirm or replace.
 7. **School group size**: the planner allows up to 30 adults and 20 children. Should student groups allow more?
 8. **Student package details**: typical durations, destinations and anything included (for example supervision ratios or educational materials), when you want them shown.
+
+## Layout correction (27 November 2026)
+The Round 9 files were built on the Round 8 redesign, which had never been live (the Round 8 upload only carried notes and a few source files). At the owner's request the site is back on the earlier layout (as of commit 5691b12: `css/style.css`, `js/app.js`, `_src/pages`, `_src/partials`, `_templates/article.html`), with the Round 9 content carried into it:
+- Homepage: Round 9 hero sub-line (single "Explore Our Destinations" button), destination texts, taglines and photos in the original mosaic, six experiences in the original tile grid, new Tour Packages introduction, a MICE, Filming and Student Travel tile row, the four "Why Malachite" points, the seven planning steps and the four team members.
+- MICE and Filming pages rebuilt with the original page components; enquiry links work as before.
+- Student and School Tours package, the experience filters and the new package photos (`js/data.js`) are kept.
+- "Based in Zimbabwe, with offices in Kariba, Harare and Victoria Falls" wording applied to the footer, contact block, About, Plan Your Trip and Testimonials.
+- Header: Home, Destinations, Packages, MICE, Filming, Social Responsibility, About Us. Footer adds MICE, Filming and Student and School Tours.
+Small additions for this live at the end of `css/style.css` ("Round 9 content in the original layout").
