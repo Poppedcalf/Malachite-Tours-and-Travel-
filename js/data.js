@@ -69,9 +69,9 @@ const CONFIG={
    and "src":"video" if it is not from Google or Tripadvisor. "title" (optional) is shown as the card heading when there is no name. Add "home":false to keep an entry off the homepage (Testimonials page only).
    After editing, run: python3 _tools/build.py */
 const TESTIMONIALS=[
-{"youtube":"tmhYQlIthV8","src":"video","name":"","title":"Transfer Testimony","url":"https://www.youtube.com/watch?v=tmhYQlIthV8","home":false},
-{"youtube":"8T-c5yGx0Co","src":"video","name":"","title":"Sentimental and Birthday Trip","url":"https://www.youtube.com/watch?v=8T-c5yGx0Co","home":false},
-{"youtube":"vyBVQXFTorY","src":"video","name":"","title":"Australia Group, April 2022","url":"https://www.youtube.com/watch?v=vyBVQXFTorY","home":false}
+{"youtube":"tmhYQlIthV8","src":"video","name":"","title":"Australia Group, April 2022","url":"https://www.youtube.com/watch?v=tmhYQlIthV8","home":false},
+{"youtube":"8T-c5yGx0Co","src":"video","name":"","title":"Transfer Testimony","url":"https://www.youtube.com/watch?v=8T-c5yGx0Co","home":false},
+{"youtube":"vyBVQXFTorY","src":"video","name":"","title":"Sentimental and Birthday Trip","url":"https://www.youtube.com/watch?v=vyBVQXFTorY","home":false}
 ];
 /* REVIEW_LINKS: Malachite's own review pages. Empty links are simply not shown.
    google       the Google Maps listing (Share > Copy link on the business profile)
