@@ -172,7 +172,7 @@ def review_card(r, links):
     vid = ''
     if r.get('youtube'):
         y = _esc(r['youtube'])
-        vid = (f'<div class="tvid"><button type="button" class="yt" data-yt="{y}" aria-label="Play video review from {_esc(r.get("name") or "a guest")}">'
+        vid = (f'<div class="tvid"><button type="button" class="yt" data-yt="{y}" aria-label="Play video review: {_esc(r.get("title") or r.get("name") or "a guest")}">'
                f'<img src="https://i.ytimg.com/vi/{y}/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" decoding="async" onerror="this.remove()"><span class="ytp" aria-hidden="true"></span></button></div>')
     elif r.get('video'):
         pst = f' poster="{_esc(r["poster"])}"' if r.get('poster') else ''
@@ -182,7 +182,7 @@ def review_card(r, links):
     link = r.get('url') or links.get(src) or ''
     label = SRC_NAME.get(src, 'Guest message')
     tag = f'<a class="tsrc {src}" href="{_esc(link)}" target="_blank" rel="noopener">{label}</a>' if link else f'<span class="tsrc {src}">{label}</span>'
-    who = f'<b>{_esc(r["name"])}</b>' if r.get('name') else ('<b>Guest video review</b>' if vid else '')
+    who = f'<b>{_esc(r["name"])}</b>' if r.get('name') else (f'<b>{_esc(r["title"])}</b>' if r.get('title') else ('<b>Guest video review</b>' if vid else ''))
     return (f'<figure class="tcard rv{" tvc" if vid else ""}">{vid}{stars}{quote}<figcaption>{who}'
             f'{f"<span>{meta}</span>" if meta else ""}{tag}</figcaption></figure>')
 

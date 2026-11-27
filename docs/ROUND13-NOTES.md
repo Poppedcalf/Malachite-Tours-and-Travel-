@@ -13,5 +13,5 @@
 
 ## Video reviews (Testimonials page)
 - Three YouTube video reviews added (tmhYQlIthV8, 8T-c5yGx0Co, vyBVQXFTorY). They play on the page when pressed (youtube-nocookie, nothing loads from YouTube until then) and each links to the video on YouTube.
-- Shown on the Testimonials page only ("home":false), labelled "Guest video review" until the guest's name and trip are supplied.
+- Shown on the Testimonials page only ("home":false), with their YouTube titles: Transfer Testimony (tmhYQlIthV8), Sentimental and Birthday Trip (8T-c5yGx0Co), Australia Group, April 2022 (vyBVQXFTorY). Matched in the order the links were sent; check each title against its video.
 - With content on it, the Testimonials page is now open to search engines and listed in the sitemap.
