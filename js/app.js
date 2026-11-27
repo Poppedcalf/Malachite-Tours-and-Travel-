@@ -63,7 +63,8 @@ if(hasJourneys){
  const cats=['All',...new Set(PK.map(p=>p.cat))];
  const tabs=()=>{$('#tabs').innerHTML=cats.map(c=>`<button class="tab" data-c="${c}" aria-pressed="${c===cur}">${c==='All'?'All packages':catName(c)}</button>`).join('')};
  const xs=[{id:'all',t:'Any experience'},...EXPERIENCES];let curX='all';
- const xtabs=()=>{$('#xtabs').innerHTML=xs.map(x=>`<button class="tab" data-x="${x.id}" aria-pressed="${x.id===curX}">${x.t}</button>`).join('')};
+ /* the experience filter row was removed from the page (Round 12); an experience chosen on the homepage (?exp=) still narrows the list, with a 'Show all packages' button to clear it */
+ const xtabs=()=>{if($('#xtabs'))$('#xtabs').innerHTML=xs.map(x=>`<button class="tab" data-x="${x.id}" aria-pressed="${x.id===curX}">${x.t}</button>`).join('')};
  const card=p=>{const pr=priceOf(p.id),cn=catName(p.cat),ch=p.cat==='Kariba Houseboats';
   return `<article class="pc${ch?' charter':''}" id="pk-${p.id}"><div class="pc-img${p.img?'':' nophoto'}">${p.img?img(p.img,p.alt,'(min-width:1040px) 33vw, (min-width:700px) 50vw, 100vw'):`<span>${cn}</span>`}<span class="badge">${p.dur}</span></div>`+
   `<div class="pc-b"><p class="cat">${cn}</p><h3>${p.title}</h3><ol class="route" aria-label="Route">${p.route.map(r=>`<li>${r}</li>`).join('')}</ol><p class="pc-d">${p.desc}</p><ul class="chips" aria-label="Main experiences">${p.hl.map(h=>`<li>${h}</li>`).join('')}</ul>`+
@@ -73,10 +74,11 @@ if(hasJourneys){
  const rows=()=>{const L=PK.filter(p=>(cur==='All'||p.cat===cur)&&inX(p)),A=L.filter(p=>p.cat!=='Kariba Houseboats'),H=L.filter(p=>p.cat==='Kariba Houseboats');
   $('#pks').innerHTML=A.map(card).join('');$('#pkhT').hidden=!A.length;$('#pks').hidden=!A.length;
   $('#pkh').innerHTML=H.map(card).join('');$('#charters').hidden=!H.length;$('#pkNone').hidden=!!L.length;
-  const c=$('#pkcount');if(c){const xt=curX==='all'?'':' for '+xs.find(x=>x.id===curX).t.toLowerCase();c.textContent=!L.length?'':cur==='All'?(H.length?'Showing packages and Lake Kariba houseboat charters':'Showing packages')+xt+'.':(cur==='Kariba Houseboats'?'Showing Lake Kariba houseboat charters':'Showing packages in '+catName(cur))+xt+'.'}};
+  const c=$('#pkcount');if(c){const xt=curX==='all'?'':' for '+xs.find(x=>x.id===curX).t.toLowerCase();c.textContent=!L.length?'':cur==='All'?(H.length?'Showing packages and Lake Kariba houseboat charters':'Showing packages')+xt+'.':(cur==='Kariba Houseboats'?'Showing Lake Kariba houseboat charters':'Showing packages in '+catName(cur))+xt+'.';if(curX!=='all'){const a=document.createElement('button');a.type='button';a.className='lnk dk pkall';a.textContent='Show all packages';c.append(' ',a)}}};
  const show=()=>{tabs();xtabs();rows()};
- $('#tabs').onclick=e=>{const b=e.target.closest('[data-c]');if(b){cur=b.dataset.c;show();$('#tabs [aria-pressed=true]').focus()}};
- $('#xtabs').onclick=e=>{const b=e.target.closest('[data-x]');if(b){curX=b.dataset.x;show();$('#xtabs [aria-pressed=true]').focus()}};
+ $('#tabs').onclick=e=>{const b=e.target.closest('[data-c]');if(b){cur=b.dataset.c;curX='all';show();$('#tabs [aria-pressed=true]').focus()}};
+ $('#pkcount').addEventListener('click',e=>{if(e.target.closest('.pkall')){curX='all';cur='All';show();$('#tabs [aria-pressed=true]').focus()}});
+ if($('#xtabs'))$('#xtabs').onclick=e=>{const b=e.target.closest('[data-x]');if(b){curX=b.dataset.x;show();$('#xtabs [aria-pressed=true]').focus()}};
  if(xs.some(x=>x.id===params.get('exp')))curX=params.get('exp');
  if(params.get('filter')&&cats.includes(params.get('filter')))cur=params.get('filter');
  show();
@@ -265,13 +267,11 @@ if(jg){
  });
 }
 
-/* ---------- testimonials page: cards come from TESTIMONIALS in data.js; the empty state shows until there are some ---------- */
-if($('#tsGrid')){
- const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
- const T=typeof TESTIMONIALS!=='undefined'?TESTIMONIALS:[];
- $('#tsGrid').innerHTML=T.map(t=>`<figure class="tcard rv"><blockquote><p>${esc(t.q)}</p></blockquote><figcaption><b>${esc(t.name)}</b>${t.trip?`<span>${esc(t.trip)}</span>`:''}</figcaption></figure>`).join('');
- if(T.length)$('#tsEmpty').hidden=true;
-}
+/* ---------- reviews: cards are written into the page by _tools/build.py from TESTIMONIALS in data.js.
+   YouTube video reviews load only when the visitor presses play (faster pages, no YouTube cookies before then). ---------- */
+document.addEventListener('click',e=>{const b=e.target.closest('button[data-yt]');if(!b)return;const f=document.createElement('iframe');
+ f.src='https://www.youtube-nocookie.com/embed/'+encodeURIComponent(b.dataset.yt)+'?autoplay=1&rel=0';f.title=b.getAttribute('aria-label')||'Video review';
+ f.allow='autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;f.className='ytf';b.replaceWith(f)});
 
 /* ---------- hero video (homepage): loads only when the device and connection suit it ---------- */
 const v=$('#hv'),vb=$('#hvt'),hero=$('#top');

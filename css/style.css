@@ -779,3 +779,26 @@ fieldset[id^=s]{scroll-margin-top:calc(var(--hdr) + 16px)}
 @media(min-width:900px){.cpk .sa4 li{grid-template-columns:1fr auto;align-items:center;gap:30px}}
 .sa-a{display:flex;flex-wrap:wrap;gap:8px}
 .ocs{background:var(--sand)}
+
+/* ---------- Round 12: guest reviews (homepage strip and Testimonials page) ---------- */
+.rvw{background:var(--sand)}
+.rvw .tgrid{margin-top:40px}
+.rvw .tcard blockquote p{display:-webkit-box;-webkit-line-clamp:8;-webkit-box-orient:vertical;overflow:hidden}
+.tcard{gap:14px}
+.tcard blockquote{font-size:1.2rem;line-height:1.55}
+.tstars{margin:0;color:var(--gold);font-size:1.15rem;letter-spacing:.12em;line-height:1}
+.tstars span{color:rgba(0,75,73,.2)}
+.tcard figcaption{margin-top:auto;display:flex;flex-direction:column;gap:2px}
+.tsrc{align-self:flex-start;margin-top:10px;padding:4px 10px;border-radius:30px;font-size:.78rem;font-weight:600;letter-spacing:.03em;text-decoration:none;background:rgba(0,75,73,.08);color:var(--mal)}
+.tsrc.google::before,.tsrc.tripadvisor::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:7px;vertical-align:1px;background:#4285F4}
+.tsrc.tripadvisor::before{background:#34E0A1}
+a.tsrc:hover{background:rgba(0,75,73,.16)}
+.tvid{margin:-30px -30px 6px;background:var(--deep);aspect-ratio:16/9;position:relative}
+.tvid video,.tvid .ytf,.tvid .yt{display:block;width:100%;height:100%;border:0}
+.yt{padding:0;cursor:pointer;background:var(--deep);position:relative}
+.yt img{width:100%;height:100%;object-fit:cover}
+.ytp{position:absolute;left:50%;top:50%;width:68px;height:48px;margin:-24px 0 0 -34px;border-radius:12px;background:rgba(0,0,0,.72)}
+.ytp::after{content:"";position:absolute;left:27px;top:14px;border-style:solid;border-width:10px 0 10px 17px;border-color:transparent transparent transparent #fff}
+.yt:hover .ytp,.yt:focus-visible .ytp{background:#c00}
+.rvl{margin:18px 0 30px;display:flex;flex-wrap:wrap;gap:10px}
+.pkall{margin-left:6px;font-size:.92rem}

@@ -111,7 +111,7 @@ JSONLD_AGENCY = ld(AGENCY)
 
 def breadcrumb_ld(meta, out):
     """BreadcrumbList (Home > this page) for indexable inner pages; the name is the first part of the page title."""
-    if out in ('index.html', '404.html') or meta.get('noindex') == 'yes' or meta.get('redirect') or meta.get('depth') == '1': return ''
+    if out in ('index.html', '404.html') or is_noindex(meta) or meta.get('redirect') or meta.get('depth') == '1': return ''
     import html as _h
     name = _h.unescape(meta['title'].split(' | ')[0].strip())
     data = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
@@ -141,6 +141,59 @@ def load_tailor():
         f = dict((k, _jsstr(v)) for k, v in re.findall(r"(\w+):'((?:[^'\\]|\\.)*)'", blk))
         out.append(f)
     return out
+
+def load_reviews():
+    m = re.search(r'const TESTIMONIALS=(\[.*?\]);\n', _data_js(), re.S)
+    try:
+        return json.loads(m.group(1)) if m else []
+    except json.JSONDecodeError as e:
+        raise SystemExit(f'js/data.js TESTIMONIALS is not in the expected format (see the note above it): {e}')
+
+def load_review_links():
+    m = re.search(r'const REVIEW_LINKS=(\{.*?\});', _data_js(), re.S)
+    return json.loads(m.group(1)) if m else {}
+
+def _esc(t):
+    import html as _h
+    return _h.escape(str(t), quote=True)
+
+SRC_NAME = {'google': 'Google review', 'tripadvisor': 'Tripadvisor review', 'guest': 'Guest message'}
+
+def review_card(r, links):
+    src = r.get('src', 'guest'); rating = r.get('rating')
+    stars = ''
+    if isinstance(rating, (int, float)) and 1 <= rating <= 5:
+        n = int(round(rating)); stars = f'<p class="tstars" role="img" aria-label="Rated {n} out of 5">' + '&#9733;' * n + '<span>' + '&#9733;' * (5 - n) + '</span></p>'
+    vid = ''
+    if r.get('youtube'):
+        y = _esc(r['youtube'])
+        vid = (f'<div class="tvid"><button type="button" class="yt" data-yt="{y}" aria-label="Play video review from {_esc(r.get("name", "a guest"))}">'
+               f'<img src="https://i.ytimg.com/vi/{y}/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" decoding="async"><span class="ytp" aria-hidden="true"></span></button></div>')
+    elif r.get('video'):
+        pst = f' poster="{_esc(r["poster"])}"' if r.get('poster') else ''
+        vid = f'<div class="tvid"><video controls preload="none" playsinline{pst} src="{_esc(r["video"])}" aria-label="Video review from {_esc(r.get("name", "a guest"))}"></video></div>'
+    quote = f'<blockquote><p>{_esc(r["q"])}</p></blockquote>' if r.get('q') else ''
+    meta = ' &middot; '.join(_esc(x) for x in (r.get('trip'), r.get('date')) if x)
+    link = r.get('url') or links.get(src) or ''
+    label = SRC_NAME.get(src, 'Guest message')
+    tag = f'<a class="tsrc {src}" href="{_esc(link)}" target="_blank" rel="noopener">{label}</a>' if link else f'<span class="tsrc {src}">{label}</span>'
+    return (f'<figure class="tcard rv">{vid}{stars}{quote}<figcaption><b>{_esc(r.get("name", ""))}</b>'
+            f'{f"<span>{meta}</span>" if meta else ""}{tag}</figcaption></figure>')
+
+def review_links_html(links):
+    out = []
+    if links.get('google'): out.append(f'<a class="btn ghost" href="{_esc(links["google"])}" target="_blank" rel="noopener">Read our Google reviews</a>')
+    if links.get('tripadvisor'): out.append(f'<a class="btn ghost" href="{_esc(links["tripadvisor"])}" target="_blank" rel="noopener">Read our Tripadvisor reviews</a>')
+    if links.get('googleWrite'): out.append(f'<a class="btn dark" href="{_esc(links["googleWrite"])}" target="_blank" rel="noopener">Travelled with us? Leave a review</a>')
+    return out
+
+def review_counts(revs):
+    c = {}
+    for r in revs: c[r.get('src')] = c.get(r.get('src'), 0) + 1
+    parts = []
+    if c.get('google'): parts.append(f'{c["google"]} on Google')
+    if c.get('tripadvisor'): parts.append(f'{c["tripadvisor"]} on Tripadvisor')
+    return ' and '.join(parts)
 
 def cat_name(c):
     return 'Lake Kariba houseboats' if c == 'Kariba Houseboats' else 'Student and school tours' if c == 'Student Tours' else c
@@ -187,7 +240,32 @@ def prerender(body, out):
             f'<details><summary>{q}</summary><p>{a}</p></details>' for q, a in faq) + '</div>')
         extra_ld += ld({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
             {"@type": "Question", "name": strip_tags(q), "acceptedAnswer": {"@type": "Answer", "text": strip_tags(a)}} for q, a in faq]}, ' data-faq')
+    # Reviews. No star-rating structured data on purpose: Google does not show stars for reviews a business publishes about itself.
+    if '<div class="tgrid" id="tsGrid"></div>' in body or '<!--HOME-REVIEWS-->' in body:
+        revs, links = load_reviews(), load_review_links()
+        lk = review_links_html(links)
+        body = body.replace('<div class="tgrid" id="tsGrid"></div>', '<div class="tgrid" id="tsGrid">' + ''.join(review_card(r, links) for r in revs) + '</div>')
+        body = body.replace('<!--REVIEW-LINKS-->', f'<p class="acts rvl rv">{"".join(lk)}</p>' if lk else '')
+        if revs:
+            body = body.replace('<div class="tsempty rv" id="tsEmpty">', '<div class="tsempty rv" id="tsEmpty" hidden>')
+            cnt = review_counts(revs)
+            home = ('<section class="sec rvw" id="reviews"><div class="wrap">\n'
+                    '  <div class="rv shead"><h2>What Our Guests Say</h2><div class="rule"></div>'
+                    f'<p class="lead muted">Reviews from travellers who journeyed with Malachite{(", " + cnt) if cnt else ""}.</p></div>\n'
+                    '  <div class="tgrid">' + ''.join(review_card(r, links) for r in revs[:3]) + '</div>\n'
+                    '  <p class="more rv"><a class="lnk" href="testimonials.html">Read all reviews</a>' +
+                    (f'<a class="lnk" href="{_esc(links["google"])}" target="_blank" rel="noopener">Google</a>' if links.get('google') else '') +
+                    (f'<a class="lnk" href="{_esc(links["tripadvisor"])}" target="_blank" rel="noopener">Tripadvisor</a>' if links.get('tripadvisor') else '') +
+                    '</p>\n</div></section>\n')
+            body = body.replace('<!--HOME-REVIEWS-->', home)
+        else:
+            body = body.replace('<!--HOME-REVIEWS-->', '')
     return body, extra_ld
+
+def is_noindex(meta):
+    """noindex: yes = always hidden from search; noindex: unless-reviews = hidden until at least one review is published."""
+    v = meta.get('noindex')
+    return v == 'yes' or (v == 'unless-reviews' and not load_reviews())
 
 # ---------- asset versions: change whenever the file changes, so browsers never keep an outdated stylesheet or script ----------
 def asset_versions():
@@ -240,7 +318,7 @@ def render_page(path):
         html = html.replace('</head>', f'<meta http-equiv="refresh" content="0;url={tgt}"><meta name="robots" content="noindex,follow">\n<script>location.replace("{tgt}"+location.search+location.hash)</script>\n</head>', 1)
     if meta.get('abs') == 'yes':   # 404 page: assets resolve from the site root whatever the broken URL looks like
         html = html.replace('<head>', f'<head>\n<base href="{BASE}">', 1).replace('</head>', '<meta name="robots" content="noindex">\n</head>', 1)
-    if meta.get('noindex') == 'yes':   # empty or unpublished content pages stay out of search results until they have real content
+    if is_noindex(meta):   # empty or unpublished content pages stay out of search results until they have real content
         html = html.replace('</head>', '<meta name="robots" content="noindex,follow">\n</head>', 1)
     left = re.findall(r'\{\{[^}]*\}\}', html)
     if left: raise SystemExit(f'{out}: unresolved placeholders {left[:3]}')
@@ -255,7 +333,8 @@ def refresh_data_js():
     p.write_text(s2, encoding='utf-8')
 
 def write_site_files(built):
-    skip = {'404.html', 'trips.html', 'testimonials.html', 'journal.html'}   # testimonials and journal are noindex until real content is published
+    skip = {'404.html', 'trips.html', 'journal.html'}   # journal is noindex until articles are published
+    if not load_reviews(): skip.add('testimonials.html')   # testimonials stays hidden until a review is published
     urls = [url_of(o) for o in built if o not in skip]
     try:   # published journal articles (journal/index.json) are listed too
         arts = json.loads((ROOT / 'journal' / 'index.json').read_text(encoding='utf-8'))

@@ -54,10 +54,26 @@ const CONFIG={
    - mc (Culture Pack): "Marvel - Zimbabwe Culture Apack" lists $3,600 / adult; a second listing "8 Days - Mala Marvel" shows $700 (was $800) / adult and $450 / child, but its page text is a leftover Nepal trekking template.
    - fc (Full Circle): $6,200 / adult is attached to a page titled 18 days whose itinerary is the 10-day culture route, not the brochure's Full Circle loop.
    Inclusions and exclusions on those pages are also leftover Nepal template text, so they are NOT used on this site. */
-/* TESTIMONIALS: add genuine guest testimonials here (with the guest's permission). Shape:
-   {q:"Quote, word for word.", name:"Guest name", trip:"Country, trip and month (optional)"}
-   None are published yet. Do not add invented or paraphrased reviews. */
-const TESTIMONIALS=[];
+/* REVIEWS (TESTIMONIALS): shown on the homepage ("What Our Guests Say", newest three) and on the Testimonials page (all).
+   Copy each review WORD FOR WORD from Google or Tripadvisor, or from a guest's own message (with their permission).
+   Never invent, shorten, translate or tidy a review. Put the newest first.
+   One review per entry, in exactly this format (double quotes; the build reads it as JSON):
+   {"q":"The review, word for word.","name":"Name as shown on the review","src":"google","rating":5,"date":"October 2026","trip":"","url":""}
+     src     "google", "tripadvisor" or "guest"
+     rating  1 to 5, as given on the review (leave it out for a guest message)
+     date    month and year shown on the review
+     trip    optional, for example "Lake Kariba houseboat"
+     url     optional link to the review itself
+   Video reviews: add "video":"videos/reviews/FILE.mp4","poster":"images/FILE.jpg" (a short, compressed MP4)
+   or "youtube":"VIDEO_ID" (the part after v= in the YouTube address). A video entry may have a short "q" or none.
+   After editing, run: python3 _tools/build.py */
+const TESTIMONIALS=[
+];
+/* REVIEW_LINKS: Malachite's own review pages. Empty links are simply not shown.
+   google       the Google Maps listing (Share > Copy link on the business profile)
+   googleWrite  the "Ask for reviews" link from Google Business Profile
+   tripadvisor  the Tripadvisor listing */
+const REVIEW_LINKS={"google":"","googleWrite":"","tripadvisor":""};
 
 const PRICE={
  tt:{status:'published',amt:2480,basis:'per adult'},
