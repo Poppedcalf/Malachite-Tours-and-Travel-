@@ -56,3 +56,8 @@
 ## Destinations: package lists replaced by links
 - Each country section now ends with a "See Packages in <country>" button that opens the Packages page filtered to that country (packages.html?filter=<country>#journeys). Zimbabwe also has "See Lake Kariba Houseboat Charters".
 - The package rows, itinerary and quote buttons were removed from Destinations (they live on Packages). Destinations page is about 1,600 px shorter on a computer.
+
+## Google review link connected
+- REVIEW_LINKS: googleWrite = https://g.page/r/CSeyFypRfnr-EAI/review (official "Ask for reviews" link), google = https://g.page/r/CSeyFypRfnr-EAI (business profile).
+- Now used for: "Read our Google reviews" and "Travelled with us? Leave a review" buttons (Testimonials), the "Google review" tags on review cards, the homepage "Google" link, the invitation under the review form, and "Also post it on Google" after a guest sends a review.
+- Use the same review link on WhatsApp after trips and as a QR code.

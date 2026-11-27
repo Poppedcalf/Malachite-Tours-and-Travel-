@@ -85,7 +85,7 @@ const TESTIMONIALS=[
    google       the Google Maps listing (Share > Copy link on the business profile)
    googleWrite  the "Ask for reviews" link from Google Business Profile
    tripadvisor  the Tripadvisor listing */
-const REVIEW_LINKS={"google":"","googleWrite":"","tripadvisor":"https://share.google/AHFx1ThrPWmA9cTqj"};   // tripadvisor: Google share link to the Tripadvisor listing; replace with the direct tripadvisor.com address when available
+const REVIEW_LINKS={"google":"https://g.page/r/CSeyFypRfnr-EAI","googleWrite":"https://g.page/r/CSeyFypRfnr-EAI/review","tripadvisor":"https://share.google/AHFx1ThrPWmA9cTqj"};   // tripadvisor: Google share link to the Tripadvisor listing; replace with the direct tripadvisor.com address when available
 
 const PRICE={
  tt:{status:'published',amt:2480,basis:'per adult'},
