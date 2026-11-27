@@ -815,3 +815,6 @@ a.tsrc:hover{background:rgba(0,75,73,.16)}
 .tsrc.video::before{content:"";display:inline-block;width:0;height:0;margin-right:7px;vertical-align:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #c00}
 .tvc{gap:10px}
 #testimonials .tgrid{margin-top:28px}
+.tcard .ttl{margin:0;font:600 1.02rem/1.35 var(--sans);color:var(--mal)}
+.tsh{margin:40px 0 0;font-size:clamp(1.6rem,2.6vw,2rem);color:var(--mal)}
+#tsGrid .tsh+.tgrid{margin-top:18px}

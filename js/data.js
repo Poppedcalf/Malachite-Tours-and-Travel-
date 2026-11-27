@@ -66,9 +66,11 @@ const CONFIG={
      url     optional link to the review itself
    Video reviews: add "video":"videos/reviews/FILE.mp4","poster":"images/FILE.jpg" (a short, compressed MP4)
    or "youtube":"VIDEO_ID" (the part after v= or youtu.be/ in the YouTube address). A video entry may have a short "q" or none,
-   and "src":"video" if it is not from Google or Tripadvisor. "title" (optional) is shown as the card heading when there is no name. Add "home":false to keep an entry off the homepage (Testimonials page only).
+   and "src":"video" if it is not from Google or Tripadvisor. "title" (optional): the review's own headline (shown above the text), or for a video the card heading when there is no name. Add "home":false to keep an entry off the homepage (Testimonials page only).
    After editing, run: python3 _tools/build.py */
 const TESTIMONIALS=[
+{"q":"Very well organised trip by Malachite Travel. Very professional and well planned! Made our trip memorable. I would recommend them any time.","title":"Perfect Vacation with Malachite","name":"Uttej R","src":"tripadvisor","rating":5,"date":"May 2024","trip":"","url":""},
+{"q":"I enjoyed every moment with Malachite Travel and Tours and they are indeed professionals when it comes to tour services. My family and I had a good time and we would like to go again on a tour with the Malachite team","title":"their activities were of high standard","name":"Elmas J","src":"tripadvisor","rating":4,"date":"March 2024","trip":"","url":""},
 {"youtube":"tmhYQlIthV8","src":"video","name":"","title":"Australia Group, April 2022","url":"https://www.youtube.com/watch?v=tmhYQlIthV8","home":false},
 {"youtube":"8T-c5yGx0Co","src":"video","name":"","title":"Transfer Testimony","url":"https://www.youtube.com/watch?v=8T-c5yGx0Co","home":false},
 {"youtube":"vyBVQXFTorY","src":"video","name":"","title":"Sentimental and Birthday Trip","url":"https://www.youtube.com/watch?v=vyBVQXFTorY","home":false}

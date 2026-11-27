@@ -178,6 +178,8 @@ def review_card(r, links):
         pst = f' poster="{_esc(r["poster"])}"' if r.get('poster') else ''
         vid = f'<div class="tvid"><video controls preload="none" playsinline{pst} src="{_esc(r["video"])}" aria-label="Video review from {_esc(r.get("name") or "a guest")}"></video></div>'
     quote = f'<blockquote><p>{_esc(r["q"])}</p></blockquote>' if r.get('q') else ''
+    if r.get('q') and r.get('title') and r.get('name'):   # the review's own headline, as written
+        quote = f'<p class="ttl">{_esc(r["title"])}</p>' + quote
     meta = ' &middot; '.join(_esc(x) for x in (r.get('trip'), r.get('date')) if x)
     link = r.get('url') or links.get(src) or ''
     label = SRC_NAME.get(src, 'Guest message')
@@ -250,7 +252,14 @@ def prerender(body, out):
     if '<div class="tgrid" id="tsGrid"></div>' in body or '<!--HOME-REVIEWS-->' in body:
         revs, links = load_reviews(), load_review_links()
         lk = review_links_html(links)
-        body = body.replace('<div class="tgrid" id="tsGrid"></div>', '<div class="tgrid" id="tsGrid">' + ''.join(review_card(r, links) for r in revs) + '</div>')
+        written = [r for r in revs if not (r.get('youtube') or r.get('video'))]
+        videos = [r for r in revs if r.get('youtube') or r.get('video')]
+        grid = ''
+        if written:
+            grid += ('<h3 class="tsh">Written reviews</h3>' if videos else '') + '<div class="tgrid">' + ''.join(review_card(r, links) for r in written) + '</div>'
+        if videos:
+            grid += ('<h3 class="tsh">Video reviews</h3>' if written else '') + '<div class="tgrid">' + ''.join(review_card(r, links) for r in videos) + '</div>'
+        body = body.replace('<div class="tgrid" id="tsGrid"></div>', '<div id="tsGrid">' + grid + '</div>')
         body = body.replace('<!--REVIEW-LINKS-->', f'<p class="acts rvl rv">{"".join(lk)}</p>' if lk else '')
         home_revs = [r for r in revs if r.get('home', True)]
         if revs:
