@@ -866,3 +866,8 @@ a.tsrc:hover{background:rgba(0,75,73,.16)}
 .rvpub{margin-top:18px;font-size:.98rem}
 .rvpub .lnk{margin:0 2px}
 @media(max-width:600px){.rvf .two{grid-template-columns:1fr}}
+.rvnext{margin-top:6px;padding:20px 22px;background:var(--sand);border-left:4px solid var(--gold)}
+.rvnext b{display:block;font:600 1.3rem var(--serif);color:var(--mal)}
+.rvnext p{margin-top:6px;font-size:.95rem}
+.rvnext .acts{margin-top:14px;display:flex;flex-wrap:wrap;gap:10px}
+.rvnext:focus{outline:none}

@@ -263,6 +263,12 @@ def prerender(body, out):
         body = body.replace('<!--REVIEW-LINKS-->', f'<p class="acts rvl rv">{"".join(lk)}</p>' if lk else '')
         pub = [f'<a class="lnk dk" href="{_esc(links[k])}" target="_blank" rel="noopener">{n}</a>' for k, n in (('googleWrite', 'Google'), ('tripadvisor', 'Tripadvisor')) if links.get(k)]
         if not links.get('googleWrite') and links.get('google'): pub.insert(0, f'<a class="lnk dk" href="{_esc(links["google"])}" target="_blank" rel="noopener">Google</a>')
+        nxt = [(links.get('googleWrite') or links.get('google'), 'Google'), (links.get('tripadvisor'), 'Tripadvisor')]
+        nxt = [f'<a class="btn ghost" data-rvcopy href="{_esc(u)}" target="_blank" rel="noopener">Also post it on {n}</a>' for u, n in nxt if u]
+        body = body.replace('<!--REVIEW-NEXT-->', ('<div class="rvnext" id="rvNext" hidden tabindex="-1"><b>Thank you for your review.</b>'
+            '<p>Would you also share it on ' + ' or '.join(n for n in ('Google', 'Tripadvisor') if any(n in x for x in nxt)) + '? It helps other travellers find us. '
+            'Press the button and your review is copied, ready to paste there (reviews on those sites are posted from your own account).</p>'
+            '<div class="acts">' + ''.join(nxt) + '</div></div>') if nxt else '')
         body = body.replace('<!--REVIEW-PUBLIC-->', ('<p class="rvpub">You are also welcome to review us on ' + ' or '.join(pub) + '.</p>') if pub else '')
         home_revs = [r for r in revs if r.get('home', True) and (r.get('q') or r.get('youtube') or r.get('video'))]
         if revs:

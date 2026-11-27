@@ -303,6 +303,10 @@ if(rvf){
   $('#rvErr').textContent='';
   const msg=`Hello Malachite Travel & Tours, I would like to share a review of my trip [Ref: ${ref}].\n\nRating: ${r} out of 5\n${tr?'Trip: '+tr+'\n':''}\nMy review:\n${t}\n\nName: ${n}${c?'\nCountry: '+c:''}\n\n${ok?'I agree that Malachite may publish this review on its website, with my name and country, exactly as written.':'Please do not publish this review.'}`;
   if(b.dataset.rvsend==='wa')window.open(wa(msg),'_blank','noopener');else location.href=mail('My review of Malachite Travel & Tours ['+ref+']',msg);
+  const nx=$('#rvNext');if(nx){nx.hidden=false;setTimeout(()=>nx.focus(),300)}   /* shown to everyone, whatever the rating */
  });
+ /* "Also post it on Google / Tripadvisor": copy the guest's own words so they can paste them on the platform */
+ rvf.addEventListener('click',e=>{if(!e.target.closest('[data-rvcopy]'))return;const t=$('#rvT').value.trim();
+  if(t&&navigator.clipboard)navigator.clipboard.writeText(t).catch(()=>{})});
 }
 })();

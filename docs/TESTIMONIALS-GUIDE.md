@@ -41,3 +41,8 @@ The "Share Your Experience" form on the Testimonials page sends the review to Ma
 1. Check the guest ticked "Malachite may publish my review" (the message says so).
 2. Add it to `TESTIMONIALS` with `"src":"guest"`, the rating, the text exactly as sent, the name (and country in `trip` if you like), and rebuild.
 Keep the message as your record of permission. Publishing a selection is fine as long as the page does not claim to show all reviews. Do not use the form to decide who gets asked for a Google review: Google's rules require inviting every guest.
+
+## One review in two places
+Google and Tripadvisor only accept reviews a guest posts from their own account; a website or business cannot submit one for them.
+- Best: ask every guest to review on Google first (send the googleWrite link or a QR code), then add the good ones to the website.
+- From the website form: after sending, every guest (whatever their rating) sees "Also post it on Google / Tripadvisor". Pressing it copies their review text and opens the platform, so they only need to paste it. The Google button appears once `googleWrite` or `google` is filled in REVIEW_LINKS.
