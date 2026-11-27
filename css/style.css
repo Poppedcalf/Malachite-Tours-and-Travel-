@@ -872,3 +872,8 @@ a.tsrc:hover{background:rgba(0,75,73,.16)}
 .rvnext .acts{margin-top:14px;display:flex;flex-wrap:wrap;gap:10px}
 .rvnext:focus{outline:none}
 .cpk.acts{margin-top:clamp(24px,3vw,36px);display:flex;flex-wrap:wrap;gap:10px}
+.rvg{display:grid;gap:8px;justify-items:start}
+.rvg .btn{min-width:220px}
+.rvgnote{padding:10px 14px;background:var(--sand);border-left:3px solid var(--gold);font-size:.95rem}
+.rvor{display:flex;align-items:center;gap:14px;margin:10px 0 2px;font-size:.88rem;font-weight:600;letter-spacing:.04em;color:rgba(26,26,26,.6)}
+.rvor::before,.rvor::after{content:"";flex:1;height:1px;background:rgba(0,75,73,.18)}

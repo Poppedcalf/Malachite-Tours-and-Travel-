@@ -12,7 +12,7 @@
 <link rel="preload" as="image" href="images/lodge-deck-dusk-1200.jpg" imagesrcset="images/lodge-deck-dusk-640.jpg 640w, images/lodge-deck-dusk-1200.jpg 1200w" imagesizes="100vw" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap">
-<link rel="stylesheet" href="css/style.css?v=2bb4b7cb">
+<link rel="stylesheet" href="css/style.css?v=d4364d84">
 <script src="js/boot.js?v=a866d4f2"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://malachite-travel-and-tours.pages.dev/"},{"@type":"ListItem","position":2,"name":"Guest Testimonials","item":"https://malachite-travel-and-tours.pages.dev/testimonials"}]}</script>
 </head>
@@ -71,12 +71,16 @@
 <section class="sec stage" id="share"><div class="wrap rvf-g">
   <div class="rv">
     <h2>Share Your Experience</h2><div class="rule"></div>
-    <p class="lead muted">Travelled with Malachite? We would love to hear how it went. Every review is read by our team, and with your permission we publish a selection on this page.</p>
+    <p class="lead muted">Travelled with Malachite? We would love to hear how it went. The best place to share it is Google, where other travellers can read it. Every review is read by our team, and with permission we publish a selection on this page.</p>
     <p class="rvpub">You are also welcome to review us on <a class="lnk dk" href="https://g.page/r/CSeyFypRfnr-EAI/review" target="_blank" rel="noopener">Google</a> or <a class="lnk dk" href="https://share.google/AHFx1ThrPWmA9cTqj" target="_blank" rel="noopener">Tripadvisor</a>.</p>
   </div>
-  <!-- REVIEW FORM: no data is stored by the website. "Send" opens WhatsApp or the guest's email app with the review written out;
-       the guest sends it themselves. To publish one, add it to TESTIMONIALS in js/data.js with "src":"guest" (see docs/TESTIMONIALS-GUIDE.md). -->
+  <!-- REVIEW FORM (Google first): "Post on Google" copies the guest's review and opens Google's review box; the guest chooses the stars
+       and posts it from their own Google account. Guests without Google can send it to Malachite by WhatsApp or email instead.
+       Nothing is stored by the website. To publish a review on this page, add it to TESTIMONIALS in js/data.js (see docs/TESTIMONIALS-GUIDE.md). -->
   <form class="form rvf rv" id="rvForm" novalidate onsubmit="return false" style="--d:.1s">
+    <label for="rvT" class="nl">Your review<textarea id="rvT" rows="5" maxlength="1500" placeholder="What did you enjoy? Which trip did you take?"></textarea></label>
+    <div class="rvg"><a class="btn gold" data-rvgoogle href="https://g.page/r/CSeyFypRfnr-EAI/review" target="_blank" rel="noopener">Post on Google</a><p class="hint">Opens Google&#8217;s review box for Malachite. Your review is copied, so you can paste it there, choose your stars and post it from your Google account.</p><p class="rvgnote" id="rvGnote" hidden tabindex="-1"><b>Thank you!</b> Paste your review into the Google window that opened.</p></div>
+    <div class="rvor"><span>No Google account? Send it to us instead</span></div>
     <fieldset class="rate-f"><legend>Your rating</legend>
       <div class="rate">
         <input type="radio" name="rr" id="rr5" value="5"><label for="rr5" title="5 stars"><span class="sr">5 stars</span>&#9733;</label>
@@ -86,15 +90,14 @@
         <input type="radio" name="rr" id="rr1" value="1"><label for="rr1" title="1 star"><span class="sr">1 star</span>&#9733;</label>
       </div>
     </fieldset>
-    <label for="rvT" class="nl">Your review<textarea id="rvT" rows="5" maxlength="1500" placeholder="What did you enjoy? Which trip did you take?"></textarea></label>
     <div class="two"><label for="rvN">Your name<input id="rvN" type="text" autocomplete="name" maxlength="80"></label>
       <label for="rvC">Country (optional)<input id="rvC" type="text" autocomplete="country-name" maxlength="60"></label></div>
     <label for="rvP" class="nl">Trip and month (optional)<input id="rvP" type="text" maxlength="100" placeholder="For example, Lake Kariba houseboat, July 2026"></label>
     <label class="opt"><input type="checkbox" id="rvOk"><span><b>Malachite may publish my review on its website</b>with my name and country, exactly as written.</span></label>
     <p class="err" id="rvErr" aria-live="polite"></p>
-    <div class="acts"><button type="button" class="btn gold" data-rvsend="wa"><svg class="ic"><use href="#i-wa"/></svg>Send on WhatsApp</button><button type="button" class="btn ghost" data-rvsend="em"><svg class="ic"><use href="#i-mail"/></svg>Send by email</button></div>
+    <div class="acts"><button type="button" class="btn dark" data-rvsend="wa"><svg class="ic"><use href="#i-wa"/></svg>Send on WhatsApp</button><button type="button" class="btn ghost" data-rvsend="em"><svg class="ic"><use href="#i-mail"/></svg>Send by email</button></div>
     <p class="hint">Sending opens WhatsApp or your email app with your review ready to send. Nothing is saved on this website.</p>
-      <div class="rvnext" id="rvNext" hidden tabindex="-1"><b>Thank you for your review.</b><p>Would you also share it on Google or Tripadvisor? It helps other travellers find us. Press the button and your review is copied, ready to paste there (reviews on those sites are posted from your own account).</p><div class="acts"><a class="btn ghost" data-rvcopy href="https://g.page/r/CSeyFypRfnr-EAI/review" target="_blank" rel="noopener">Also post it on Google</a><a class="btn ghost" data-rvcopy href="https://share.google/AHFx1ThrPWmA9cTqj" target="_blank" rel="noopener">Also post it on Tripadvisor</a></div></div>
+    <div class="rvnext" id="rvNext" hidden tabindex="-1"><b>Thank you for your review.</b><p>Would you also share it on Google or Tripadvisor? It helps other travellers find us. Press the button and your review is copied, ready to paste there (reviews on those sites are posted from your own account).</p><div class="acts"><a class="btn ghost" data-rvcopy href="https://g.page/r/CSeyFypRfnr-EAI/review" target="_blank" rel="noopener">Also post it on Google</a><a class="btn ghost" data-rvcopy href="https://share.google/AHFx1ThrPWmA9cTqj" target="_blank" rel="noopener">Also post it on Tripadvisor</a></div></div>
   </form>
 </div></section>
 <section class="sec fin" id="contact" data-nobar><img class="bg" src="images/safari-track.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async" onerror="this.remove()"><div class="wrap">
@@ -126,6 +129,6 @@
 <dialog id="lb" aria-label="Photo viewer"><img id="lbI" alt="" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.style.visibility='hidden'"><div class="lbf"><button class="x" id="lbP" aria-label="Previous photo"><svg class="ic" style="transform:rotate(180deg)"><use href="#i-next"/></svg></button><p id="lbC" aria-live="polite"></p><button class="x" id="lbN" aria-label="Next photo"><svg class="ic"><use href="#i-next"/></svg></button><button class="x" id="lbX" aria-label="Close photo"><svg class="ic"><use href="#i-x"/></svg></button></div></dialog>
 
 <script src="js/data.js?v=f0b5fcea"></script>
-<script src="js/app.js?v=d9d1b95b"></script>
+<script src="js/app.js?v=7c7f2b89"></script>
 </body>
 </html>

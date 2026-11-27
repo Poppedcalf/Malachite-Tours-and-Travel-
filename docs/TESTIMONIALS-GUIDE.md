@@ -46,3 +46,8 @@ Keep the message as your record of permission. Publishing a selection is fine as
 Google and Tripadvisor only accept reviews a guest posts from their own account; a website or business cannot submit one for them.
 - Best: ask every guest to review on Google first (send the googleWrite link or a QR code), then add the good ones to the website.
 - From the website form: after sending, every guest (whatever their rating) sees "Also post it on Google / Tripadvisor". Pressing it copies their review text and opens the platform, so they only need to paste it. The Google button appears once `googleWrite` or `google` is filled in REVIEW_LINKS.
+
+## Review form is Google-first (from 27 November 2026)
+1. The guest writes their review and presses **Post on Google**: the text is copied and Google's review box for Malachite opens (REVIEW_LINKS.googleWrite); they choose the stars, paste and post from their own Google account.
+2. Guests without Google use **No Google account? Send it to us instead**: rating, name, optional country and trip, permission box, then WhatsApp or email. After sending they are offered Google and Tripadvisor again.
+Both options are shown to everyone before any rating is given, so this stays within Google's rules.

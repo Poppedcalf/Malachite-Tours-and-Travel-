@@ -305,6 +305,9 @@ if(rvf){
   if(b.dataset.rvsend==='wa')window.open(wa(msg),'_blank','noopener');else location.href=mail('My review of Malachite Travel & Tours ['+ref+']',msg);
   const nx=$('#rvNext');if(nx){nx.hidden=false;setTimeout(()=>nx.focus(),300)}   /* shown to everyone, whatever the rating */
  });
+ /* "Post on Google" (main option): copy the review so the guest can paste it into Google's review box */
+ rvf.addEventListener('click',e=>{if(!e.target.closest('[data-rvgoogle]'))return;const t=$('#rvT').value.trim();
+  if(t&&navigator.clipboard)navigator.clipboard.writeText(t).catch(()=>{});const g=$('#rvGnote');if(g){g.innerHTML=t?'<b>Thank you!</b> Paste your review into the Google window that opened.':'<b>Thank you!</b> Write your review in the Google window that opened.';g.hidden=false}});
  /* "Also post it on Google / Tripadvisor": copy the guest's own words so they can paste them on the platform */
  rvf.addEventListener('click',e=>{if(!e.target.closest('[data-rvcopy]'))return;const t=$('#rvT').value.trim();
   if(t&&navigator.clipboard)navigator.clipboard.writeText(t).catch(()=>{})});

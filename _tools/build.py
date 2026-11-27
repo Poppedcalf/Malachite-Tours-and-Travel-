@@ -263,7 +263,11 @@ def prerender(body, out):
         body = body.replace('<!--REVIEW-LINKS-->', f'<p class="acts rvl rv">{"".join(lk)}</p>' if lk else '')
         pub = [f'<a class="lnk dk" href="{_esc(links[k])}" target="_blank" rel="noopener">{n}</a>' for k, n in (('googleWrite', 'Google'), ('tripadvisor', 'Tripadvisor')) if links.get(k)]
         if not links.get('googleWrite') and links.get('google'): pub.insert(0, f'<a class="lnk dk" href="{_esc(links["google"])}" target="_blank" rel="noopener">Google</a>')
-        nxt = [(links.get('googleWrite') or links.get('google'), 'Google'), (links.get('tripadvisor'), 'Tripadvisor')]
+        gw = links.get('googleWrite') or links.get('google')
+        body = body.replace('<!--REVIEW-GOOGLE-->', (f'<div class="rvg"><a class="btn gold" data-rvgoogle href="{_esc(gw)}" target="_blank" rel="noopener">Post on Google</a>'
+            '<p class="hint">Opens Google&#8217;s review box for Malachite. Your review is copied, so you can paste it there, choose your stars and post it from your Google account.</p>'
+            '<p class="rvgnote" id="rvGnote" hidden tabindex="-1"><b>Thank you!</b> Paste your review into the Google window that opened.</p></div>') if gw else '')
+        nxt = [(gw, 'Google'), (links.get('tripadvisor'), 'Tripadvisor')]
         nxt = [f'<a class="btn ghost" data-rvcopy href="{_esc(u)}" target="_blank" rel="noopener">Also post it on {n}</a>' for u, n in nxt if u]
         body = body.replace('<!--REVIEW-NEXT-->', ('<div class="rvnext" id="rvNext" hidden tabindex="-1"><b>Thank you for your review.</b>'
             '<p>Would you also share it on ' + ' or '.join(n for n in ('Google', 'Tripadvisor') if any(n in x for x in nxt)) + '? It helps other travellers find us. '

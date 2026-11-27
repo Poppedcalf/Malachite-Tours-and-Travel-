@@ -32,12 +32,16 @@ preload: images/lodge-deck-dusk-1200.jpg
 <section class="sec stage" id="share"><div class="wrap rvf-g">
   <div class="rv">
     <h2>Share Your Experience</h2><div class="rule"></div>
-    <p class="lead muted">Travelled with Malachite? We would love to hear how it went. Every review is read by our team, and with your permission we publish a selection on this page.</p>
+    <p class="lead muted">Travelled with Malachite? We would love to hear how it went. The best place to share it is Google, where other travellers can read it. Every review is read by our team, and with permission we publish a selection on this page.</p>
     <!--REVIEW-PUBLIC-->
   </div>
-  <!-- REVIEW FORM: no data is stored by the website. "Send" opens WhatsApp or the guest's email app with the review written out;
-       the guest sends it themselves. To publish one, add it to TESTIMONIALS in js/data.js with "src":"guest" (see docs/TESTIMONIALS-GUIDE.md). -->
+  <!-- REVIEW FORM (Google first): "Post on Google" copies the guest's review and opens Google's review box; the guest chooses the stars
+       and posts it from their own Google account. Guests without Google can send it to Malachite by WhatsApp or email instead.
+       Nothing is stored by the website. To publish a review on this page, add it to TESTIMONIALS in js/data.js (see docs/TESTIMONIALS-GUIDE.md). -->
   <form class="form rvf rv" id="rvForm" novalidate onsubmit="return false" style="--d:.1s">
+    <label for="rvT" class="nl">Your review<textarea id="rvT" rows="5" maxlength="1500" placeholder="What did you enjoy? Which trip did you take?"></textarea></label>
+    <!--REVIEW-GOOGLE-->
+    <div class="rvor"><span>No Google account? Send it to us instead</span></div>
     <fieldset class="rate-f"><legend>Your rating</legend>
       <div class="rate">
         <input type="radio" name="rr" id="rr5" value="5"><label for="rr5" title="5 stars"><span class="sr">5 stars</span>&#9733;</label>
@@ -47,15 +51,14 @@ preload: images/lodge-deck-dusk-1200.jpg
         <input type="radio" name="rr" id="rr1" value="1"><label for="rr1" title="1 star"><span class="sr">1 star</span>&#9733;</label>
       </div>
     </fieldset>
-    <label for="rvT" class="nl">Your review<textarea id="rvT" rows="5" maxlength="1500" placeholder="What did you enjoy? Which trip did you take?"></textarea></label>
     <div class="two"><label for="rvN">Your name<input id="rvN" type="text" autocomplete="name" maxlength="80"></label>
       <label for="rvC">Country (optional)<input id="rvC" type="text" autocomplete="country-name" maxlength="60"></label></div>
     <label for="rvP" class="nl">Trip and month (optional)<input id="rvP" type="text" maxlength="100" placeholder="For example, Lake Kariba houseboat, July 2026"></label>
     <label class="opt"><input type="checkbox" id="rvOk"><span><b>Malachite may publish my review on its website</b>with my name and country, exactly as written.</span></label>
     <p class="err" id="rvErr" aria-live="polite"></p>
-    <div class="acts"><button type="button" class="btn gold" data-rvsend="wa"><svg class="ic"><use href="#i-wa"/></svg>Send on WhatsApp</button><button type="button" class="btn ghost" data-rvsend="em"><svg class="ic"><use href="#i-mail"/></svg>Send by email</button></div>
+    <div class="acts"><button type="button" class="btn dark" data-rvsend="wa"><svg class="ic"><use href="#i-wa"/></svg>Send on WhatsApp</button><button type="button" class="btn ghost" data-rvsend="em"><svg class="ic"><use href="#i-mail"/></svg>Send by email</button></div>
     <p class="hint">Sending opens WhatsApp or your email app with your review ready to send. Nothing is saved on this website.</p>
-      <!--REVIEW-NEXT-->
+    <!--REVIEW-NEXT-->
   </form>
 </div></section>
 {{>closing}}
