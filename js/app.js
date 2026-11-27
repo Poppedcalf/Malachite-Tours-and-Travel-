@@ -49,6 +49,8 @@ function contactLinks(){
  const fq=`Hello Malachite Travel & Tours, I found you on your website [Ref: ${ref}] and would like to discuss support for a film or video production.\n\nType of production:\nLocations in mind:\nDates:\nCrew size:\n\nPlease advise on what is possible.`;
  $$('[data-wa="film"]').forEach(a=>a.href=wa(fq));
  $$('[data-em="film"]').forEach(a=>a.href=mail('Filming enquiry ['+ref+']',fq));
+ const dq=d=>`Hello Malachite Travel & Tours, I found you on your website [Ref: ${ref}] and would like help planning a trip to ${d}.\n\nPreferred dates or month:\nGroup size:\nInterests or special requests:\n\nPlease let me know what is possible.`;
+ $$('[data-wadest]').forEach(a=>a.href=wa(dq(a.dataset.wadest)));
  $$('[data-ask]').forEach(a=>{const t=TAILOR.find(x=>x.id===a.dataset.ask);if(t)a.href=a.dataset.ch==='wa'?wa(askMsg(t)):mail(`Inquiry [${ref}]: ${t.t}`,askMsg(t))});
 }
 contactLinks();
@@ -285,4 +287,9 @@ if(v){
   if('IntersectionObserver'in window&&hero)new IntersectionObserver(es=>{if(user)return;es[0].isIntersecting?play():v.pause()}).observe(hero);
  }
 }
+/* ---------- simple dialogs: a button with data-dlg="<dialog id>" opens it; [data-close] or a click outside closes it ---------- */
+document.addEventListener('click',e=>{const o=e.target.closest('[data-dlg]');if(o){const d=document.getElementById(o.dataset.dlg);if(d&&d.showModal){d.showModal();d._from=o}return}
+ const c=e.target.closest('dialog [data-close]');if(c){c.closest('dialog').close();return}
+ if(e.target.matches&&e.target.matches('dialog.ocd'))e.target.close()});
+$$('dialog.ocd').forEach(d=>d.addEventListener('close',()=>{if(d._from)d._from.focus()}));
 })();

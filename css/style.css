@@ -755,3 +755,27 @@ fieldset[id^=s]{scroll-margin-top:calc(var(--hdr) + 16px)}
 .tm4 li b{margin-top:16px}
 .tm4 .tq{font:italic 500 1.1rem var(--serif);color:var(--mal)}
 .ed figure>img{width:100%;aspect-ratio:4/3;object-fit:cover;background:var(--for)}
+
+/* ---------- Round 10: homepage spacing, hero headline, other countries, country-based destinations ---------- */
+.hero h1.h1s{font-size:clamp(2.1rem,4.4vw,3.7rem);line-height:1.05}
+.hero h1.h1s span{display:block;margin-bottom:6px;font-style:italic;font-weight:500;font-size:.5em;letter-spacing:.02em;color:var(--gold)}
+.sec.tight-b{padding-top:clamp(48px,6vw,80px);padding-bottom:clamp(40px,5vw,64px)}
+.sec.tight-t{padding-top:clamp(40px,5vw,64px)}
+.more{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center}
+.ocb{color:var(--mal)}
+.ocd{max-width:620px}
+.ocl{list-style:none;margin:20px 0 0;padding:0}
+.ocl li{padding:16px 0;border-top:1px solid rgba(242,140,40,.55)}
+.ocl li:last-child{border-bottom:1px solid rgba(242,140,40,.55)}
+.ocl b{display:block;font:600 1.45rem var(--serif);color:var(--mal)}
+.ocl span{display:block;margin:2px 0 6px;font-size:.96rem}
+.ctry .band{min-height:44vh;min-height:44svh}
+.ctry .band h2{font-style:italic}
+.ctry .body{padding:clamp(40px,6vw,72px) 0}
+.ch3{font-size:1.7rem;color:var(--mal)}
+.ctry .facts{margin-top:14px}
+.cpk{margin-top:clamp(32px,4vw,52px)}
+.cpk .sa4{margin-top:10px}
+@media(min-width:900px){.cpk .sa4 li{grid-template-columns:1fr auto;align-items:center;gap:30px}}
+.sa-a{display:flex;flex-wrap:wrap;gap:8px}
+.ocs{background:var(--sand)}
