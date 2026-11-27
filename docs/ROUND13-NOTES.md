@@ -61,3 +61,7 @@
 - REVIEW_LINKS: googleWrite = https://g.page/r/CSeyFypRfnr-EAI/review (official "Ask for reviews" link), google = https://g.page/r/CSeyFypRfnr-EAI (business profile).
 - Now used for: "Read our Google reviews" and "Travelled with us? Leave a review" buttons (Testimonials), the "Google review" tags on review cards, the homepage "Google" link, the invitation under the review form, and "Also post it on Google" after a guest sends a review.
 - Use the same review link on WhatsApp after trips and as a QR code.
+
+## Testimonials page order
+- Order is now: review form ("Share Your Experience", Google first), then "Guest Experiences" with Video Reviews, then Written Reviews.
+- Hero button changed from "Share Your Experience" (the form is now right below it) to "See Guest Reviews".

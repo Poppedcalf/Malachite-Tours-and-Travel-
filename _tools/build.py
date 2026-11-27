@@ -254,11 +254,11 @@ def prerender(body, out):
         lk = review_links_html(links)
         written = [r for r in revs if r.get('q') and not (r.get('youtube') or r.get('video'))]
         videos = [r for r in revs if r.get('youtube') or r.get('video')]
-        grid = ''
-        if written:
-            grid += ('<h3 class="tsh">Written Reviews</h3>' if videos else '') + '<div class="tgrid">' + ''.join(review_card(r, links) for r in written) + '</div>'
+        grid = ''   # video reviews first, then written reviews
         if videos:
             grid += ('<h3 class="tsh">Video Reviews</h3>' if written else '') + '<div class="tgrid">' + ''.join(review_card(r, links) for r in videos) + '</div>'
+        if written:
+            grid += ('<h3 class="tsh">Written Reviews</h3>' if videos else '') + '<div class="tgrid">' + ''.join(review_card(r, links) for r in written) + '</div>'
         body = body.replace('<div class="tgrid" id="tsGrid"></div>', '<div id="tsGrid">' + grid + '</div>')
         body = body.replace('<!--REVIEW-LINKS-->', f'<p class="acts rvl rv">{"".join(lk)}</p>' if lk else '')
         pub = [f'<a class="lnk dk" href="{_esc(links[k])}" target="_blank" rel="noopener">{n}</a>' for k, n in (('googleWrite', 'Google'), ('tripadvisor', 'Tripadvisor')) if links.get(k)]
