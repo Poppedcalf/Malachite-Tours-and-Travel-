@@ -267,10 +267,9 @@ def prerender(body, out):
         home_revs = [r for r in revs if r.get('home', True) and (r.get('q') or r.get('youtube') or r.get('video'))]
         if revs:
             body = body.replace('<div class="tsempty rv" id="tsEmpty">', '<div class="tsempty rv" id="tsEmpty" hidden>')
-            cnt = review_counts(revs)
             home = ('<section class="sec rvw" id="reviews"><div class="wrap">\n'
                     '  <div class="rv shead"><h2>What Our Guests Say</h2><div class="rule"></div>'
-                    f'<p class="lead muted">Reviews from travellers who journeyed with Malachite{(", " + cnt) if cnt else ""}.</p></div>\n'
+                    '<p class="lead muted">Reviews from travellers who journeyed with Malachite.</p></div>\n'
                     '  <div class="tgrid">' + ''.join(review_card(r, links) for r in home_revs[:3]) + '</div>\n'
                     '  <p class="more rv"><a class="lnk" href="testimonials.html">Read all reviews</a>' +
                     (f'<a class="lnk" href="{_esc(links["google"])}" target="_blank" rel="noopener">Google</a>' if links.get('google') else '') +

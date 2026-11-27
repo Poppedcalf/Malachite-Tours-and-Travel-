@@ -46,3 +46,9 @@
 - The page now says it shows "a selection" of reviews, and invites everyone to review on Tripadvisor (and Google, once the link is added) whatever their rating. Showing only chosen reviews is fine when it is not presented as all reviews; asking only happy guests to post on Google ("review gating") is against Google's rules, so the Google/Tripadvisor invitation is shown to everyone.
 - Spacing reduced again on every page: sections 84 px to 68 px top and bottom on computers (48 px to 40 px on phones); inner-page photo headers 62% to 48% of the screen height.
 - Headings use capitals for each main word throughout (h1 to h4, card and list headings, itinerary step titles, tailor-made titles). Guest review headlines (e.g. "their activities were of high standard") and FAQ questions are left as written.
+
+## Review counts removed; production videos taken off the Filming page
+- Homepage reviews line now reads "Reviews from travellers who journeyed with Malachite." (no numbers anywhere).
+- Filming page: the four production videos are no longer shown, played or linked (no permission from the productions yet). Replaced by "Productions We Have Supported": Malachite has supported YouTube creators, filmmakers and international crews, with four photo tiles (Wildlife, Food, People, Places, using Malachite's own photos) and an "Ask for examples of our work" WhatsApp button.
+- The four supplied video IDs are kept here only, for use once permission is given: wN6qPJm1hmg, lD3t5WAJwhQ, mlymniKDUEc, mwLM4OLuJw0.
+- The guest video reviews on the Testimonials page are unchanged.
