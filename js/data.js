@@ -56,7 +56,8 @@ const CONFIG={
    Inclusions and exclusions on those pages are also leftover Nepal template text, so they are NOT used on this site. */
 /* REVIEWS (TESTIMONIALS): shown on the homepage ("What Our Guests Say", newest three) and on the Testimonials page (all).
    Copy each review WORD FOR WORD from Google or Tripadvisor, or from a guest's own message (with their permission).
-   Never invent, shorten, translate or tidy a review. Put the newest first.
+   Never invent, shorten, translate or tidy a review. The homepage shows the first three written reviews in this list.
+   A star rating with no text ("q":"") is counted in the totals but not shown as a card.
    One review per entry, in exactly this format (double quotes; the build reads it as JSON):
    {"q":"The review, word for word.","name":"Name as shown on the review","src":"google","rating":5,"date":"October 2026","trip":"","url":""}
      src     "google", "tripadvisor" or "guest"
@@ -69,8 +70,13 @@ const CONFIG={
    and "src":"video" if it is not from Google or Tripadvisor. "title" (optional): the review's own headline (shown above the text), or for a video the card heading when there is no name. Add "home":false to keep an entry off the homepage (Testimonials page only).
    After editing, run: python3 _tools/build.py */
 const TESTIMONIALS=[
+{"q":"I had an incredible experience and the itinerary was perfectly planned. I’ll definitely be booking with them again.","name":"Amanda Fadzai","src":"google","rating":5,"date":"","trip":"","url":""},
 {"q":"Very well organised trip by Malachite Travel. Very professional and well planned! Made our trip memorable. I would recommend them any time.","title":"Perfect Vacation with Malachite","name":"Uttej R","src":"tripadvisor","rating":5,"date":"May 2024","trip":"","url":""},
+{"q":"Very professional and great service, I would not hesitate to recommend them.","name":"Roan Seiler","src":"google","rating":5,"date":"","trip":"","url":""},
+{"q":"Thank you so much for the wonderful service Cephas and your team. You made our visit to Kariba memorable. Will definitely use your services again next time.","name":"Byron Nyabonda","src":"google","rating":5,"date":"","trip":"","url":""},
+{"q":"Professional travel company. Everything was well planned.","name":"Uttej Rao","src":"google","rating":5,"date":"","trip":"","url":""},
 {"q":"I enjoyed every moment with Malachite Travel and Tours and they are indeed professionals when it comes to tour services. My family and I had a good time and we would like to go again on a tour with the Malachite team","title":"their activities were of high standard","name":"Elmas J","src":"tripadvisor","rating":4,"date":"March 2024","trip":"","url":""},
+{"q":"","name":"francisca musembwa","src":"google","rating":5,"date":"","note":"star rating only, no written review: counted, not shown as a card"},
 {"youtube":"tmhYQlIthV8","src":"video","name":"","title":"Australia Group, April 2022","url":"https://www.youtube.com/watch?v=tmhYQlIthV8","home":false},
 {"youtube":"8T-c5yGx0Co","src":"video","name":"","title":"Transfer Testimony","url":"https://www.youtube.com/watch?v=8T-c5yGx0Co","home":false},
 {"youtube":"vyBVQXFTorY","src":"video","name":"","title":"Sentimental and Birthday Trip","url":"https://www.youtube.com/watch?v=vyBVQXFTorY","home":false}

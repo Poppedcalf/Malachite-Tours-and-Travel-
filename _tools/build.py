@@ -252,7 +252,7 @@ def prerender(body, out):
     if '<div class="tgrid" id="tsGrid"></div>' in body or '<!--HOME-REVIEWS-->' in body:
         revs, links = load_reviews(), load_review_links()
         lk = review_links_html(links)
-        written = [r for r in revs if not (r.get('youtube') or r.get('video'))]
+        written = [r for r in revs if r.get('q') and not (r.get('youtube') or r.get('video'))]
         videos = [r for r in revs if r.get('youtube') or r.get('video')]
         grid = ''
         if written:
@@ -261,7 +261,7 @@ def prerender(body, out):
             grid += ('<h3 class="tsh">Video reviews</h3>' if written else '') + '<div class="tgrid">' + ''.join(review_card(r, links) for r in videos) + '</div>'
         body = body.replace('<div class="tgrid" id="tsGrid"></div>', '<div id="tsGrid">' + grid + '</div>')
         body = body.replace('<!--REVIEW-LINKS-->', f'<p class="acts rvl rv">{"".join(lk)}</p>' if lk else '')
-        home_revs = [r for r in revs if r.get('home', True)]
+        home_revs = [r for r in revs if r.get('home', True) and (r.get('q') or r.get('youtube') or r.get('video'))]
         if revs:
             body = body.replace('<div class="tsempty rv" id="tsEmpty">', '<div class="tsempty rv" id="tsEmpty" hidden>')
             cnt = review_counts(revs)
