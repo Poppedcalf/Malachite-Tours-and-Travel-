@@ -121,7 +121,7 @@ html:not(.js) .hv{opacity:1}
 @media(max-width:700px){
   .hero::before{background:linear-gradient(180deg,rgba(0,32,31,.55) 0,rgba(0,32,31,.18) 24%,rgba(0,32,31,.5) 55%,rgba(0,32,31,.92))}
   .hmedia img{object-position:62% 40%}
-  .hmedia video{object-position:34% 50%}
+  .hmedia video{object-position:50% 50%}   /* hero-phone.mp4 is already cropped for phones */
   .hcopy{padding:24px 0 32px}
   .hvt{right:14px;top:calc(var(--hdr) + 10px);width:40px;height:40px}
 }
@@ -897,3 +897,11 @@ a.tsrc:hover{background:rgba(0,75,73,.16)}
 .fca summary small{display:block;margin-top:2px;font-size:.9rem;color:rgba(26,26,26,.72)}
 .fca details p{padding:0 18px 18px 62px;font-size:.95rem;color:rgba(26,26,26,.85)}
 .fca summary:focus-visible{outline:2px solid var(--mal);outline-offset:2px}
+.crt{margin-top:36px;display:grid;gap:18px;align-items:center}
+@media(min-width:700px){.crt{grid-template-columns:260px 1fr;gap:28px}}
+.crt figure{margin:0}
+.crt figure img{width:100%;aspect-ratio:721/425;object-fit:cover;object-position:35% 40%;display:block;border-top:4px solid var(--gold)}
+.crt figcaption{margin-top:6px;font-size:.78rem;color:rgba(26,26,26,.6)}
+.crt .gtk{font-size:.8rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2)}
+.crt h3{font-size:clamp(1.6rem,2.6vw,2.1rem);color:var(--mal);margin-top:4px}
+.crt p:last-child{margin-top:6px;color:rgba(26,26,26,.8)}

@@ -70,3 +70,8 @@
 Order: hero; [Why Film in Zimbabwe: director's statement to come, template in the page source]; "Our Work on Screen" (The Grand Tour at Lake Kariba, with Jeremy Clarkson, Richard Hammond and James May; four videos by YouTube creator Nike Corey, credited and shared with his permission); "Let Malachite Handle It for You"; "Clearance Checklist" (six steps shown as one-line summaries, each opens for the full details; "start six weeks before travel" kept at the top); "Productions We Facilitate" (present tense; Wildlife, Food, People, Places; "Discuss Your Production").
 - Nike Corey's permission is conditional on credit: every video card says "Video by Nike Corey" and the section says the videos are shared with his permission. Do not remove the credit.
 - No Grand Tour logos or images are used (Amazon's property); the mention is text only.
+
+## Hero video on phones; Filming page images
+- Phones now play the same footage as the desktop hero (videos/hero.mp4), as videos/hero-phone.mp4: cropped to a tall 608x1080 centre frame (full source resolution, high quality, no sound), about 8.6 MB instead of 30 MB. The old 14-second phone clip (hero-mobile.mp4) was removed. The site still skips the video on data-saver, 2G and reduced-motion settings. Under the 25 MB Cloudflare file limit, so it deploys with the site.
+- Filming: The Grand Tour item now names the episode, "The Grand Tour: One for the Road". Nike Corey's photo (supplied by Malachite) is shown beside his name, credited "Photo: Nike Corey".
+- Not used: the official Grand Tour poster and the presenters' photo (Amazon's promotional images; using them would suggest an endorsement), and the photo with the skull (graphic, not suitable).

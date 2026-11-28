@@ -7,13 +7,13 @@ Replace a file by **overwriting it with the same file name**. Alt text (what scr
 | What | File | Notes |
 |---|---|---|
 | Hero video | `videos/hero.mp4` | Silent loop, 10 to 15 seconds, H.264 MP4, 1280x720 or 1920x1080, under 5 MB, no watermark or black bars. |
-| Hero video for phones | `videos/hero-mobile.mp4` | A lighter file (about 1.5 MB) used on phones. Replace it together with the main video. |
+| Hero video for phones | `videos/hero-phone.mp4` | The same footage as the main video, cropped to a tall 608x1080 frame for phones (about 8.6 MB). Re-make it whenever the main video changes, and give it a new file name so browsers fetch the new one. |
 | Hero still image | `images/hero-victoria-falls.jpg` | Shown first, and for visitors with reduced-motion or data-saver on. Use a Kariba photo when you have one (1920 px wide or more). |
 
 Prepare footage with ffmpeg (free):
 
     ffmpeg -i source.mp4 -t 14 -an -vf "scale=1280:-2,fps=25" -c:v libx264 -crf 26 -preset slow -movflags +faststart videos/hero.mp4
-    ffmpeg -i videos/hero.mp4 -an -vf "scale=960:-2" -c:v libx264 -crf 29 -movflags +faststart videos/hero-mobile.mp4
+    ffmpeg -i videos/hero.mp4 -an -vf "crop=608:1080:(iw-608)/2:0" -c:v libx264 -preset slower -crf 25 -profile:v high -pix_fmt yuv420p -movflags +faststart videos/hero-phone.mp4
 
 ## Photos
 
