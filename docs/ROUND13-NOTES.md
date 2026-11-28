@@ -65,3 +65,8 @@
 ## Testimonials page order
 - Order is now: review form ("Share Your Experience", Google first), then "Guest Experiences" with Video Reviews, then Written Reviews.
 - Hero button changed from "Share Your Experience" (the form is now right below it) to "See Guest Reviews".
+
+## Filming page restructured (28 November 2026)
+Order: hero; [Why Film in Zimbabwe: director's statement to come, template in the page source]; "Our Work on Screen" (The Grand Tour at Lake Kariba, with Jeremy Clarkson, Richard Hammond and James May; four videos by YouTube creator Nike Corey, credited and shared with his permission); "Let Malachite Handle It for You"; "Clearance Checklist" (six steps shown as one-line summaries, each opens for the full details; "start six weeks before travel" kept at the top); "Productions We Facilitate" (present tense; Wildlife, Food, People, Places; "Discuss Your Production").
+- Nike Corey's permission is conditional on credit: every video card says "Video by Nike Corey" and the section says the videos are shared with his permission. Do not remove the credit.
+- No Grand Tour logos or images are used (Amazon's property); the mention is text only.
